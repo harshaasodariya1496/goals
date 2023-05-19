@@ -1,5 +1,4 @@
-import {StyleSheet} from 'react-native';
-import {scale} from 'react-native-size-matters';
+import {StyleSheet} from 'react-native'; 
 
 const styles = StyleSheet.create({ 
 });

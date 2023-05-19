@@ -7,18 +7,19 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import {useState} from 'react';
-// import {Searchbar} from 'react-native-paper';
+import {useState} from 'react'; 
+import {Icon, Input} from 'native-base';
 import {Dropdown} from 'react-native-material-dropdown';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import SelectDropdown from 'react-native-select-dropdown';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
+
 import styles from './style';
-import SelectDropdown from 'react-native-select-dropdown';
-import {Icon, Input} from 'native-base';
+
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Customers = ({navigation}) => {
@@ -104,19 +105,6 @@ const Customers = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            {/* <Searchbar
-              placeholder="Search"
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-              style={{
-                borderRadius: 10,
-                width: screenWidth / 2.3,
-                backgroundColor: Colors.white,
-              }}
-              inputStyle={{fontSize: 18, fontFamily: 'Roboto'}}
-              iconColor="#222B2E"
-              placeholderTextColor={'rgba(128,128,128,0.4)'}
-            /> */}
             <Input
               placeholder="Search"
               width={screenWidth / 2.3}

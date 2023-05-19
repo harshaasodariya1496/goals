@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+
 import {Colors} from '../../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
   },
   bg: {
     height: 564,
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
   amtContent: {
     borderRadius: 10,
-    backgroundColor: 'rgba(41, 215, 223, 0.1)',
+    backgroundColor: Colors.lightSkyBlue,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

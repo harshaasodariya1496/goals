@@ -2,18 +2,19 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
-  ScrollView,
-  FlatList,
+  ScrollView, 
   Dimensions,
+  ImageBackground,
 } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
 import Feather from 'react-native-vector-icons/Feather';
-import styles from './style';
+
+import FlagAmount from '../../component/FlagAmount';
+
 import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
-import FlagAmount from '../../component/FlagAmount';
-import {scale} from 'react-native-size-matters';
-import Carousel from 'react-native-snap-carousel';
+
+import styles from './style';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 

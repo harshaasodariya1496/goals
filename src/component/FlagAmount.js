@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+
 import {Colors} from '../utils/colors';
 
 const FlagAmount = ({amount, ViewStyle}) => {
@@ -19,7 +20,7 @@ const FlagAmount = ({amount, ViewStyle}) => {
 const styles = StyleSheet.create({
   midSubContent: {
     borderRadius: 10,
-    backgroundColor: 'rgba(41, 215, 223, 0.1)',
+    backgroundColor: Colors.lightSkyBlue,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

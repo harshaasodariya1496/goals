@@ -1,11 +1,10 @@
-import {View, Text, Image, ImageBackground, ScrollView} from 'react-native';
 import {useState} from 'react';
+import {View, Image, ImageBackground, ScrollView} from 'react-native';
 
-import {Colors} from '../../utils/colors';
+import Button from '../../component/Button';
 import TextInput from '../../component/TextInput';
 
 import styles from './style';
-import Button from '../../component/Button';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -67,8 +66,8 @@ const Login = ({navigation}) => {
         </View>
         <View style={styles.buttonView}>
           <Button
-            title={'Login'} 
-            textStyle={{marginHorizontal:30}}
+            title={'Login'}
+            textStyle={{marginHorizontal: 30}}
             onPress={onLogin}
           />
         </View>

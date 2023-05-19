@@ -1,20 +1,16 @@
-import {
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useState} from 'react';
-import styles from './style';
-import {} from 'react-native-size-matters';
+import {View, Text, ImageBackground} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+
+import Header from '../../../component/Header';
+import Button from '../../../component/Button';
+import TextInput from '../../../component/TextInput';
+
 import {images} from '../../../utils/images';
 import {Colors} from '../../../utils/colors';
-import Header from '../../../component/Header';
-import TextInput from '../../../component/TextInput';
-import Button from '../../../component/Button';
+
+import styles from './style';
 
 const AddCustomers = ({navigation}) => {
   const [name, setName] = useState('');
@@ -132,16 +128,16 @@ const AddCustomers = ({navigation}) => {
             <Text style={styles.addMoreText}>Add More</Text>
           </View>
 
-          <View style={{marginVertical: (40), alignItems: 'center'}}>
+          <View style={{marginVertical: 40, alignItems: 'center'}}>
             <Button
               title={'Done'}
-              style={{height: (46)}}
-              textStyle={{fontSize: (14)}}
+              style={{height: 46}}
+              textStyle={{fontSize: 14}}
               onPress={onDone}
             />
           </View>
         </View>
-        <View style={{height: (50)}} />
+        <View style={{height: 50}} />
       </KeyboardAvoidingScrollView>
     </ImageBackground>
   );
