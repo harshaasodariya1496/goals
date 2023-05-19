@@ -5,16 +5,18 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useState} from 'react';
-import styles from './style';
-import {} from 'react-native-size-matters';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+
+import Header from '../../../component/Header';
+import Button from '../../../component/Button'; 
+import TextInput from '../../../component/TextInput';
+
 import {images} from '../../../utils/images';
 import {Colors} from '../../../utils/colors';
-import Header from '../../../component/Header';
-import TextInput from '../../../component/TextInput';
-import Button from '../../../component/Button'; 
+
+import styles from './style';
 
 const AddTeam = ({navigation}) => {
   const [fName, setFName] = useState('');

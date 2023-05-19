@@ -1,34 +1,27 @@
-import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {
-  BottomTabBar,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
-import Login from '../screens/Login';
+import React from 'react';
 import {scale} from 'react-native-size-matters';
-import styles from './style';
-import Dashboard from '../screens/Dashboard';
+import {View, Image, TouchableOpacity} from 'react-native';
+import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import Team from '../screens/Team';
-import Discussion from '../screens/Discussion';
+import Login from '../screens/Login';
+import Goals from '../screens/Goals';
+import Reports from '../screens/Reports';
 import Sidebar from '../screens/Sidebar';
 import Customers from '../screens/Customers';
-import {images} from '../utils/images';
-import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
-import {Colors} from '../utils/colors';
-import AddCustomers from '../screens/Customers/AddCustomer';
-import Goals from '../screens/Goals';
 import AddTeam from '../screens/Team/AddTeam';
-import Reports from '../screens/Reports';
+import Dashboard from '../screens/Dashboard';
+import Discussion from '../screens/Discussion';
+import AddCustomers from '../screens/Customers/AddCustomer';
 import ViewCustomer from '../screens/Customers/ViewCustomer';
+import CustomerDetail from '../screens/Customers/ViewCustomer/CustomerDetail';
+
+import {images} from '../utils/images';
+import {Colors} from '../utils/colors';
+
+import styles from './style';
+
 const Stack = createNativeStackNavigator();
 
 const Tab = CurvedBottomBar;
@@ -168,7 +161,7 @@ function MyTabs({navigation}) {
 function Root() {
   return (
     <Stack.Navigator
-      initialRouteName="ViewCustomers"
+      initialRouteName="Tabs"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Tabs" component={MyTabs} />
@@ -176,6 +169,7 @@ function Root() {
       <Stack.Screen name="Customers" component={Customers} />
       <Stack.Screen name="AddCustomers" component={AddCustomers} />
       <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
+      <Stack.Screen name="CustomerDetail" component={CustomerDetail} />
     </Stack.Navigator>
   );
 }

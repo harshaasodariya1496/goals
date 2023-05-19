@@ -1,6 +1,5 @@
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
-
 import {Button as NativeButton} from 'native-base';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {Colors} from '../utils/colors';
 

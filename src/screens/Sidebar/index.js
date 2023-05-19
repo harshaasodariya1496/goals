@@ -2,14 +2,15 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   ScrollView,
+  ImageBackground,
   TouchableOpacity,
 } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
-import styles from './style';
 import {images} from '../../utils/images';
+
+import styles from './style';
 
 const Sidebar = ({navigation}) => {
   const menu = [

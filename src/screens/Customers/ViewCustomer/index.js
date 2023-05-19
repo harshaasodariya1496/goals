@@ -1,63 +1,126 @@
 import {
-  View,
-  Text,
+  View, 
   Image,
+  Animated, 
+  Dimensions,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useState} from 'react';
-import styles from './style';
-import {} from 'react-native-size-matters';
+import {TabView, SceneMap} from 'react-native-tab-view';
+import Octicons from 'react-native-vector-icons/Octicons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+
+import Notes from './Notes'; 
+import Reminders from './Reminders';
+import Header from '../../../component/Header'; 
+import TransactionHistory from './TransactionHistory';
+
 import {images} from '../../../utils/images';
 import {Colors} from '../../../utils/colors';
-import Header from '../../../component/Header';
-import {TabView, SceneMap} from 'react-native-tab-view';
+
+import styles from './style';
+
+const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const ViewCustomer = props => {
   const title = props.route.params?.title ? props.route.params.title : '';
+  const [tabPage, setTabPage] = useState(0);
+  const routes = [
+    {key: 'Notes', title: 'Notes'},
+    {key: 'Reminders', title: 'Reminders'},
+    {key: 'Transaction History', title: 'Transaction History'},
+  ]; 
 
-  const [index, setIndex] = useState(0);
-  const [routes] = useState([
-    {key: 'first', title: 'First'},
-    {key: 'second', title: 'Second'},
-  ]);
-
-  const FirstRoute = () => (
-    <View style={{flex: 1, backgroundColor: '#ff4081'}} />
-  );
-
-  const SecondRoute = () => (
-    <View style={{flex: 1, backgroundColor: '#673ab7'}} />
-  );
-
-  const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
+  const _handleIndexChange = index => setTabPage(index);
+  const _renderScene = SceneMap({
+    Notes: Notes,
+    Reminders: Reminders,
+    Transaction_History: TransactionHistory,
   });
-
+  const _renderTabBar = props => {
+    return (
+      <View style={styles.tabBar}>
+        {routes.map((route, i) => {
+          return (
+            <TouchableOpacity
+              style={[
+                styles.tabItem,
+                {
+                  borderBottomWidth: i == tabPage ? 3 : 0,
+                },
+              ]}
+              key={i}
+              onPress={() => setTabPage(i)}>
+              <Animated.Text
+                style={[
+                  styles.tabTitle,
+                  {
+                    color: i == tabPage ? Colors.lightBlue : Colors.black,
+                  },
+                ]}>
+                {route.title}
+              </Animated.Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    );
+  };
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingScrollView style={styles.container}>
       <ImageBackground style={styles.bg} source={images.background}>
         <Header
           title={title}
-          isOption
           onBackPress={() => {
             props.navigation.navigate('Customers');
           }}
+          onTitlePress={() => {
+            props.navigation.navigate('CustomerDetail', {title: title});
+          }}
           textStyle={{fontSize: 14, fontWeight: 700}}
+          isPopOver
+          firstIcon={() => {
+            return (
+              <Octicons
+                name="pencil"
+                size={21}
+                color={Colors.darkGrey}
+                style={{marginRight: 10}}
+              />
+            );
+          }}
+          secondIcon={() => {
+            return (
+              <Image
+                source={images.trash}
+                style={styles.trashImage}
+                resizeMode="contain"
+              />
+            );
+          }}
+          firstTitle={'Edit'}
+          secondTitle={'Delete'}
+          firstOnPress={() => {}}
+          secondOnPress={() => {}}
         />
       </ImageBackground>
-      <View>
+      <View style={{height: (screenHeight / 100) * 75}}>
         <TabView
-          navigationState={{index, routes}}
-          renderScene={renderScene}
-          onIndexChange={setIndex}
-          initialLayout={{width: layout.width}}
+          navigationState={{
+            index: tabPage,
+            routes: [
+              {key: 'Notes', title: 'Notes'},
+              {key: 'Reminders', title: 'Reminders'},
+              {key: 'Transaction_History', title: 'Transaction History'},
+            ],
+          }}
+          renderScene={_renderScene}
+          renderTabBar={_renderTabBar}
+          onIndexChange={_handleIndexChange}
         />
       </View>
-    </View>
+    </KeyboardAvoidingScrollView>
   );
 };
 

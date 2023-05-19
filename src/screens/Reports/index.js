@@ -2,15 +2,13 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   FlatList,
   ScrollView,
   Dimensions,
 } from 'react-native';
-import {useState} from 'react'; 
+
 import styles from './style';
-import {images} from '../../utils/images'; 
-import {Colors} from '../../utils/colors';
+
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Reports = ({navigation}) => {
@@ -35,10 +33,8 @@ const Reports = ({navigation}) => {
   ];
   return (
     <ScrollView style={styles.container} nestedScrollEnabled>
-      <View
-        style={styles.mainView}>
-        <View
-          style={styles.textBox}>
+      <View style={styles.mainView}>
+        <View style={styles.textBox}>
           <Text style={styles.inputText}>2022</Text>
         </View>
         <FlatList
@@ -49,14 +45,17 @@ const Reports = ({navigation}) => {
           numColumns={3}
           renderItem={({item}) => {
             return (
-              <View
-                style={styles.cardMain}>
+              <View style={styles.cardMain}>
                 <View style={{alignItems: 'center'}}>
-                  <Image source={images.file} style={{width: 67, height: 60,opacity:item.isRead?0.5:1}} />
-                  <Text
-                    style={styles.monthText}>
-                    {item.name}
-                  </Text>
+                  <Image
+                    source={images.file}
+                    style={{
+                      width: 67,
+                      height: 60,
+                      opacity: item.isRead ? 0.5 : 1,
+                    }}
+                  />
+                  <Text style={styles.monthText}>{item.name}</Text>
                 </View>
               </View>
             );

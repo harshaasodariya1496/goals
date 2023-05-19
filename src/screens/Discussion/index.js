@@ -1,5 +1,4 @@
-import {View, Text, Image, ImageBackground, ScrollView} from 'react-native';
-import {useState} from 'react';
+import {View, Text} from 'react-native';
 
 import styles from './style';
 

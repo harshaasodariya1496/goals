@@ -2,22 +2,22 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity,
   FlatList,
+  Dimensions,
+  ScrollView,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
-import {useState} from 'react'; 
-import {Dropdown} from 'react-native-element-dropdown';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+
+import FlagAmount from '../../component/FlagAmount';
 
 import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
+
 import styles from './style';
-import FlagAmount from '../../component/FlagAmount';
+
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Customers = ({navigation}) => {
@@ -89,7 +89,7 @@ const Customers = ({navigation}) => {
         </View>
       </ImageBackground>
       <View style={{top: -200, marginHorizontal: 20}}>
-        <FlatList data={[0, 1,2]} renderItem={renderItem} />
+        <FlatList data={[0, 1, 2]} renderItem={renderItem} />
       </View>
     </ScrollView>
   );

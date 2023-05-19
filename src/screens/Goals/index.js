@@ -2,17 +2,20 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   FlatList,
   ScrollView,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import {useState} from 'react';
 import {Progress} from 'native-base';
-import styles from './style';
-import {images} from '../../utils/images';
 import Carousel from 'react-native-snap-carousel';
+
+import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
+
+import styles from './style';
+
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Goals = ({navigation}) => {

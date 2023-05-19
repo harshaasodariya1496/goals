@@ -16,4 +16,7 @@ export const images = {
   tabLogo: require('../assets/images/tabLogo.png'),
   user: require('../assets/images/user.png'),
   file: require('../assets/images/file.png'),
+  emptyNote: require('../assets/images/emptyNote.png'),
+  trash: require('../assets/images/trash.png'),
+  reminder: require('../assets/images/reminder.png'),
 };

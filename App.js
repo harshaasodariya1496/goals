@@ -1,15 +1,15 @@
 import React from 'react';
-import {NativeBaseProvider, extendTheme} from 'native-base';
+import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Root from './src/router';
-import {Colors} from './src/utils/colors';
 
-function App() { 
+import Root from './src/router';
+
+function App() {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <NativeBaseProvider  >
+        <NativeBaseProvider>
           <Root />
         </NativeBaseProvider>
       </SafeAreaProvider>

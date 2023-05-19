@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   amtContent: {
     borderRadius: 35,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: Colors.lightGray,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

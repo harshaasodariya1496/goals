@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   yearMain: {
-    flexDirection: 'row',
-    // justifyContent: 'space-between',
+    flexDirection: 'row', 
   },
   item: {
     backgroundColor: '#A1A1A1',
