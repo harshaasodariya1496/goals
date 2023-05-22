@@ -3,7 +3,7 @@ import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {Colors} from '../utils/colors';
 
-const Button = ({style, title, onPress, textStyle, type}, props) => {
+const Button = ({style, title, onPress, leftIcon, textStyle, type}, props) => {
   if (type == 'small')
     return (
       <TouchableOpacity
@@ -17,7 +17,8 @@ const Button = ({style, title, onPress, textStyle, type}, props) => {
     <NativeButton
       mode="elevated"
       style={[styles.loginButton, style]}
-      onPress={onPress} 
+      onPress={onPress}
+      leftIcon={leftIcon}
       {...props}>
       <Text style={[styles.loginText, textStyle]}>{title}</Text>
     </NativeButton>
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 5,
     backgroundColor: Colors.lightBlue2,
-     
   },
   loginText: {
     fontSize: 18,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     letterSpacing: 1,
     color: Colors.white,
-    marginHorizontal:20
+    marginHorizontal: 20,
   },
   btnView: {
     backgroundColor: Colors.lightBlue3,

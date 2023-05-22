@@ -41,7 +41,7 @@ const AddTeam = ({navigation}) => {
     <ImageBackground style={styles.container} source={images.background}>
       <KeyboardAvoidingScrollView nestedScrollEnabled>
         <Header
-          // title={'Add New Customer'}
+          title={''}
           onBackPress={() => navigation.goBack()}
         />
 

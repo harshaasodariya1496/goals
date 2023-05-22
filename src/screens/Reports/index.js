@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import styles from './style';
+import { images } from '../../utils/images';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 

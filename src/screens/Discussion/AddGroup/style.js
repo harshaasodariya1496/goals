@@ -1,6 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-import {Colors} from '../../utils/colors';
+import {Colors} from '../../../utils/colors';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -11,12 +11,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   menuImage: {
-    width: 51,
-    height: 51,
+    width: 44,
+    height: 44,
     marginRight: 10,
-    borderWidth: 2,
-    borderColor: Colors.white,
-    borderRadius: 50,
   },
   searchIconMain: {
     backgroundColor: Colors.white,
@@ -28,27 +25,17 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
   },
-  groupBtn: {
-    borderRadius: 11,
-    width: screenWidth / 3,
-    paddingLeft: 0,
-    height: 50,
-  },
   headerContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingBottom: 24,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: screenWidth - 100, 
     justifyContent: 'center',
   },
-  headerTitle: {
-    fontSize: 14,
-    color: Colors.white,
-    paddingBottom: 5,
-  },
+  headerTitle: {fontSize: 32, color: Colors.white, paddingBottom: 5},
   headerSubTitle: {color: Colors.white, fontSize: 12},
 
   chatUserImage: {
@@ -84,6 +71,15 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     width: screenWidth - 110,
     justifyContent: 'center',
+  },
+  backBg: {
+    height: 51,
+    width: 51,
+    borderRadius: 25,
+    backgroundColor: Colors.lightGray,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14,
   },
 });
 

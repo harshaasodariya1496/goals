@@ -36,6 +36,36 @@ const styles = StyleSheet.create({
     marginRight: 10,
     tintColor: Colors.darkGrey,
   },
+  footer: {
+    height: (screenHeight / 100) * 9,
+    backgroundColor: '#D6D8DC',
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerImages: {height: 24, width: 24, resizeMode: 'contain'},
+  footerMidView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  footerInput: {
+    width: screenWidth - 170,
+    height: 42,
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 50,
+    fontSize: 14,
+    marginBottom: 0,
+    borderRadius: 0,
+  },
+  footerEmoji: {
+    paddingHorizontal: 10,
+    height: 42,
+    borderTopRightRadius: 50,
+    borderBottomRightRadius: 50,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

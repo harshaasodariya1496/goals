@@ -19,4 +19,6 @@ export const images = {
   emptyNote: require('../assets/images/emptyNote.png'),
   trash: require('../assets/images/trash.png'),
   reminder: require('../assets/images/reminder.png'),
+  calender: require('../assets/images/calender.png'),
+  smile: require('../assets/images/smile.png'),
 };

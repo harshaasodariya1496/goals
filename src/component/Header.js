@@ -26,29 +26,28 @@ const Header = ({
   firstTitle,
   secondTitle,
   firstOnPress,
-  secondOnPress,
+  secondOnPress,customTitle
 }) => {
   return (
     <View
       style={{
         flexDirection: 'row',
-        justifyContent: isOption || isPopOver ? 'space-between' : '',
+        justifyContent: isOption || isPopOver ? 'space-between' : 'flex-start',
         alignItems: 'center',
         paddingHorizontal: 15,
       }}>
-      <View style={[styles.header, {paddingHorizontal: isOption ? 0 : 15}]}>
+      <View style={[styles.header]}>
         <TouchableOpacity style={styles.backBg} onPress={onBackPress}>
           <AntDesign name="left" size={20} color={Colors.white} />
         </TouchableOpacity>
-        <Pressable onPress={onTitlePress}>
-          <Text style={[styles.headerText, textStyle]}>{title}</Text>
-        </Pressable>
+        {customTitle
+          ? customTitle
+          : title && (
+              <Pressable onPress={onTitlePress}>
+                <Text style={[styles.headerText, textStyle]}>{title}</Text>
+              </Pressable>
+            )}
       </View>
-      {isOption && (
-        <TouchableOpacity onPress={onMenuPress}>
-          <AntDesign name="ellipsis1" size={20} color={Colors.white} />
-        </TouchableOpacity>
-      )}
       {isPopOver && (
         <Popover
           trigger={triggerProps => {
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
     paddingVertical: 35,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 15,
   },
   backBg: {
     height: 51,

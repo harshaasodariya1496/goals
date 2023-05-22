@@ -1,8 +1,8 @@
-import {TextInput, StyleSheet} from 'react-native';
+import {TextInput as RNTextInput, StyleSheet} from 'react-native';
 
-const InputComponent = props => {
+const TextInput = props => {
   return (
-    <TextInput
+    <RNTextInput
       {...props}
       placeholderTextColor={'#B0B8C5'}
       style={[
@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Roboto',
     fontWeight: '400',
-    width: '100%',
     height: 56,
+    width: '100%',
     paddingHorizontal: 20,
     marginBottom: 16,
   },
 });
 
-export default InputComponent;
+export default TextInput;

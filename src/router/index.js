@@ -21,6 +21,8 @@ import {images} from '../utils/images';
 import {Colors} from '../utils/colors';
 
 import styles from './style';
+import AddGroup from '../screens/Discussion/AddGroup';
+import Chat from '../screens/Discussion/Chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +75,7 @@ const DiscussionNavigator = () => {
         name="DiscussionContainer"
         component={Discussion}
       />
+      <DiscussionStack.Screen name="AddGroup" component={AddGroup} />
     </DiscussionStack.Navigator>
   );
 };
@@ -170,6 +173,7 @@ function Root() {
       <Stack.Screen name="AddCustomers" component={AddCustomers} />
       <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
       <Stack.Screen name="CustomerDetail" component={CustomerDetail} />
+      <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>
   );
 }
