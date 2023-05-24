@@ -1,14 +1,14 @@
 import {
   View,
-  Text,
-  Image,
+  Text, 
   StyleSheet,
   Pressable,
   TouchableOpacity,
 } from 'react-native';
+import {useState} from 'react';
+import {Popover} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {Popover} from 'native-base';
 import {Colors} from '../utils/colors';
 
 const Header = ({
@@ -26,8 +26,10 @@ const Header = ({
   firstTitle,
   secondTitle,
   firstOnPress,
-  secondOnPress,customTitle
+  secondOnPress,
+  customTitle,
 }) => {
+  const [isVisible, setIsVisible] = useState('');
   return (
     <View
       style={{
@@ -50,19 +52,37 @@ const Header = ({
       </View>
       {isPopOver && (
         <Popover
+          isOpen={isVisible}
+          onClose={() => {
+            setIsVisible(false);
+          }}
           trigger={triggerProps => {
             return (
-              <TouchableOpacity {...triggerProps}>
+              <TouchableOpacity
+                {...triggerProps}
+                onPress={() => {
+                  setIsVisible(true);
+                }}>
                 <AntDesign name="ellipsis1" size={20} color={Colors.white} />
               </TouchableOpacity>
             );
           }}>
           <Popover.Content w="32" style={styles.popOverView}>
-            <TouchableOpacity style={styles.touchView} onPress={firstOnPress}>
+            <TouchableOpacity
+              style={styles.touchView}
+              onPress={() => {
+                firstOnPress();
+                setIsVisible(false);
+              }}>
               {firstIcon()}
               <Text style={styles.popOverText}>{firstTitle}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.touchView} onPress={secondOnPress}>
+            <TouchableOpacity
+              style={styles.touchView}
+              onPress={() => {
+                secondOnPress();
+                setIsVisible(false);
+              }}>
               {secondIcon()}
               <Text style={styles.popOverText}>{secondTitle}</Text>
             </TouchableOpacity>

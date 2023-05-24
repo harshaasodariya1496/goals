@@ -2,12 +2,10 @@ import {
   View,
   Text,
   Image,
-  FlatList,
   ScrollView,
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import {useState} from 'react';
 import {Progress} from 'native-base';
 import Carousel from 'react-native-snap-carousel';
 

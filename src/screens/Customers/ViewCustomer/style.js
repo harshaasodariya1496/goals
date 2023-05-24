@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 0,
     borderRadius: 0,
+    backgroundColor: Colors.white,
   },
   footerEmoji: {
     paddingHorizontal: 10,

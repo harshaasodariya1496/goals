@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: Colors.white,
     borderRadius: 50,
+
   },
   searchIconMain: {
     backgroundColor: Colors.white,
@@ -56,6 +57,8 @@ const styles = StyleSheet.create({
     height: 48,
     marginRight: 10,
     borderRadius: 50,
+    resizeMode:"contain",
+  
   },
   msgNotificationView: {
     backgroundColor: Colors.red,

@@ -2,21 +2,20 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   FlatList,
-  TouchableOpacity,
   Dimensions,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
-import {useState} from 'react'; 
+import {useState} from 'react';
 import {Icon, Input} from 'native-base';
-import {Dropdown} from 'react-native-material-dropdown';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SelectDropdown from 'react-native-select-dropdown';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
+import Dropdown from '../../component/DropDown';
 
 import styles from './style';
 
@@ -104,13 +103,19 @@ const Customers = ({navigation}) => {
               />
             </TouchableOpacity>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              height: 55,
+            }}>
             <Input
               placeholder="Search"
-              width={screenWidth / 2.3}
+              width={screenWidth / 2.1}
               borderRadius="11"
               py="3"
               px="1"
+              mr={'5'}
               fontSize="18"
               style={{
                 backgroundColor: Colors.white,
@@ -129,34 +134,15 @@ const Customers = ({navigation}) => {
                 </View>
               }
             />
-            <SelectDropdown
+            <Dropdown
               data={data}
               onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
+                setSelectedValue(selectedItem);
               }}
-              defaultButtonText={'All Account'}
-              renderDropdownIcon={() => {
-                return (
-                  <Ionicons
-                    name="chevron-down-outline"
-                    size={20}
-                    color={Colors.black}
-                  />
-                );
-              }}
-              dropdownStyle={{
-                borderRadius: 10,
-                height: 150,
-              }}
+              value={selectedValue}
+              placeHolder={'All Account'}
+              style={{width: screenWidth / 2.8, height: 55, borderRadius: 10}}
               buttonTextStyle={{fontSize: 18}}
-              rowStyle={{}}
-              buttonStyle={{
-                borderRadius: 10,
-                width: screenWidth / 2.3,
-                height: 55,
-                backgroundColor: Colors.white,
-                paddingHorizontal: 15,
-              }}
             />
           </View>
         </ImageBackground>

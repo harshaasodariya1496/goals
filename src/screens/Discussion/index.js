@@ -2,26 +2,21 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   FlatList,
-  TouchableOpacity,
   Dimensions,
-  ScrollView,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import {useState} from 'react';
 import {Icon, Input} from 'native-base';
-import {Dropdown} from 'react-native-material-dropdown';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Octicons from 'react-native-vector-icons/Octicons';
-import SelectDropdown from 'react-native-select-dropdown';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
+import Button from '../../component/Button';
 
 import styles from './style';
-import Button from '../../component/Button';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -82,11 +77,13 @@ const Discussion = ({navigation}) => {
           source={images.background}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
-              <Image
-                source={images.user}
-                style={styles.menuImage}
-                resizeMode="contain"
-              />
+              <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
+                <Image
+                  source={images.user}
+                  style={styles.menuImage}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
               <View>
                 <Text style={styles.headerTitle}>Adam Morgan</Text>
                 <Text style={styles.headerSubTitle}>
@@ -151,9 +148,10 @@ const Discussion = ({navigation}) => {
                 navigation.navigate('Chat', {user: item});
               }}
               key={index}>
+                
               <Image
                 source={images.user}
-                style={styles.chatUser}
+                style={styles.chatUserImage}
                 resizeMode="contain"
               />
               <View style={styles.msgContainer}>

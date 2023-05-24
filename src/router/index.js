@@ -8,21 +8,30 @@ import Team from '../screens/Team';
 import Login from '../screens/Login';
 import Goals from '../screens/Goals';
 import Reports from '../screens/Reports';
+import Setting from '../screens/Setting';
 import Sidebar from '../screens/Sidebar';
 import Customers from '../screens/Customers';
-import AddTeam from '../screens/Team/AddTeam';
 import Dashboard from '../screens/Dashboard';
+import Chat from '../screens/Discussion/Chat';
+import AddTeam from '../screens/Team/AddTeam';
 import Discussion from '../screens/Discussion';
+import Lead from '../screens/Team/TeamOption/Lead';
+import Sale from '../screens/Team/TeamOption/Sale';
+import TeamOption from '../screens/Team/TeamOption';
+import TeamDetails from '../screens/Team/TeamDetails';
+import AddGroup from '../screens/Discussion/AddGroup';
+import AddSale from '../screens/Team/TeamOption/AddSale';
+import AddLead from '../screens/Team/TeamOption/AddLead';
 import AddCustomers from '../screens/Customers/AddCustomer';
 import ViewCustomer from '../screens/Customers/ViewCustomer';
+import Opportunity from '../screens/Team/TeamOption/Opportunity';
+import AddOpportunity from '../screens/Team/TeamOption/AddOpportunity';
 import CustomerDetail from '../screens/Customers/ViewCustomer/CustomerDetail';
 
 import {images} from '../utils/images';
 import {Colors} from '../utils/colors';
 
 import styles from './style';
-import AddGroup from '../screens/Discussion/AddGroup';
-import Chat from '../screens/Discussion/Chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,7 +60,15 @@ const TeamNavigator = () => {
   return (
     <TeamStack.Navigator screenOptions={{headerShown: false}}>
       <TeamStack.Screen name="TeamContainer" component={Team} />
-      <Stack.Screen name="AddTeam" component={AddTeam} />
+      <TeamStack.Screen name="AddTeam" component={AddTeam} />
+      <TeamStack.Screen name="TeamDetails" component={TeamDetails} />
+      <TeamStack.Screen name="TeamOption" component={TeamOption} />
+      <TeamStack.Screen name="Lead" component={Lead} />
+      <TeamStack.Screen name="AddLead" component={AddLead} />
+      <TeamStack.Screen name="Opportunity" component={Opportunity} />
+      <TeamStack.Screen name="AddOpportunity" component={AddOpportunity} />
+      <TeamStack.Screen name="Sale" component={Sale} />
+      <TeamStack.Screen name="AddSale" component={AddSale} />
     </TeamStack.Navigator>
   );
 };
@@ -76,6 +93,7 @@ const DiscussionNavigator = () => {
         component={Discussion}
       />
       <DiscussionStack.Screen name="AddGroup" component={AddGroup} />
+      <DiscussionStack.Screen name="Setting" component={Setting} />
     </DiscussionStack.Navigator>
   );
 };
@@ -128,7 +146,7 @@ function MyTabs({navigation}) {
   };
   return (
     <Tab.Navigator
-      initialRouteName="Dashboard"
+      initialRouteName="Team"
       height={50}
       type={'DOWN'}
       bgColor={Colors.white}

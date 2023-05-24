@@ -7,16 +7,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useState} from 'react';
-import Feather from 'react-native-vector-icons/Feather';
 import {TabView, SceneMap} from 'react-native-tab-view';
 import Octicons from 'react-native-vector-icons/Octicons';
-import DateTimePickerModal from "react-native-modal-datetime-picker";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+
 import Notes from './Notes';
 import Reminders from './Reminders';
 import Header from '../../../component/Header';
-import TextInput from '../../../component/TextInput';
+import ChatInput from '../../../component/ChatInput';
 import TransactionHistory from './TransactionHistory';
 
 import {images} from '../../../utils/images';
@@ -46,8 +45,8 @@ const ViewCustomer = props => {
     setDatePickerVisibility(false);
   };
 
-  const handleConfirm = (date) => {
-    console.warn("A date has been picked: ", date);
+  const handleConfirm = date => {
+    console.warn('A date has been picked: ', date);
     hideDatePicker();
   };
   const _handleIndexChange = index => setTabPage(index);
@@ -140,56 +139,35 @@ const ViewCustomer = props => {
         />
       </View>
       {tabPage != 2 && (
-        <View style={styles.footer}>
-          <TouchableOpacity onPress={showDatePicker}>
-            {tabPage == 0 ? (
-              <MaterialCommunityIcons
-                size={24}
-                color={Colors.darkGrey2}
-                name={'paperclip'}
-              />
+        <ChatInput
+          renderFirstIcon={
+            tabPage == 0 ? (
+              <TouchableOpacity>
+                <MaterialCommunityIcons
+                  size={24}
+                  color={Colors.darkGrey2}
+                  name={'paperclip'}
+                />
+              </TouchableOpacity>
             ) : (
-              <Image
-                source={images.calender}
-                tintColor={Colors.darkGrey2}
-                style={styles.footerImages}
-              />
-            )}
-          </TouchableOpacity>
-          <View style={styles.footerMidView}>
-            <TextInput
-              placeholder={
-                tabPage == 0 ? 'Write note here ' : 'Add Reminder here'
-              }
-              returnKeyLabel={'Go'}
-              returnKeyType={'go'}
-              value={tabPage == 0 ? note : reminderText}
-              onChangeText={e =>
-                tabPage == 0 ? setNote(e) : setReminderText(e)
-              }
-              style={styles.footerInput}
-              onSubmitEditing={onSubmitEditing}
-            />
-            <TouchableOpacity style={styles.footerEmoji}>
-              <Image
-                source={images.smile}
-                tintColor={Colors.darkGrey2}
-                style={styles.footerImages}
-              />
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity>
-            <Feather name={'mic'} size={24} color={Colors.darkGrey2} />
-          </TouchableOpacity>
-        </View>
+              <TouchableOpacity onPress={showDatePicker}>
+                <Image
+                  source={images.calender}
+                  tintColor={Colors.darkGrey2}
+                  style={styles.footerImages}
+                />
+              </TouchableOpacity>
+            )
+          } 
+          placeholder={tabPage == 0 ? 'Write note here ' : 'Add Reminder here'}
+          value={tabPage == 0 ? note : reminderText}
+          onChangeText={e => (tabPage == 0 ? setNote(e) : setReminderText(e))}
+          onSubmitEditing={onSubmitEditing}
+          isVisible={isDatePickerVisible}
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+        />
       )}
-
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="datetime"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      />
     </KeyboardAvoidingScrollView>
   );
 };

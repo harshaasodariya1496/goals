@@ -3,26 +3,29 @@ import {
   Text,
   Image,
   FlatList,
+  Pressable,
   Dimensions,
   ScrollView,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
-
-import FlagAmount from '../../component/FlagAmount';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
+import FlagAmount from '../../component/FlagAmount';
 
 import styles from './style';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const Customers = ({navigation}) => {
+const Team = ({navigation}) => {
   const renderItem = ({item, index}) => (
-    <View
+    <Pressable
+      onPress={() => {
+        navigation.navigate('TeamDetails');
+      }}
       key={index}
       style={[styles.midContent, {width: '100%', height: 400, padding: 32}]}>
       <Image source={images.user} style={styles.userImage} />
@@ -58,7 +61,7 @@ const Customers = ({navigation}) => {
           <FlagAmount amount={'3,500,000'} ViewStyle={styles.flagView} />
         </View>
       </View>
-    </View>
+    </Pressable>
   );
   return (
     <ScrollView style={styles.container} nestedScrollEnabled={true}>
@@ -95,4 +98,4 @@ const Customers = ({navigation}) => {
   );
 };
 
-export default Customers;
+export default Team;

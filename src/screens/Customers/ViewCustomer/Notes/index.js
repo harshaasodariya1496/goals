@@ -1,4 +1,4 @@
-import {View, Text, Image, Animated} from 'react-native';
+import {View, Text, Image} from 'react-native';
 
 import {images} from '../../../../utils/images';
 
@@ -9,7 +9,7 @@ const Notes = props => {
     <View style={styles.container}>
       <View style={styles.emptyView}>
         <Image source={images.emptyNote} style={{width: 217, height: 208}} />
-        <Text style={styles.emptyText}> 
+        <Text style={styles.emptyText}>
           Save notes related to customer interactions here.
         </Text>
       </View>

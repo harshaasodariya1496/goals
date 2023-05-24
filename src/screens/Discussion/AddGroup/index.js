@@ -2,18 +2,14 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   FlatList,
-  TouchableOpacity,
   Dimensions,
-  ScrollView,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
+import {Input} from 'native-base';
 import {useMemo, useState} from 'react';
-import {Icon, Input} from 'native-base';
-import {Dropdown} from 'react-native-material-dropdown';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import SelectDropdown from 'react-native-select-dropdown';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CircleCheckBox from 'react-native-circle-checkbox';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
@@ -62,10 +58,8 @@ const AddGroup = ({navigation}) => {
     console.log(isSelect);
     if (isSelect) {
       setIsSelectedAll(true);
-    }
-    else{
+    } else {
       setIsSelectedAll(false);
-
     }
     setUserList([...arr]);
   };

@@ -21,4 +21,5 @@ export const images = {
   reminder: require('../assets/images/reminder.png'),
   calender: require('../assets/images/calender.png'),
   smile: require('../assets/images/smile.png'),
+  warning: require('../assets/images/warning.png'),
 };

@@ -61,12 +61,10 @@ const AddTeam = ({navigation}) => {
 
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            flexDirection: 'row', 
             padding: 15,
             alignItems: 'center',
-            paddingTop: 0,
-            width: '87%',
+            paddingTop: 0, 
           }}>
           <Button
             type={'small'}
