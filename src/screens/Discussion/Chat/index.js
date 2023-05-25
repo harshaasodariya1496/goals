@@ -167,7 +167,7 @@ const Chat = ({navigation, route}) => {
     <View style={styles.container}>
       <ImageBackground
         style={{
-          height: (screenHeight / 100) * 15,
+          height: (screenHeight / 10) * 1.5,
         }}
         source={images.background}>
         <Header
@@ -223,7 +223,7 @@ const Chat = ({navigation, route}) => {
         />
       </ImageBackground>
       <KeyboardAvoidingScrollView nestedScrollEnabled={true}>
-        <View style={{height: (screenHeight / 10) * 8.2}}>
+        <View style={{height: (screenHeight / 10) * 8.5}}>
           {isSearch ? (
             <View style={styles.searchContainer}>
               <TouchableOpacity

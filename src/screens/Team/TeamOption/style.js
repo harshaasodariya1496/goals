@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
   tabelContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
-    marginVertical: 10,
-    marginHorizontal: 20,
+    marginVertical: 10, 
+    marginHorizontal:20
   },
   tabelHead: {
     backgroundColor: Colors.grey,

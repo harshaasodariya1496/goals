@@ -1,0 +1,64 @@
+import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import {Colors} from '../utils/colors';
+
+const Table = ({style, data, tableBody, tableHead, tableStyle}, props) => {
+  return (
+    <View style={[tableStyle ? tableStyle : styles.tabelContainer]}>
+       
+        <ScrollView
+          horizontal
+          nestedScrollEnabled
+          showsHorizontalScrollIndicator={false}>
+          <View>
+            {tableHead}
+            <FlatList data={data} renderItem={tableBody} />
+          </View>
+        </ScrollView> 
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  tabelContainer: {
+    backgroundColor: Colors.white,
+    paddingVertical: 28,
+    marginVertical: 10,
+    borderRadius: 13,
+    marginLeft: 20,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    paddingHorizontal:20
+  },
+  tabelHead: {
+    backgroundColor: Colors.grey,
+    borderRadius: 5,
+    height: 53,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 22,
+  },
+  headFirstCol: {
+    fontSize: 14,
+    color: Colors.black,
+    width: 131,
+    marginRight: 37,
+  },
+  headSecCol: {
+    fontSize: 14,
+    color: Colors.black,
+    marginRight: 45,
+  },
+
+  bodyMain: {
+    height: 53,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 22,
+    borderBottomColor: Colors.grey,
+  },
+});
+
+export default Table;

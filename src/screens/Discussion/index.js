@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import {useState} from 'react';
 import {Icon, Input} from 'native-base';
-import Octicons from 'react-native-vector-icons/Octicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 import {images} from '../../utils/images';
@@ -70,7 +71,7 @@ const Discussion = ({navigation}) => {
       <View style={styles.container}>
         <ImageBackground
           style={{
-            height: (screenHeight / 100) * 22,
+            height: (screenHeight / 100) * 23,
             paddingTop: 40,
             paddingHorizontal: 16,
           }}

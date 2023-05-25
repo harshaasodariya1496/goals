@@ -3,10 +3,11 @@ import {
   Text,
   Image,
   FlatList,
-  Dimensions, 
+  Dimensions,
   ScrollView,
   ImageBackground,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {useState} from 'react';
 import {Icon, Input} from 'native-base';
@@ -19,6 +20,7 @@ import {Colors} from '../../../utils/colors';
 import Dropdown from '../../../component/DropDown';
 
 import styles from './style';
+import Table from '../../../component/Table';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -148,77 +150,69 @@ const Lead = ({navigation}) => {
             />
           </View>
         </ImageBackground>
-        <View style={styles.tabelContainer}>
-          <ScrollView
-            horizontal
-            nestedScrollEnabled
-            showsHorizontalScrollIndicator={false}>
-            <View>
-              <View style={styles.tabelHead}>
-                <Text style={styles.headFirstCol}>Company</Text>
-                <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
-                <Text style={[styles.headSecCol, {width: 99}]}>Name</Text>
-                <Text style={[styles.headSecCol, {width: 103}]}>Role</Text>
-                <Text style={[styles.headSecCol, {width: 194}]}>Email</Text>
-                <Text style={[styles.headSecCol, {width: 103}]}>Phone</Text>
-                <Text style={[styles.headSecCol, {width: 77}]}>Source</Text>
-                <Text style={[styles.headSecCol, {width: 86}]}>Date</Text>
-                <Text style={[styles.headSecCol, {width: 90}]}>LeadOwner</Text>
-              </View>
-
-              <FlatList
-                data={tabelData}
-                renderItem={({item, index}) => (
-                  <View
-                    style={[
-                      styles.bodyMain,
-                      {
-                        borderBottomWidth:
-                          index == tabelData.length - 1 ? 0 : 2,
-                      },
-                    ]}>
-                    <Text
-                      style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
-                      {item.company}
-                    </Text>
-                    <Text
-                      style={[
-                        styles.headSecCol,
-                        {
-                          color: Colors.lightBlue,
-                          width: 50,
-                          textAlign: 'center',
-                        },
-                      ]}>
-                      {item.actions}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 99}]}>
-                      {item.name}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 103}]}>
-                      {item.role}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 194}]}>
-                      {item.email}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 103}]}>
-                      {item.phone}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 77}]}>
-                      {item.source}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 86}]}>
-                      {item.date}
-                    </Text>
-                    <Text style={[styles.headSecCol, {width: 90}]}>
-                      {item.leadOwner}
-                    </Text>
-                  </View>
-                )}
-              />
+        <Table
+          tableStyle={styles.tabelContainer}
+          data={tabelData}
+          tableHead={
+            <View style={styles.tabelHead}>
+              <Text style={styles.headFirstCol}>Company</Text>
+              <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
+              <Text style={[styles.headSecCol, {width: 99}]}>Name</Text>
+              <Text style={[styles.headSecCol, {width: 103}]}>Role</Text>
+              <Text style={[styles.headSecCol, {width: 194}]}>Email</Text>
+              <Text style={[styles.headSecCol, {width: 103}]}>Phone</Text>
+              <Text style={[styles.headSecCol, {width: 77}]}>Source</Text>
+              <Text style={[styles.headSecCol, {width: 86}]}>Date</Text>
+              <Text style={[styles.headSecCol, {width: 90}]}>LeadOwner</Text>
             </View>
-          </ScrollView>
-        </View>
+          }
+          tableBody={({item, index}) => (
+            <View
+              style={[
+                styles.bodyMain,
+                {
+                  borderBottomWidth: index == tabelData.length - 1 ? 0 : 2,
+                },
+              ]}
+              key={index}>
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('LeadDetail', {details: item});
+                }}>
+                <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
+                  {item.company}
+                </Text>
+              </Pressable>
+              <Text
+                style={[
+                  styles.headSecCol,
+                  {
+                    color: Colors.lightBlue,
+                    width: 50,
+                    textAlign: 'center',
+                  },
+                ]}>
+                {item.actions}
+              </Text>
+              <Text style={[styles.headSecCol, {width: 99}]}>{item.name}</Text>
+              <Text style={[styles.headSecCol, {width: 103}]}>{item.role}</Text>
+              <Text style={[styles.headSecCol, {width: 194}]}>
+                {item.email}
+              </Text>
+              <Text style={[styles.headSecCol, {width: 103}]}>
+                {item.phone}
+              </Text>
+              <Text style={[styles.headSecCol, {width: 77}]}>
+                {item.source}
+              </Text>
+              <Text style={[styles.headSecCol, {width: 86}]}>{item.date}</Text>
+              <Text style={[styles.headSecCol, {width: 90}]}>
+                {item.leadOwner}
+              </Text>
+            </View>
+          )}
+        />
+       
       </View>
     </KeyboardAvoidingScrollView>
   );

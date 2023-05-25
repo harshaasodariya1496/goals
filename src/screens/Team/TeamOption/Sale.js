@@ -19,6 +19,7 @@ import {Colors} from '../../../utils/colors';
 import Dropdown from '../../../component/DropDown';
 
 import styles from './style';
+import Table from '../../../component/Table';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -132,76 +133,60 @@ const Sale = ({navigation}) => {
             />
           </View>
         </ImageBackground>
-        <View style={styles.tabelContainer}>
-          <ScrollView
-            horizontal
-            nestedScrollEnabled
-            showsHorizontalScrollIndicator={false}>
-            <View>
-              <View style={styles.tabelHead}>
-                <Text style={styles.headFirstCol}>Company</Text>
-                <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
-                <Text style={[styles.headSecCol, {width: 131}]}>
-                  Sales Year-to-Date
-                </Text>
-                <Text style={[styles.headSecCol, {width: 103}]}>
-                  Sales Lifetime
-                </Text>
-                <Text style={[styles.headSecCol, {width: 103}]}>
-                  Account Owner
-                </Text>
-              </View>
-
-              <FlatList
-                data={tabelData}
-                renderItem={({item, index}) => (
-                  <View
-                    style={[
-                      styles.bodyMain,
-                      {
-                        borderBottomWidth:
-                          index == tabelData.length - 1 ? 0 : 2,
-                      },
-                    ]}>
-                    <Text
-                      style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
-                      {item.company}
-                    </Text>
-                    <Text
-                      style={[
-                        styles.headSecCol,
-                        {
-                          color: Colors.lightBlue,
-                          width: 50,
-                          textAlign: 'center',
-                        },
-                      ]}>
-                      {item.actions}
-                    </Text>
-                    <Text
-                      style={[
-                        styles.headSecCol,
-                        {width: 131, color: Colors.green},
-                      ]}>
-                      {item.salesDateAmt}
-                    </Text>
-                    <Text
-                      style={[
-                        styles.headSecCol,
-                        {width: 103, color: Colors.green},
-                      ]}>
-                      {item.salesLifeTimeAmt}
-                    </Text>
-                    <Text
-                      style={[styles.headSecCol, {width: 103, marginRight: 0}]}>
-                      {item.accountOwner}
-                    </Text>
-                  </View>
-                )}
-              />
+        <Table
+          tableStyle={styles.tabelContainer}
+          data={tabelData}
+          tableHead={
+            <View style={styles.tabelHead}>
+              <Text style={styles.headFirstCol}>Company</Text>
+              <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
+              <Text style={[styles.headSecCol, {width: 131}]}>
+                Sales Year-to-Date
+              </Text>
+              <Text style={[styles.headSecCol, {width: 103}]}>
+                Sales Lifetime
+              </Text>
+              <Text style={[styles.headSecCol, {width: 103}]}>
+                Account Owner
+              </Text>
             </View>
-          </ScrollView>
-        </View>
+          }
+          tableBody={({item, index}) => (
+            <View
+              style={[
+                styles.bodyMain,
+                {
+                  borderBottomWidth: index == tabelData.length - 1 ? 0 : 2,
+                },
+              ]}>
+              <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
+                {item.company}
+              </Text>
+              <Text
+                style={[
+                  styles.headSecCol,
+                  {
+                    color: Colors.lightBlue,
+                    width: 50,
+                    textAlign: 'center',
+                  },
+                ]}>
+                {item.actions}
+              </Text>
+              <Text
+                style={[styles.headSecCol, {width: 131, color: Colors.green}]}>
+                {item.salesDateAmt}
+              </Text>
+              <Text
+                style={[styles.headSecCol, {width: 103, color: Colors.green}]}>
+                {item.salesLifeTimeAmt}
+              </Text>
+              <Text style={[styles.headSecCol, {width: 103, marginRight: 0}]}>
+                {item.accountOwner}
+              </Text>
+            </View>
+          )}
+        />
       </View>
     </KeyboardAvoidingScrollView>
   );

@@ -22,6 +22,7 @@ import TeamDetails from '../screens/Team/TeamDetails';
 import AddGroup from '../screens/Discussion/AddGroup';
 import AddSale from '../screens/Team/TeamOption/AddSale';
 import AddLead from '../screens/Team/TeamOption/AddLead';
+import LeadDetail from '../screens/Team/TeamOption/LeadDetail';
 import AddCustomers from '../screens/Customers/AddCustomer';
 import ViewCustomer from '../screens/Customers/ViewCustomer';
 import Opportunity from '../screens/Team/TeamOption/Opportunity';
@@ -32,6 +33,9 @@ import {images} from '../utils/images';
 import {Colors} from '../utils/colors';
 
 import styles from './style';
+import Opportunities from '../screens/Team/TeamOption/Opportunities';
+import TeamActions from '../screens/Team/TeamOption/TeamActions';
+import SalesDetail from '../screens/Team/TeamOption/SalesDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,12 +62,18 @@ const TeamNavigator = () => {
   const TeamStack = createNativeStackNavigator();
 
   return (
-    <TeamStack.Navigator screenOptions={{headerShown: false}}>
+    <TeamStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="TeamOption">
       <TeamStack.Screen name="TeamContainer" component={Team} />
       <TeamStack.Screen name="AddTeam" component={AddTeam} />
       <TeamStack.Screen name="TeamDetails" component={TeamDetails} />
       <TeamStack.Screen name="TeamOption" component={TeamOption} />
+      <TeamStack.Screen name="TeamActions" component={TeamActions} />
       <TeamStack.Screen name="Lead" component={Lead} />
+      <TeamStack.Screen name="LeadDetail" component={LeadDetail} />
+      <TeamStack.Screen name="SalesDetail" component={SalesDetail} />
+      <TeamStack.Screen name="Opportunities" component={Opportunities} />
       <TeamStack.Screen name="AddLead" component={AddLead} />
       <TeamStack.Screen name="Opportunity" component={Opportunity} />
       <TeamStack.Screen name="AddOpportunity" component={AddOpportunity} />

@@ -22,4 +22,5 @@ export const images = {
   calender: require('../assets/images/calender.png'),
   smile: require('../assets/images/smile.png'),
   warning: require('../assets/images/warning.png'),
+  userMeet: require('../assets/images/userMeet.png'),
 };

@@ -15,4 +15,5 @@ export const Colors = {
   placeHolderColor:"#B0B8C5",
   lightGray: 'rgba(255,255,255,0.2)',
   lightSkyBlue: 'rgba(41, 215, 223, 0.1)',
+  orange:"#FFA412"
 };
