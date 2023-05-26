@@ -23,7 +23,7 @@ const Sidebar = ({navigation}) => {
       title: 'Commissions',
       image: images.commissions,
     },
-    {title: 'Bounses', image: images.bounses},
+    {title: 'Bonuses', image: images.bonuses},
     {title: 'Contests', image: images.contest},
     {title: 'Highlights', image: images.highlights},
     {title: 'Reports', image: images.reports},

@@ -61,13 +61,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
   },
-  tabelContainer: {
+  tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
     marginVertical: 10, 
     marginHorizontal:20
   },
-  tabelHead: {
+  tableHead: {
     backgroundColor: Colors.grey,
     borderRadius: 5,
     height: 53,
@@ -77,13 +77,13 @@ const styles = StyleSheet.create({
   },
   headFirstCol: {
     fontSize: 14,
-    color: Colors.black,
+    color: Colors.darkGrey3,
     width: 131,
     marginRight: 37,
   },
   headSecCol: {
     fontSize: 14,
-    color: Colors.black,
+    color: Colors.darkGrey3,
     marginRight: 45,
   },
 

@@ -36,6 +36,13 @@ import styles from './style';
 import Opportunities from '../screens/Team/TeamOption/Opportunities';
 import TeamActions from '../screens/Team/TeamOption/TeamActions';
 import SalesDetail from '../screens/Team/TeamOption/SalesDetails';
+import {CommonActions} from '@react-navigation/native';
+import Commissions from '../screens/Commissions';
+import CommissionDetail from '../screens/Commissions/CommissionDetail';
+import CommissionSettings from '../screens/Commissions/CommissionSettings';
+import Bonuses from '../screens/Bonuses';
+import AddBonus from '../screens/Bonuses/AddBonus';
+import BonusTeam from '../screens/Bonuses/BonusTeam';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +61,7 @@ const DashboardNavigator = () => {
       initialRouteName="Dashboard">
       <DashboardStack.Screen name="MainDashboard" component={Dashboard} />
       <DashboardStack.Screen name="Reports" component={Reports} />
+      <DashboardStack.Screen name="Commissions" component={Commissions} />
     </DashboardStack.Navigator>
   );
 };
@@ -64,8 +72,8 @@ const TeamNavigator = () => {
   return (
     <TeamStack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="TeamOption">
-      <TeamStack.Screen name="TeamContainer" component={Team} />
+      initialRouteName="Team">
+      <TeamStack.Screen name="Team" component={Team} />
       <TeamStack.Screen name="AddTeam" component={AddTeam} />
       <TeamStack.Screen name="TeamDetails" component={TeamDetails} />
       <TeamStack.Screen name="TeamOption" component={TeamOption} />
@@ -114,6 +122,7 @@ const MenuNavigator = () => {
     <MenuStack.Navigator screenOptions={{headerShown: false}}>
       <MenuStack.Screen name="Menu" component={Menu} />
       <MenuStack.Screen name="Customers" component={Customers} />
+      <MenuStack.Screen name="Commissions" component={Commissions} />
     </MenuStack.Navigator>
   );
 };
@@ -147,7 +156,13 @@ function MyTabs({navigation}) {
       <TouchableOpacity
         onPress={() => {
           if (routeName == 'Menu') navigation.navigate('Sidebar');
-          else navigate(routeName);
+          else
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{name: routeName}],
+              }),
+            );
         }}
         style={styles.tabbarItem}>
         {_renderIcon(routeName, selectedTab)}
@@ -197,7 +212,13 @@ function Root() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Tabs" component={MyTabs} />
       <Stack.Screen name="Sidebar" component={Sidebar} />
+      <Stack.Screen name="Bonuses" component={Bonuses} />
+      <Stack.Screen name="AddBonus" component={AddBonus} />
+      <Stack.Screen name="BonusTeam" component={BonusTeam} />
       <Stack.Screen name="Customers" component={Customers} />
+      <Stack.Screen name="Commissions" component={Commissions} />
+      <Stack.Screen name="CommissionDetail" component={CommissionDetail} />
+      <Stack.Screen name="CommissionSettings" component={CommissionSettings} />
       <Stack.Screen name="AddCustomers" component={AddCustomers} />
       <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
       <Stack.Screen name="CustomerDetail" component={CustomerDetail} />

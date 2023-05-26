@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: Colors.white,
-    width: screenWidth - 50,
+    width: screenWidth - 10,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',

@@ -74,34 +74,41 @@ const styles = StyleSheet.create({
   cardText: {fontSize: 14, color: Colors.black, marginTop: 10},
   cardFooterText: {fontSize: 14, color: Colors.black},
   btnList: {marginStart: 20, marginVertical: 10 },
-  tabelContainer: {
+  tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
-    marginVertical: 10,
-    borderRadius: 13, 
-    marginLeft: 20,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
+    borderRadius: 13,
+    paddingHorizontal: 20,
+    marginHorizontal:20
   },
-  tabelHead: {
+  // tableHead: {
+  //   backgroundColor: Colors.grey,
+  //   borderRadius: 5,
+  //   borderTopRightRadius: 0,
+  //   borderBottomRightRadius: 0,
+  //   height: 53,
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingHorizontal: 22,
+  // },
+  tableHead: {
     backgroundColor: Colors.grey,
     borderRadius: 5,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
     height: 53,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 22,
+    paddingLeft: 22, 
   },
   headFirstCol: {
     fontSize: 14,
-    color: Colors.black,
-    width: (screenWidth / 10) * 4.8,
+    color: Colors.darkGrey3,
+    width: 130,
+    marginRight:45
   },
   headSecCol: {
     fontSize: 14,
-    color: Colors.black,
-    width: (screenWidth / 10) * 2.5,
+    color: Colors.darkGrey3,
+    width: 130,
   },
 
   trashImage: {
@@ -109,11 +116,13 @@ const styles = StyleSheet.create({
     height: 21,
     tintColor: Colors.darkGrey3,
   },
+  
   bodyMain: {
     height: 53,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 22,
+    paddingLeft: 22,
+    borderBottomColor: Colors.grey,
   },
   bodyContainer: {
     width: (screenWidth / 10) * 7.3,

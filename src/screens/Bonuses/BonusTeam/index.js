@@ -18,10 +18,11 @@ import {Colors} from '../../../utils/colors';
 
 import styles from './style';
 import Button from '../../../component/Button';
+import Header from '../../../component/Header';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const AddGroup = ({navigation}) => {
+const BonusTeam = ({navigation}) => {
   const [isSelectedAll, setIsSelectedAll] = useState(false);
   const [groupValues, setGroupValues] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -54,7 +55,7 @@ const AddGroup = ({navigation}) => {
     let arr = userList;
     arr[index].isChecked = !arr[index].isChecked;
 
-    let isSelect = arr.every(e => e.isChecked); 
+    let isSelect = arr.every(e => e.isChecked);
     if (isSelect) {
       setIsSelectedAll(true);
     } else {
@@ -143,56 +144,31 @@ const AddGroup = ({navigation}) => {
       <View style={styles.container}>
         <ImageBackground
           style={{
-            height: (screenHeight / 100) * 24,
-            paddingTop: 40,
+            height: (screenHeight / 100) * 18,
+            justifyContent: 'center',
             paddingHorizontal: 20,
           }}
           source={images.background}>
-          <View style={styles.headerContainer}>
-            <TouchableOpacity
-              style={styles.backBg}
-              onPress={() => {
-                navigation.goBack();
-              }}>
-              <AntDesign name="left" size={20} color={Colors.white} />
-            </TouchableOpacity>
-            <View style={styles.header}>
-              <Image
-                source={images.discussion}
-                style={styles.menuImage}
-                resizeMode="contain"
-              />
-              <Text style={styles.headerTitle}>New Group</Text>
+          <View>
+            <View style={styles.headerContainer}>
+              <TouchableOpacity
+                style={styles.backBg}
+                onPress={() => {
+                  navigation.goBack();
+                }}>
+                <AntDesign name="left" size={20} color={Colors.white} />
+              </TouchableOpacity>
+              <View style={styles.header}>
+                <Text style={styles.headerTitle}>Add New Bonus</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+              <Text style={styles.headerSubTitle}>Select People</Text>
             </View>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Input
-              placeholder="Give this group a name"
-              width={screenWidth - 40}
-              borderRadius="11"
-              px="4"
-              fontSize="18"
-              placeholderTextColor={Colors.lightBlue3}
-              style={{
-                backgroundColor: Colors.white,
-                height: 50,
-              }}
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-            />
-          </View>
         </ImageBackground>
-        <View style={{paddingHorizontal: 24, paddingTop: 30}}>
-          <Text
-            style={{
-              color: Colors.black,
-              borderBottomWidth: 0.7,
-              paddingBottom: 5,
-              borderColor: Colors.darkGrey,
-              fontSize: 20,
-            }}>
-            Select People
-          </Text>
+        <View style={{paddingHorizontal: 40, paddingTop: 30}}>
+       
           <View style={{marginTop: 40}}>
             <CircleCheckBox
               styleLabel={{
@@ -202,7 +178,7 @@ const AddGroup = ({navigation}) => {
                 // borderWidth: 1.5,
                 // borderColor: Colors.grey1,
                 // padding: 5,
-                // marginRight: 5,
+                marginLeft: 20,
                 color: Colors.black,
                 fontSize: 14,
               }}
@@ -221,7 +197,7 @@ const AddGroup = ({navigation}) => {
 
             <View style={{alignItems: 'center', marginTop: 10}}>
               <Button
-                title={'Start The Chat'}
+                title={'Next'}
                 style={{
                   height: 46,
                   width: screenWidth / 2.8,
@@ -242,4 +218,4 @@ const AddGroup = ({navigation}) => {
   );
 };
 
-export default AddGroup;
+export default BonusTeam;

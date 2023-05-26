@@ -7,6 +7,7 @@ import {
   ScrollView,
   ImageBackground,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {useState} from 'react';
 import {Icon, Input} from 'native-base';
@@ -20,6 +21,7 @@ import Dropdown from '../../../component/DropDown';
 
 import styles from './style';
 import Table from '../../../component/Table';
+import { numberWithCommas } from '../../../utils/constant';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -37,12 +39,12 @@ const Sale = ({navigation}) => {
     'Item 7',
     'Item 8',
   ];
-  const tabelData = [
+  const tableData = [
     {
       company: 'American Airlines',
       actions: 0,
-      salesDateAmt: '$67,000',
-      salesLifeTimeAmt: '$67,000',
+      salesDateAmt: 67000,
+      salesLifeTimeAmt: 67000,
       accountOwner: 'Larry Gourm',
     },
     {
@@ -55,15 +57,15 @@ const Sale = ({navigation}) => {
     {
       company: 'Boeing',
       actions: 1,
-      salesDateAmt: '$132,000',
-      salesLifeTimeAmt: '$132,000',
+      salesDateAmt: 132000,
+      salesLifeTimeAmt: 132000,
       accountOwner: 'John Doe',
     },
     {
       company: 'Willbur Chemical',
       actions: 1,
-      salesDateAmt: '$200,000',
-      salesLifeTimeAmt: '$200,000',
+      salesDateAmt: 200000,
+      salesLifeTimeAmt: 200000,
       accountOwner: 'Adam West',
     },
   ];
@@ -134,19 +136,23 @@ const Sale = ({navigation}) => {
           </View>
         </ImageBackground>
         <Table
-          tableStyle={styles.tabelContainer}
-          data={tabelData}
+          tableStyle={styles.tableContainer}
+          data={tableData}
           tableHead={
-            <View style={styles.tabelHead}>
-              <Text style={styles.headFirstCol}>Company</Text>
-              <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
-              <Text style={[styles.headSecCol, {width: 131}]}>
+            <View style={styles.tableHead}>
+              <Text style={[styles.headFirstCol, {fontWeight: 600}]}>
+                Company
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 50}]}>
+                Actions
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 131}]}>
                 Sales Year-to-Date
               </Text>
-              <Text style={[styles.headSecCol, {width: 103}]}>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 103}]}>
                 Sales Lifetime
               </Text>
-              <Text style={[styles.headSecCol, {width: 103}]}>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 103}]}>
                 Account Owner
               </Text>
             </View>
@@ -156,30 +162,52 @@ const Sale = ({navigation}) => {
               style={[
                 styles.bodyMain,
                 {
-                  borderBottomWidth: index == tabelData.length - 1 ? 0 : 2,
+                  borderBottomWidth: index == tableData.length - 1 ? 0 : 2,
                 },
               ]}>
-              <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
-                {item.company}
-              </Text>
-              <Text
-                style={[
-                  styles.headSecCol,
-                  {
-                    color: Colors.lightBlue,
-                    width: 50,
-                    textAlign: 'center',
-                  },
-                ]}>
-                {item.actions}
-              </Text>
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('SalesDetail', {details: item})
+                }>
+                <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
+                  {item.company}
+                </Text>
+              </Pressable>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginLeft: 10,
+                  width: 50,
+                  marginRight: 45,
+                }}>
+                <Text
+                  style={[
+                    {
+                      color: Colors.lightBlue,
+                      fontSize: 14,
+                      textAlign: 'center',
+                      marginRight: 5,
+                    },
+                  ]}>
+                  {item.actions}
+                </Text>
+                {Boolean(item.actions > 1) && (
+                  <Ionicons
+                    name="chevron-down-outline"
+                    size={20}
+                    color={Colors.lightBlue4}
+                  />
+                )}
+              </View>
               <Text
                 style={[styles.headSecCol, {width: 131, color: Colors.green}]}>
-                {item.salesDateAmt}
+                ${numberWithCommas(item.salesDateAmt)}
               </Text>
               <Text
                 style={[styles.headSecCol, {width: 103, color: Colors.green}]}>
-                {item.salesLifeTimeAmt}
+                ${numberWithCommas(item.salesLifeTimeAmt)}
               </Text>
               <Text style={[styles.headSecCol, {width: 103, marginRight: 0}]}>
                 {item.accountOwner}

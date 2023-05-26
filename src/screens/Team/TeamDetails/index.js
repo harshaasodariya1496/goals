@@ -17,6 +17,8 @@ import {Colors} from '../../../utils/colors';
 import Button from '../../../component/Button';
 
 import styles from './style';
+import Table from '../../../component/Table';
+import { numberWithCommas } from '../../../utils/constant';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -126,99 +128,90 @@ const TeamDetails = ({navigation}) => {
             }}
           />
         </View>
-
-        <View style={styles.tabelContainer}>
-          <View
-            style={{
-              marginLeft: 20,
-            }}>
-            <FlatList
-              data={[
-                {company: 'Polaris', dealSize: 124000},
-                {
-                  company: 'American Airlines',
-                  dealSize: 96000,
-                },
-                {company: 'United Health', dealSize: 354000},
-                {
-                  company: 'Medtronic',
-                  dealSize: 965000,
-                },
-              ]}
-              ListHeaderComponent={() => (
-                <View style={styles.tabelHead}>
-                  <Text style={styles.headFirstCol}>Company</Text>
-                  <Text style={styles.headSecCol}>Deal size</Text>
+        <Table
+          data={[
+            {company: 'Polaris', dealSize: 124000},
+            {
+              company: 'American Airlines',
+              dealSize: 96000,
+            },
+            {company: 'United Health', dealSize: 354000},
+            {
+              company: 'Medtronic',
+              dealSize: 965000,
+            },
+          ]}
+          tableStyle={styles.tableContainer}
+          tableHead={
+            <View style={styles.tableHead}>
+              <Text style={styles.headFirstCol}>Company</Text>
+              <Text style={styles.headSecCol}>Deal size</Text>
+            </View>
+          }
+          tableBody={({item, index}) => (
+            <View style={styles.bodyContainer}>
+              <Pressable
+                style={styles.bodyMain}
+                onPress={() => {
+                  if (isSelectedIndex === index) {
+                    setIsSelectedIndex(null);
+                  } else {
+                    setIsSelectedIndex(index);
+                  }
+                }}>
+                <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
+                  {item.company}
+                </Text>
+                <Text style={[styles.headSecCol, {color: Colors.lightBlue,fontWeight:300}]}>
+                  ${numberWithCommas(item.dealSize)}
+                </Text>
+              </Pressable>
+              {isSelectedIndex === index && (
+                <View style={styles.optionContent}>
+                  <Button
+                    title={'Won'}
+                    style={{
+                      backgroundColor: Colors.green,
+                      height: 46,
+                      marginRight: 15,
+                    }}
+                    textStyle={{fontSize: 14}}
+                  />
+                  <Button
+                    title={'Lost'}
+                    style={{
+                      backgroundColor: '#E2E9EF',
+                      height: 46,
+                      marginRight: 15,
+                    }}
+                    textStyle={{fontSize: 14, color: Colors.darkGrey2}}
+                  />
+                  <Button
+                    type={'icon'}
+                    icon={
+                      <Octicons
+                        name="pencil"
+                        size={21}
+                        color={Colors.darkGrey3}
+                        style={{marginRight: 15}}
+                      />
+                    }
+                  />
+                  <Button
+                    type={'icon'}
+                    icon={
+                      <Image
+                        source={images.trash}
+                        style={styles.trashImage}
+                        resizeMode="contain"
+                      />
+                    }
+                  />
                 </View>
               )}
-              renderItem={({item, index}) => (
-                <View style={styles.bodyContainer}>
-                  <Pressable
-                    style={styles.bodyMain}
-                    onPress={() => {
-                      if (isSelectedIndex === index) {
-                        setIsSelectedIndex(null);
-                      } else {
-                        setIsSelectedIndex(index);
-                      }
-                    }}>
-                    <Text
-                      style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
-                      {item.company}
-                    </Text>
-                    <Text
-                      style={[styles.headSecCol, {color: Colors.lightBlue}]}>
-                      ${item.dealSize}
-                    </Text>
-                  </Pressable>
-                  {isSelectedIndex === index && (
-                    <View style={styles.optionContent}>
-                      <Button
-                        title={'Won'}
-                        style={{
-                          backgroundColor: Colors.green,
-                          height: 46,
-                          marginRight: 15,
-                        }}
-                        textStyle={{fontSize: 14}}
-                      />
-                      <Button
-                        title={'Lost'}
-                        style={{
-                          backgroundColor: '#E2E9EF',
-                          height: 46,
-                          marginRight: 15,
-                        }}
-                        textStyle={{fontSize: 14, color: Colors.darkGrey2}}
-                      />
-                      <Button
-                        type={'icon'}
-                        icon={
-                          <Octicons
-                            name="pencil"
-                            size={21}
-                            color={Colors.darkGrey3}
-                            style={{marginRight: 15}}
-                          />
-                        }
-                      />
-                      <Button
-                        type={'icon'}
-                        icon={
-                          <Image
-                            source={images.trash}
-                            style={styles.trashImage}
-                            resizeMode="contain"
-                          />
-                        }
-                      />
-                    </View>
-                  )}
-                </View>
-              )}
-            />
-          </View>
-        </View>
+            </View>
+          )}
+        />
       </View>
     </ScrollView>
   );

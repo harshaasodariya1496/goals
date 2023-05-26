@@ -6,7 +6,7 @@ export const images = {
   dashboard: require('../assets/images/dashboard.png'),
   discussion: require('../assets/images/discussion.png'),
   commissions: require('../assets/images/commissions.png'),
-  bounses: require('../assets/images/bounses.png'),
+  bonuses: require('../assets/images/bonuses.png'),
   contest: require('../assets/images/contest.png'),
   highlights: require('../assets/images/highlights.png'),
   reports: require('../assets/images/reports.png'),
@@ -23,4 +23,5 @@ export const images = {
   smile: require('../assets/images/smile.png'),
   warning: require('../assets/images/warning.png'),
   userMeet: require('../assets/images/userMeet.png'),
+  bonus: require('../assets/images/bonus.png'),
 };

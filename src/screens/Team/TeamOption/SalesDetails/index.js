@@ -114,7 +114,7 @@ with American Express.
               textStyle={{fontSize: 14, letterSpacing: 0}}
               onPress={() => {
                 setModalVisible(false);
-                navigation.navigate('Opportunities',{details:details});
+                navigation.navigate('LeadDetail',{details:details});
               }}
             />
           </View>

@@ -124,15 +124,10 @@ const styles = StyleSheet.create({
   },
   okBtn: {
     backgroundColor: Colors.green,
-    height: 48,
-    marginRight: 20,
+    height: 48, 
     borderRadius: 10,
-  }, 
-  closeBtn: {
-    position: 'absolute',
-    top: (screenHeight / 10) * 0.8,
-    right: (screenWidth / 10) * 0.5, 
-  },
+    marginBottom:50
+  },  
 });
 
 export default styles;

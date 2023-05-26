@@ -14,33 +14,31 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     marginRight: 10,
-  },
-  searchIconMain: {
-    backgroundColor: Colors.white,
-    height: 50,
+  }, 
+  backBg: {
+    height: 51,
+    width: 51,
+    borderRadius: 25,
+    backgroundColor: Colors.lightGray,
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
-    fontSize: 20,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    marginRight: 14,
   },
   headerContainer: {
     flexDirection: 'row',
-    paddingBottom: 24,
+    // paddingBottom: 24, 
   },
   header: {
-    flexDirection: 'row',
     alignItems: 'center',
-    width: screenWidth - 100, 
+    width: screenWidth - 140,
     justifyContent: 'center',
   },
-  headerTitle: {fontSize: 32, color: Colors.white, paddingBottom: 5},
-  headerSubTitle: {color: Colors.white, fontSize: 12},
+  headerTitle: {fontSize: 32, color: Colors.white, },
+  headerSubTitle: {color: Colors.white, fontSize: 20},
 
   chatUserImage: {
     width: 48,
-    height: 48, 
+    height: 48,
     borderRadius: 50,
   },
   msgNotificationView: {
@@ -70,15 +68,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     width: screenWidth - 110,
     justifyContent: 'center',
-  },
-  backBg: {
-    height: 51,
-    width: 51,
-    borderRadius: 25,
-    backgroundColor: Colors.lightGray,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 14,
   },
 });
 

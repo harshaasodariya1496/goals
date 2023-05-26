@@ -21,7 +21,7 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const TransactionHistory = ({navigation, route}) => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const tabelData = [
+  const tableData = [
     {
       date: '04/24/2023',
       product: 'Personal Cards',
@@ -49,7 +49,7 @@ const TransactionHistory = ({navigation, route}) => {
       amount: 15000,
     },
   ];
-  const tabelData1 = [
+  const tableData1 = [
     {
       name: 'Shirley Chen',
       pendingDeals: 12,
@@ -79,15 +79,19 @@ const TransactionHistory = ({navigation, route}) => {
   return (
     <View style={{marginHorizontal: 20}}>
       <Table
-        data={tabelData}
-        tableStyle={styles.tabelContainer}
+        data={tableData}
+        tableStyle={styles.tableContainer}
         tableHead={
-          <View style={styles.tabelHead}>
-            <Text style={styles.headFirstCol}>Sale Date</Text>
-            <Text style={[styles.headSecCol, {width: 150}]}>
+          <View style={styles.tableHead}>
+            <Text style={[styles.headFirstCol, {fontWeight: 600,width:100}]}>
+              Sale Date
+            </Text>
+            <Text style={[styles.headSecCol, {width: 150, fontWeight: 600}]}>
               Product/Service
             </Text>
-            <Text style={[styles.headSecCol, {width: 60}]}>Amount</Text>
+            <Text style={[styles.headSecCol, {width: 60, fontWeight: 600}]}>
+              Amount
+            </Text>
           </View>
         }
         tableBody={({item, index}) => (
@@ -95,17 +99,19 @@ const TransactionHistory = ({navigation, route}) => {
             style={[
               styles.bodyMain,
               {
-                borderBottomWidth: index == tabelData.length - 1 ? 0 : 2,
+                borderBottomWidth: index == tableData.length - 1 ? 0 : 2,
               },
             ]}
             key={index}>
-            <Text style={[styles.headFirstCol]}>{item.date}</Text>
-            <View>
+            <Text style={[styles.headFirstCol,{width:100}]}>{item.date}</Text>
+            <View
+              style={{
+                width: 150,
+                marginRight:45
+              }}>
               <View
                 style={{
-                  flexDirection: 'row',
-                  width: 180,
-                  marginRight: 45,
+                  flexDirection: 'row', 
                   alignItems: 'center',
                 }}>
                 <Text style={{color: Colors.black, fontSize: 14}}>
@@ -162,7 +168,7 @@ const TransactionHistory = ({navigation, route}) => {
                 styles.headSecCol,
                 {
                   width: 60,
-                  marginRight: index == tabelData.length - 1 ? 0 : 45,
+                  marginRight: index == tableData.length - 1 ? 0 : 45,
                   color: Colors.green,
                 },
               ]}>
@@ -173,15 +179,21 @@ const TransactionHistory = ({navigation, route}) => {
       />
 
       <Table
-        data={tabelData1}
-        tableStyle={[styles.tabelContainer, {marginVertical: 50}]}
+        data={tableData1}
+        tableStyle={[styles.tableContainer, {marginVertical: 50}]}
         tableHead={
-          <View style={styles.tabelHead}>
-            <Text style={[styles.headFirstCol]}>Pending Sales</Text>
-            <Text style={[styles.headSecCol, {textAlign: 'center'}]}>
+          <View style={styles.tableHead}>
+            <Text style={[styles.headFirstCol, {fontWeight: 600}]}>
+              Pending Sales
+            </Text>
+            <Text
+              style={[
+                styles.headSecCol,
+                {textAlign: 'center', fontWeight: 600},
+              ]}>
               Pending Deals
             </Text>
-            <Text style={[styles.headSecCol, {width: 60}]}>
+            <Text style={[styles.headSecCol, {width: 60, fontWeight: 600}]}>
               Pending Revenue
             </Text>
           </View>
@@ -191,7 +203,7 @@ const TransactionHistory = ({navigation, route}) => {
             style={[
               styles.bodyMain,
               {
-                borderBottomWidth: index == tabelData1.length - 1 ? 0 : 2,
+                borderBottomWidth: index == tableData1.length - 1 ? 0 : 2,
               },
             ]}
             key={index}>
@@ -221,7 +233,7 @@ const TransactionHistory = ({navigation, route}) => {
               style={[
                 styles.headSecCol,
                 {
-                  marginRight: index == tabelData1.length - 1 ? 0 : 45,
+                  marginRight: index == tableData1.length - 1 ? 0 : 45,
                   color: Colors.green,
                 },
               ]}>
@@ -237,13 +249,13 @@ const TransactionHistory = ({navigation, route}) => {
 export default TransactionHistory;
 
 const styles = StyleSheet.create({
-  tabelContainer: {
+  tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
     borderRadius: 13,
     paddingHorizontal: 20,
   },
-  tabelHead: {
+  tableHead: {
     backgroundColor: Colors.grey,
     borderRadius: 5,
     height: 53,
@@ -255,11 +267,11 @@ const styles = StyleSheet.create({
     width: 200,
     marginRight: 37,
     fontSize: 14,
-    color: Colors.black,
+    color: Colors.darkGrey3,
   },
   headSecCol: {
     fontSize: 14,
-    color: Colors.black,
+    color: Colors.darkGrey3,
     marginRight: 45,
     width: 60,
   },

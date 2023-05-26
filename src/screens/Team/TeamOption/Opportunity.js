@@ -38,7 +38,7 @@ const Opportunity = ({navigation}) => {
     'Item 7',
     'Item 8',
   ];
-  const tabelData = [
+  const tableData = [
     {
       company: 'American Airlines',
       actions: 0,
@@ -152,10 +152,10 @@ const Opportunity = ({navigation}) => {
           </View>
         </ImageBackground>
         <Table
-          tableStyle={styles.tabelContainer}
-          data={tabelData}
+          tableStyle={styles.tableContainer}
+          data={tableData}
           tableHead={
-            <View style={styles.tabelHead}>
+            <View style={styles.tableHead}>
               <Text style={styles.headFirstCol}>Company</Text>
               <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
               <Text style={[styles.headSecCol, {width: 99}]}>Name</Text>
@@ -172,29 +172,45 @@ const Opportunity = ({navigation}) => {
               style={[
                 styles.bodyMain,
                 {
-                  borderBottomWidth: index == tabelData.length - 1 ? 0 : 2,
+                  borderBottomWidth: index == tableData.length - 1 ? 0 : 2,
                 },
               ]}
               key={index}>
               <Pressable
                 onPress={() => {
-                  navigation.navigate('LeadDetail', {details: item});
+                  navigation.navigate('Opportunities', {details: item});
                 }}>
                 <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
                   {item.company}
                 </Text>
               </Pressable>
-              <Text
-                style={[
-                  styles.headSecCol,
-                  {
-                    color: Colors.lightBlue,
-                    width: 50,
-                    textAlign: 'center',
-                  },
-                ]}>
-                {item.actions}
-              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginLeft: 10,
+                  width: 50,
+                  marginRight: 45,
+                }}>
+                <Text
+                  style={[
+                    {
+                      color: Colors.lightBlue,
+                      fontSize: 14,
+                      textAlign: 'center',
+                      marginRight: 5,
+                    },
+                  ]}>
+                  {item.actions}
+                </Text>
+                {Boolean(item.actions > 1) && (
+                  <Ionicons
+                    name="chevron-down-outline"
+                    size={20}
+                    color={Colors.lightBlue4}
+                  />
+                )}
+              </View>
               <Text style={[styles.headSecCol, {width: 99}]}>{item.name}</Text>
               <Text style={[styles.headSecCol, {width: 103}]}>{item.role}</Text>
               <Text style={[styles.headSecCol, {width: 194}]}>

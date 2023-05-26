@@ -79,8 +79,8 @@ const TextInput = props => {
           }}
         />
       </View>
-    );
-  else
+    ); 
+   console.log(!props.style?.borderWidth);
     return (
       <RNTextInput
         {...props}
@@ -89,8 +89,8 @@ const TextInput = props => {
           styles.main,
           props.style,
           {
-            borderWidth: props.isError ? 2 : 0,
-            borderColor: props.isError ? Colors.red : 'white',
+            borderWidth: props.style?.borderWidth ?props.style?.borderWidth: props.isError ? 2 : 0,
+            borderColor: props.style?.borderColor ?props.style?.borderColor: props.isError ? Colors.red : 'white',
           },
         ]}
       />

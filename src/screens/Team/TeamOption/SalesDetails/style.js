@@ -109,9 +109,9 @@ const styles = StyleSheet.create({
   },
   okBtn: {
     backgroundColor: Colors.green,
-    height: 48,
-    marginRight: 20,
+    height: 48, 
     borderRadius: 10,
+    marginBottom:50
   },  
 });
 

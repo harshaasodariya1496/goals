@@ -6,7 +6,7 @@ import {getBgColor, getColor} from '../../../../utils/constant';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Actions = ({navigation, route}) => {
-  const tabelData = [
+  const tableData = [
     {
       task: 'Phone Call',
       date: '04/24/2023',
@@ -36,10 +36,10 @@ const Actions = ({navigation, route}) => {
   return (
     <View style={{marginHorizontal: 20}}>
       <Table
-        data={tabelData}
-        tableStyle={styles.tabelContainer}
+        data={tableData}
+        tableStyle={styles.tableContainer}
         tableHead={
-          <View style={styles.tabelHead}>
+          <View style={styles.tableHead}>
             <Text style={styles.headFirstCol}>Task</Text>
             <Text style={[styles.headSecCol, {width: 100}]}>Date</Text>
             <Text style={[styles.headSecCol, {width: 150}]}>Time</Text>
@@ -48,7 +48,7 @@ const Actions = ({navigation, route}) => {
                 styles.headSecCol,
                 {
                   width: 140,
-                  marginRight: 3 == tabelData.length - 1 ? 0 : 45,
+                  marginRight: 3 == tableData.length - 1 ? 0 : 45,
                 },
               ]}>
               Subject
@@ -60,7 +60,7 @@ const Actions = ({navigation, route}) => {
             style={[
               styles.bodyMain,
               {
-                borderBottomWidth: index == tabelData.length - 1 ? 0 : 2,
+                borderBottomWidth: index == tableData.length - 1 ? 0 : 2,
               },
             ]}
             key={index}>
@@ -92,7 +92,7 @@ const Actions = ({navigation, route}) => {
                 styles.headSecCol,
                 {
                   width: 200,
-                  marginRight: index == tabelData.length - 1 ? 0 : 45,
+                  marginRight: index == tableData.length - 1 ? 0 : 45,
                   color: Colors.lightBlue,
                 },
               ]}>
@@ -108,13 +108,13 @@ const Actions = ({navigation, route}) => {
 export default Actions;
 
 const styles = StyleSheet.create({
-  tabelContainer: {
+  tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
     borderRadius: 13,
     paddingHorizontal: 20,
   },
-  tabelHead: {
+  tableHead: {
     backgroundColor: Colors.grey,
     borderRadius: 5,
     height: 53,
@@ -125,11 +125,11 @@ const styles = StyleSheet.create({
   headFirstCol: {
     width: 131,
     marginRight: 37,
-    color:Colors.black
+    color:Colors.darkGrey3
   },
   headSecCol: {
     fontSize: 14,
-    color: Colors.black,
+    color: Colors.darkGrey3,
     marginRight: 45,
   },
 

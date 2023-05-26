@@ -65,30 +65,30 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     width: '50%',
   },
-  divider:{borderBottomWidth: 2, borderBottomColor: Colors.grey1},
-  btnContent:{
+  divider: {borderBottomWidth: 2, borderBottomColor: Colors.grey1},
+  btnContent: {
     flexDirection: 'row',
     padding: 22,
     paddingBottom: 0,
     justifyContent: 'space-between',
   },
-  mtoBtn:{
+  mtoBtn: {
     backgroundColor: Colors.green,
     width: '50%',
     paddingHorizontal: 0,
   },
-  mtoText:{
+  mtoText: {
     fontSize: 14,
     marginHorizontal: 0,
     letterSpacing: 0,
     textAlign: 'center',
   },
-  niBtn:{
+  niBtn: {
     backgroundColor: '#E2E9EF',
     width: '45%',
     paddingHorizontal: 0,
   },
-  niText:{
+  niText: {
     fontSize: 14,
     marginHorizontal: 0,
     letterSpacing: 0,
@@ -102,16 +102,42 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   modalBtnContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 20,
   },
   okBtn: {
     backgroundColor: Colors.green,
     height: 48,
-    marginRight: 20,
     borderRadius: 10,
-  },  
+    marginVertical: 50,
+  },
+  dropDownStyle: {
+    width: '52%',
+    height: 38,
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: Colors.darkGrey2,
+  },
+  amountInput: {
+    width: '30%',
+    height: 38,
+    borderRadius: 5,
+    borderWidth: 2,
+    paddingHorizontal: 10,
+    borderColor: Colors.darkGrey2,
+    fontSize: 14,
+    marginHorizontal: 10,
+    justifyContent: 'center',
+  },
+  addIconContent: {
+    backgroundColor: Colors.lightSkyBlue,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 38,
+    borderRadius: 19,
+    width: 38,
+  },
 });
 
 export default styles;

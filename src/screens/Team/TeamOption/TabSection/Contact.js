@@ -6,7 +6,7 @@ import {getBgColor, getColor} from '../../../../utils/constant';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Contact = ({navigation, route}) => {
-  const tabelData = [
+  const tableData = [
     {
       task: 'Phone Call',
       date: '04/24/2023',
@@ -35,7 +35,7 @@ const Contact = ({navigation, route}) => {
 
   return (
     <View style={{marginHorizontal: 20}}>
-      <View style={styles.tabelContainer}>
+      <View style={styles.tableContainer}>
         <View style={{marginVertical: 10}}>
           <Text style={styles.title}>Primary Contact</Text>
           <Text style={styles.valueText}>Lisa Miller</Text>
@@ -70,7 +70,7 @@ const Contact = ({navigation, route}) => {
 export default Contact;
 
 const styles = StyleSheet.create({
-  tabelContainer: {
+  tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
     borderRadius: 13,

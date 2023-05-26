@@ -6,7 +6,7 @@ import {Colors} from '../utils/colors';
 
 const Table = ({style, data, tableBody, tableHead, tableStyle}, props) => {
   return (
-    <View style={[tableStyle ? tableStyle : styles.tabelContainer]}>
+    <View style={[tableStyle ? tableStyle : styles.tableContainer]}>
        
         <ScrollView
           horizontal
@@ -22,7 +22,7 @@ const Table = ({style, data, tableBody, tableHead, tableStyle}, props) => {
 };
 
 const styles = StyleSheet.create({
-  tabelContainer: {
+  tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
     marginVertical: 10,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
     paddingHorizontal:20
   },
-  tabelHead: {
+  tableHead: {
     backgroundColor: Colors.grey,
     borderRadius: 5,
     height: 53,

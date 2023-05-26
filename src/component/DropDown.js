@@ -6,7 +6,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import {Colors} from '../utils/colors';
 
 const Dropdown = (
-  {style, data, placeHolder, value, onSelect, buttonTextStyle},
+  {style, data, placeHolder, value, onSelect, buttonTextStyle,dropdownCustomStyle},
   props,
 ) => {
   return (
@@ -21,7 +21,7 @@ const Dropdown = (
           <Ionicons name="chevron-down-outline" size={20} color={'#2376C4'} />
         );
       }}
-      dropdownStyle={styles.dropdownStyle}
+      dropdownStyle={{...dropdownCustomStyle,...styles.dropdownStyle}}
       selectedRowTextStyle={{color: Colors.lightBlue4}}
       buttonTextStyle={[
         styles.buttonTextStyle,
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     height: 46,
     backgroundColor: Colors.white,
     marginBottom: 10,
+
     justifyContent: 'flex-start',
   },
   dropdownStyle: {
