@@ -45,8 +45,10 @@ import AddBonus from '../screens/Bonuses/AddBonus';
 import BonusTeam from '../screens/Bonuses/BonusTeam';
 import Contests from '../screens/Contests';
 import AddContest from '../screens/Contests/AddContest';
-import ContestTeam from '../screens/Contests/ContestTeam';
 import AddBonusForm from '../screens/Bonuses/AddBonusForm';
+import AddContestForm from '../screens/Contests/AddContestForm';
+import Highlights from '../screens/HighLights';
+import AddHighlight from '../screens/HighLights/AddHighlight';
 
 const Stack = createNativeStackNavigator();
 
@@ -222,6 +224,9 @@ function Root() {
       <Stack.Screen name="BonusTeam" component={BonusTeam} />
       <Stack.Screen name="Contests" component={Contests} />
       <Stack.Screen name="AddContest" component={AddContest} /> 
+      <Stack.Screen name="Highlights" component={Highlights} />
+      <Stack.Screen name="AddHighlight" component={AddHighlight} /> 
+      <Stack.Screen name="AddContestForm" component={AddContestForm} />
       <Stack.Screen name="Customers" component={Customers} />
       <Stack.Screen name="Commissions" component={Commissions} />
       <Stack.Screen name="CommissionDetail" component={CommissionDetail} />

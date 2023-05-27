@@ -170,7 +170,7 @@ const ContestTeam = ({navigation}) => {
               title={'New Contest'}
               textStyle={{fontSize: 14, color: Colors.white}}
               style={styles.newBonusBtn}
-              onPress={() => navigation.navigate('AddContest')}
+              onPress={() => navigation.navigate('AddContestForm')}
             />
           </View>
         </View>

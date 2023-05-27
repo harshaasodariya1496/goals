@@ -25,4 +25,5 @@ export const images = {
   userMeet: require('../assets/images/userMeet.png'),
   bonus: require('../assets/images/bonus.png'),
   contests: require('../assets/images/contests.png'),
+  highlight: require('../assets/images/highlight.png'),
 };

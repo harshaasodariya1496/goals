@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: Colors.white,
   },
-
   menuImage1: {width: 44, height: 44, marginRight: 10},
   menuTitle1: {
     fontFamily: 'Roboto',

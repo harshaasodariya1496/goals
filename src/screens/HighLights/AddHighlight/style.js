@@ -5,14 +5,18 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5, 
-  }, 
+    flex: 1,
+  },
+  bg: {
+    height: screenHeight,
+  },
   menuImage: {width: 37, height: 37, marginRight: 20},
   menuTitle: {
     fontFamily: 'Roboto',
     fontSize: 32,
     fontWeight: 400,
     color: Colors.white,
+    textAlign: 'center',
   },
   bonusImage: {
     height: 231,
@@ -38,8 +42,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 40,
   },
-  
   checkBoxContent: {
     flexDirection: 'row',
     alignItems: 'center',

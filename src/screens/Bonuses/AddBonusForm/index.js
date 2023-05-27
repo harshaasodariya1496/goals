@@ -15,13 +15,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CircleCheckBox from 'react-native-circle-checkbox';
 import {images} from '../../../utils/images';
 import {Colors} from '../../../utils/colors';
-
+import CheckBox from '@react-native-community/checkbox';
 import styles from './style';
 import {numberWithCommas} from '../../../utils/constant';
 import {useState} from 'react';
 import Button from '../../../component/Button';
 import Header from '../../../component/Header';
 import TextInput from '../../../component/TextInput';
+import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -30,12 +31,13 @@ const AddBonusForm = ({navigation}) => {
   const [periodStart, setPeriodStart] = useState('');
   const [periodEnd, setPeriodEnd] = useState('');
   const [amount, setAmount] = useState('');
+  const [isMonetary, setIsMonetary] = useState(false);
+  const [isExperience, setIsExperience] = useState(false);
   return (
-    <ScrollView style={styles.container}>
-      <ImageBackground source={images.background} style={styles.emptyBg}>
+    <KeyboardAvoidingScrollView style={styles.container}>
+      <ImageBackground source={images.background}>
         <Header onBackPress={() => navigation.goBack()} />
-        <View
-          style={styles.titleSection}>
+        <View style={styles.titleSection}>
           <Image
             source={images.bonuses}
             style={styles.menuImage}
@@ -89,12 +91,32 @@ const AddBonusForm = ({navigation}) => {
             placeholderTextColor={'#222B2E'}
             style={styles.inputStyle}
           />
-          <Text style={{fontSize: 14, color: Colors.white, marginBottom: 10}}>
-            Award is:
-          </Text>
+          <Text style={styles.labelText}>Award is:</Text>
+          <View style={styles.checkBoxContent}>
+            <CheckBox
+              tintColors={{true: Colors.white, false: Colors.white}}
+              value={isMonetary}
+              onValueChange={setIsMonetary}
+            />
+            <Text
+              style={
+                styles.checkBoxLabelText
+              }>{`Monetary Sum (money, gift card, etc.)`}</Text>
+          </View>
+          <View style={[styles.checkBoxContent, {marginBottom: 36}]}>
+            <CheckBox
+              tintColors={{true: Colors.white, false: Colors.white}}
+              value={isExperience}
+              onValueChange={setIsExperience}
+            />
+            <Text
+              style={
+                styles.checkBoxLabelText
+              }>{`Experience (trip, event, etc.)`}</Text>
+          </View>
         </View>
 
-        <View style={{alignItems: 'center'}}>
+        <View style={{alignItems: 'center', marginBottom: 100}}>
           <Button
             title={'Finish'}
             textStyle={{fontSize: 14, color: Colors.white}}
@@ -105,7 +127,7 @@ const AddBonusForm = ({navigation}) => {
           />
         </View>
       </ImageBackground>
-    </ScrollView>
+    </KeyboardAvoidingScrollView>
   );
 };
 
