@@ -53,26 +53,42 @@ const TextInput = props => {
             {
               borderColor: props.isError ? Colors.red : Colors.lightBlue4,
             },
+            props.touchStyle,
           ]}>
           <MaterialCommunityIcons
             name={'calendar-blank'}
             size={18}
-            color={props.isError ? Colors.red : Colors.lightBlue4}
+            color={
+              props.isError
+                ? Colors.red
+                : props.color
+                ? props.color
+                : Colors.lightBlue4
+            }
           />
           <Text
             style={[
               styles.dateLabel,
-              {color: props.isError ? Colors.red : Colors.lightBlue4},
+              {
+                color: props.isError
+                  ? Colors.red
+                  : props.color
+                  ? props.color
+                  : Colors.lightBlue4,
+              },
+              props.textStyle,
             ]}>
-            {props.value}
+            {props.value ? props.value : props.placeholder}
           </Text>
         </TouchableOpacity>
         <DateTimePickerModal
           isVisible={isVisible}
           mode={props.mode ? props.mode : 'datetime'}
           onConfirm={date => {
-            setIsVisible(false);
-            props.onChangeText(moment(date).format('D/MM/YYYY'));
+            setIsVisible(false); 
+            props.onChangeText(
+              moment(date).format(props.format ? props.format : 'D/MM/YYYY')
+            );
           }}
           onCancel={() => {
             setIsVisible(false);
@@ -80,21 +96,28 @@ const TextInput = props => {
         />
       </View>
     ); 
-   console.log(!props.style?.borderWidth);
-    return (
-      <RNTextInput
-        {...props}
-        placeholderTextColor={Colors.placeHolderColor}
-        style={[
-          styles.main,
-          props.style,
-          {
-            borderWidth: props.style?.borderWidth ?props.style?.borderWidth: props.isError ? 2 : 0,
-            borderColor: props.style?.borderColor ?props.style?.borderColor: props.isError ? Colors.red : 'white',
-          },
-        ]}
-      />
-    );
+  return (
+    <RNTextInput
+      placeholderTextColor={Colors.placeHolderColor}
+      {...props}
+      style={[
+        styles.main,
+        props.style,
+        {
+          borderWidth: props.style?.borderWidth
+            ? props.style?.borderWidth
+            : props.isError
+            ? 2
+            : 0,
+          borderColor: props.style?.borderColor
+            ? props.style?.borderColor
+            : props.isError
+            ? Colors.red
+            : 'white',
+        },
+      ]}
+    />
+  );
 };
 
 const styles = StyleSheet.create({

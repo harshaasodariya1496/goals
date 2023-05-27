@@ -11,6 +11,7 @@ import {Input} from 'native-base';
 import {useMemo, useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import CircleCheckBox from 'react-native-circle-checkbox';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 import {images} from '../../../utils/images';
@@ -22,7 +23,7 @@ import Header from '../../../component/Header';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const BonusTeam = ({navigation}) => {
+const ContestTeam = ({navigation}) => {
   const [isSelectedAll, setIsSelectedAll] = useState(false);
   const [groupValues, setGroupValues] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -122,7 +123,7 @@ const BonusTeam = ({navigation}) => {
       nestedScrollEnabled={true}>
       <View style={styles.container}>
         <ImageBackground
-          style={styles.bg}
+           style={styles.bg}
           source={images.background}>
           <View style={styles.headerContainer}>
             <TouchableOpacity
@@ -133,47 +134,44 @@ const BonusTeam = ({navigation}) => {
               <AntDesign name="left" size={20} color={Colors.white} />
             </TouchableOpacity>
             <View style={styles.header}>
-              <Text style={styles.headerTitle}>Add New Bonus</Text>
+              <Text style={styles.headerTitle}>Add New Contest</Text>
             </View>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'center'}}>
             <Text style={styles.headerSubTitle}>Select People</Text>
           </View>
         </ImageBackground>
-        <View style={{paddingHorizontal: 40, paddingTop: 30}}>
-          <View style={{marginTop: 40}}>
-            <CircleCheckBox
-              styleLabel={{ 
-                marginLeft: 20,
-                color: Colors.black,
-                fontSize: 14,
-              }}
-              outerColor={Colors.grey1}
-              innerColor={Colors.lightBlue3}
-              filterColor={Colors.grey}
-              checked={isSelectedAll}
-              onToggle={onSelectAll}
-              label={'Select All'}
-            /> 
-            {renderUserList}
+        <View style={{paddingHorizontal: 40, paddingTop: 30, marginTop: 40}}>
+          <CircleCheckBox
+            styleLabel={{
+              marginLeft: 20,
+              color: Colors.black,
+              fontSize: 14,
+            }}
+            outerColor={Colors.grey1}
+            innerColor={Colors.lightBlue3}
+            filterColor={Colors.grey}
+            checked={isSelectedAll}
+            onToggle={onSelectAll}
+            label={'Select All'}
+          />
+          {renderUserList}
 
-            <View style={{alignItems: 'center', marginTop: 10}}>
-              <Button
-                title={'Next'}
-                style={{
-                  height: 46,
-                  width: screenWidth / 2.8,
-                  paddingHorizontal: 0,
-                }}
-                onPress={()=>navigation.navigate("AddBonusForm")}
-                textStyle={{
-                  fontSize: 14,
-                  color: Colors.white,
-                  marginHorizontal: 0,
-                  letterSpacing: 0.5,
-                }}
-              />
-            </View>
+          <View style={{alignItems: 'center', marginTop: 10}}>
+            <Button
+              type={'icon-label'}
+              icon={
+                <MaterialCommunityIcons
+                  size={16}
+                  color={Colors.white}
+                  name={'plus'}
+                />
+              }
+              title={'New Contest'}
+              textStyle={{fontSize: 14, color: Colors.white}}
+              style={styles.newBonusBtn}
+              onPress={() => navigation.navigate('AddContest')}
+            />
           </View>
         </View>
       </View>
@@ -181,4 +179,4 @@ const BonusTeam = ({navigation}) => {
   );
 };
 
-export default BonusTeam;
+export default ContestTeam;

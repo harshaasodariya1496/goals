@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     paddingBottom: 70,
     backgroundColor: Colors.white,
   },
+  
   bg: {
     height: (screenHeight / 100) * 18,
     justifyContent: 'center',
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: 'row',
+    // paddingBottom: 24,
   },
   header: {
     alignItems: 'center',
@@ -73,7 +75,14 @@ const styles = StyleSheet.create({
     width: screenWidth - 110,
     justifyContent: 'center',
   },
-  mainListView: {
+  newBonusBtn: {
+    marginTop: 50,
+    height: 46,
+    marginHorizontal: 20,
+    backgroundColor: Colors.lightBlue2,
+    borderRadius: 5,
+  },
+  mainListView: { 
     flexDirection: 'row',
     marginVertical: 10,
     alignItems: 'center',

@@ -23,7 +23,7 @@ import Button from '../../component/Button';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Bonuses = ({navigation}) => {
-  const [data, setData] = useState([" "]);
+  const [data, setData] = useState([]);
   const renderItem = ({item, index}) => (
     <View key={index} style={styles.midContent}>
       <View style={{marginHorizontal: 20}}>

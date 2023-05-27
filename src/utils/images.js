@@ -24,4 +24,5 @@ export const images = {
   warning: require('../assets/images/warning.png'),
   userMeet: require('../assets/images/userMeet.png'),
   bonus: require('../assets/images/bonus.png'),
+  contests: require('../assets/images/contests.png'),
 };
