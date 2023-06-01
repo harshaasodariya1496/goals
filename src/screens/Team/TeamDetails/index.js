@@ -7,8 +7,10 @@ import {
   Dimensions,
   ScrollView,
   ImageBackground,
+  processColor,
 } from 'react-native';
 import {useState} from 'react';
+import {BarChart, LineChart} from 'react-native-charts-wrapper';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -18,13 +20,116 @@ import Button from '../../../component/Button';
 
 import styles from './style';
 import Table from '../../../component/Table';
-import { numberWithCommas } from '../../../utils/constant';
+import {chartData, numberWithCommas} from '../../../utils/constant';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const TeamDetails = ({navigation}) => {
   const [isSelected, setIsSelected] = useState('Pending 5');
   const [isSelectedIndex, setIsSelectedIndex] = useState(null);
+  const lineChartData = {
+    xAxis: {
+      enabled: false,
+    },
+    yAxis: {
+      left: {
+        enabled: false,
+      },
+      right: {
+        enabled: false,
+      },
+    },
+    data: {
+      dataSets: [
+        {
+          values: [
+            {
+              y: 5,
+              x: 0,
+            },
+            {
+              y: 2,
+              x: 1,
+            },
+            {
+              y: 4,
+              x: 2,
+            },
+            {
+              y: 2.5,
+              x: 3,
+            },
+            {
+              y: 3,
+              x: 4,
+            },
+            {
+              y: 2.5,
+              x: 5,
+            },
+            {
+              y: 5,
+              x: 6,
+            },
+            {
+              y: 1.5,
+              x: 7,
+            },
+            {
+              y: 4,
+              x: 8,
+            },
+            {
+              y: 5,
+              x: 9,
+            },
+            {
+              y: 4,
+              x: 10,
+            },
+            {
+              y: 2.5,
+              x: 11,
+            },
+            {
+              y: 3,
+              x: 12,
+            },
+            {
+              y: 2.5,
+              x: 13,
+            },
+            {
+              y: 5,
+              x: 14,
+            },
+            {
+              y: 1.5,
+              x: 15,
+            },
+            {
+              y: 4,
+              x: 16,
+            },
+            {
+              y: 5,
+              x: 17,
+            },
+          ],
+          label: '',
+          config: {
+            lineWidth: 3,
+            drawCircles: false,
+            color: processColor(Colors.lightBlue2),
+            // valueTextSize: 0,
+
+            mode: 'CUBIC_BEZIER',
+            drawValues: false,
+          },
+        },
+      ],
+    },
+  };
   return (
     <ScrollView style={styles.container}>
       <ImageBackground style={styles.bg} source={images.background}>
@@ -62,19 +167,70 @@ const TeamDetails = ({navigation}) => {
         <View style={styles.midContent}>
           <Text style={styles.cardAmtText}>$1,500,000</Text>
           <Text style={styles.cardText}>Annual Sales Goal</Text>
-          <View style={styles.graphContent}></View>
+          {/* <View style={styles.graphContent}> */}
+          <BarChart
+            xAxis={chartData.xAxis}
+            yAxis={{
+              left: {drawGridLines: false, enabled: false},
+              right: {drawGridLines: false, enabled: false},
+            }}
+            pinchZoom={false}
+            doubleTapToZoomEnabled={false}
+            chartDescription={{text: ''}}
+            drawBarShadow={false}
+            data={chartData.data}
+            highlights={chartData.highlights}
+            legend={chartData.legend}
+            style={{height: 150, marginTop: 15, width: '100%'}}
+          />
+          {/* </View> */}
           <Text style={styles.cardFooterText}>Sales Year To Date</Text>
         </View>
         <View style={styles.midContent}>
           <Text style={styles.cardAmtText}>$1,500,000</Text>
           <Text style={styles.cardText}>Monthly Sales Goal</Text>
-          <View style={styles.graphContent}></View>
+          {/* <LineChart
+            style={{height: 150, width: '100%'}}
+            data={lineChartData.data}
+            chartDescription={{text: ''}}
+            xAxis={lineChartData.xAxis}
+            yAxis={lineChartData.yAxis}
+            legend={{enabled: false}}
+            onChange={event => console.log(event.nativeEvent)}
+          /> */}
+          <LineChart
+            style={{height: 150, width: '100%'}}
+            data={lineChartData.data}
+            chartDescription={{text: ''}}
+            legend={{
+              enabled: false,
+            }}
+            xAxis={lineChartData.xAxis}
+            yAxis={lineChartData.yAxis}
+            pinchZoom={false}
+            doubleTapToZoomEnabled={false}
+            drawBarShadow={false}
+          />
           <Text style={styles.cardFooterText}>Sales This Month</Text>
         </View>
         <View style={styles.midContent}>
           <Text style={styles.cardAmtText}>$1,500,000</Text>
           <Text style={styles.cardText}>Annual Commision Goal</Text>
-          <View style={styles.graphContent}></View>
+          <BarChart
+            xAxis={chartData.xAxis}
+            yAxis={{
+              left: {drawGridLines: false, enabled: false},
+              right: {drawGridLines: false, enabled: false},
+            }}
+            pinchZoom={false}
+            doubleTapToZoomEnabled={false}
+            chartDescription={{text: ''}}
+            drawBarShadow={false}
+            data={chartData.data}
+            highlights={chartData.highlights}
+            legend={chartData.legend}
+            style={{height: 150, marginTop: 15, width: '100%'}}
+          />
           <Text style={styles.cardFooterText}>Commission Year To Date</Text>
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -159,10 +315,20 @@ const TeamDetails = ({navigation}) => {
                     setIsSelectedIndex(index);
                   }
                 }}>
-                <Text style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
-                  {item.company}
-                </Text>
-                <Text style={[styles.headSecCol, {color: Colors.lightBlue,fontWeight:300}]}>
+                <Pressable
+                  onPress={() => {
+                    navigation.navigate('TeamOption');
+                  }}>
+                  <Text
+                    style={[styles.headFirstCol, {color: Colors.lightBlue}]}>
+                    {item.company}
+                  </Text>
+                </Pressable>
+                <Text
+                  style={[
+                    styles.headSecCol,
+                    {color: Colors.lightBlue, fontWeight: 300},
+                  ]}>
                   ${numberWithCommas(item.dealSize)}
                 </Text>
               </Pressable>

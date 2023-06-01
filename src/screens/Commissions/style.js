@@ -43,12 +43,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 
-  graphContent: {
-    height: 130,
-    borderWidth: 0.5,
-    width: '95%',
-    justifyContent: 'center',
-    alignItems: 'center',
+  graphContent: {  
+    width: '95%', 
   },
 });
 

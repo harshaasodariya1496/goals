@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
   },
   graphContent: {
-    height: 130,
+    height: 170,
   },
   midFirstContent: {
     flexDirection: 'row',

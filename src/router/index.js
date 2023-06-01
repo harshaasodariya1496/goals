@@ -118,7 +118,7 @@ const DiscussionNavigator = () => {
       />
       <DiscussionStack.Screen name="AddGroup" component={AddGroup} />
       <DiscussionStack.Screen name="Setting" component={Setting} />
-    </DiscussionStack.Navigator>
+    </DiscussionStack.Navigator>  
   );
 };
 const MenuNavigator = () => {

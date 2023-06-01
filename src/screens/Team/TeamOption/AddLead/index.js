@@ -25,6 +25,7 @@ const AddLead = ({navigation}) => {
   const [job, setJob] = useState('');
   const [isError, setIsError] = useState(false);
   const onDone = () => {
+    navigation.navigate("Lead")
     setIsError(true);
     if (
       fName !== '' ||

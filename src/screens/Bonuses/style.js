@@ -57,8 +57,7 @@ const styles = StyleSheet.create({
   },
 
   graphContent: {
-    height: 130,
-    borderWidth: 0.5,
+    height: 170, 
     width: '95%',
     justifyContent: 'center',
     alignItems: 'center',

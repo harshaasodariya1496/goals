@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 40,
   },
-   
+
   emptyBg: {
     height: screenHeight,
     alignItems: 'center',
@@ -32,23 +32,16 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: Colors.white,
   },
-  userTitle: {
-    fontSize: 32,
-    color: Colors.black,
-    marginVertical: 10,
-    textAlign: 'center',
-  },
-  dateText: {fontSize: 20, color: Colors.black},
 
   midContent: {
     backgroundColor: Colors.white,
     marginVertical: 10,
     borderRadius: 13,
-    width: screenWidth - 60,
+    width: '100%',
     marginRight: 100,
-    padding: 32,
+    paddingVertical: 22,
+    paddingHorizontal: 36,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   noBonusImage: {
     height: 231,
@@ -70,38 +63,46 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   headerImageContent: {flexDirection: 'row', alignItems: 'center'},
+  cardUserImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+  },
+  cardUserName: {
+    fontSize: 14,
+    color: Colors.darkGrey3,
+    paddingRight: 10,
+  },
+  timeText: {
+    fontSize: 12,
+    color: Colors.darkGrey3,
+    marginTop:5
+  },
+  highlightImage: {
+    width: '100%',
+    height: 132,
+    resizeMode: 'contain',
+    marginVertical: 16,
+    borderRadius: 16,
+  },
+  descriptionText: {
+    fontSize: 14,
+    color: Colors.black,
+    marginTop:16
+  },
   firstContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E7F6FF',
-    borderRadius: 50,
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    marginVertical: 40,
+    justifyContent: 'flex-start',
   },
-  timerText: {
-    fontSize: 31,
-    color: Colors.lightBlue4,
-    marginLeft: 7,
-  },
-  firstDescription: {fontSize: 20, color: Colors.black, textAlign: 'center'},
-  rankText: {color: Colors.lightBlue4, fontSize: 22.3, marginLeft: 5},
-  cardUserImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    resizeMode: 'contain',
-    marginVertical: 10,
-  },
-  cardUserName: {fontSize: 24, color: Colors.black},
-  bottomContent: {
+  likeCommentContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginTop: 30,
+    marginTop: 18,
+    alignItems: 'center',
   },
-  bookingText: {fontSize: 35, color: Colors.green},
-  bookingTitle:{fontSize: 18, color: Colors.placeHolderColor}
+  likeContent: {flexDirection: 'row', width: 100, alignItems: 'center'},
+  likeText: {marginLeft: 8, color: Colors.darkGrey3},
+  commentContent: {flexDirection: 'row', marginLeft: 8, alignItems: 'center'},
 });
 
 export default styles;

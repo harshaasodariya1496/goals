@@ -5,6 +5,7 @@ import {
   ScrollView,
   Dimensions,
   ImageBackground,
+  processColor,
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Feather from 'react-native-vector-icons/Feather';
@@ -14,7 +15,8 @@ import {Colors} from '../../utils/colors';
 import FlagAmount from '../../component/FlagAmount';
 
 import styles from './style';
-
+import {BarChart} from 'react-native-charts-wrapper';
+import {chartData} from '../../utils/constant';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Dashboard = ({navigation}) => {
@@ -78,7 +80,7 @@ const Dashboard = ({navigation}) => {
         </View>
       </ImageBackground>
       <View style={{top: -110, marginHorizontal: 20}}>
-        <View style={styles.midContent}>
+        <View style={[styles.midContent, {height: 250}]}>
           <View style={styles.midFirstContent}>
             <View>
               <Text style={styles.monthTitle}>This Month's Sales</Text>
@@ -86,7 +88,23 @@ const Dashboard = ({navigation}) => {
             </View>
             <FlagAmount amount={'3,500,000'} />
           </View>
-          <View style={styles.graphContent}></View>
+          <View style={styles.graphContent}>
+            <BarChart
+              xAxis={chartData.xAxis}
+              yAxis={{
+                left: {drawGridLines: false, enabled: false},
+                right: {drawGridLines: false, enabled: false},
+              }}
+              pinchZoom={false}
+              doubleTapToZoomEnabled={false}
+              chartDescription={{text: ''}}
+              drawBarShadow={false}
+              data={chartData.data}
+              highlights={chartData.highlights}
+              legend={chartData.legend}
+              style={{height: 150, marginTop: 15}}
+            />
+          </View>
         </View>
 
         <View style={styles.midContent}>
@@ -116,7 +134,23 @@ const Dashboard = ({navigation}) => {
             </View>
             <FlagAmount amount={'3,500,000'} />
           </View>
-          <View style={styles.graphContent}></View>
+          <View style={styles.graphContent}>
+            <BarChart
+              xAxis={chartData.xAxis}
+              yAxis={{
+                left: {drawGridLines: false, enabled: false},
+                right: {drawGridLines: false, enabled: false},
+              }}
+              pinchZoom={false}
+              doubleTapToZoomEnabled={false}
+              chartDescription={{text: ''}}
+              drawBarShadow={false}
+              data={chartData.data}
+              highlights={chartData.highlights}
+              legend={chartData.legend}
+              style={{height: 150, marginTop: 15}}
+            />
+          </View>
         </View>
         <View style={[styles.midContent, {paddingHorizontal: 20}]}>
           <Text style={styles.pipeTitle}>Pipeline</Text>

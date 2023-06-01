@@ -8,10 +8,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   
-  emptyBg: {
-    height: screenHeight,
-    alignItems: 'center',
-    paddingTop: 108,
+  emptyBg: { 
+    flex: 1,
   },
   menuImage: {width: 37, height: 37, marginRight: 20},
   menuTitle: {

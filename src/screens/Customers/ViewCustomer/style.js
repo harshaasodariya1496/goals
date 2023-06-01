@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     justifyContent: 'center',
   },
+  
+  labelText: {fontSize: 18, color: Colors.black, marginBottom: 5},
+  valueText: {fontSize: 16, color: Colors.lightBlue},
 });
 
 export default styles;

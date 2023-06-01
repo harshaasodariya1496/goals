@@ -1,11 +1,11 @@
 import {
   View,
-  Text, 
+  Text,
   ScrollView,
   Dimensions,
-  ImageBackground, 
-  TouchableOpacity, 
-} from 'react-native'; 
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -30,16 +30,17 @@ const AddSale = ({navigation}) => {
   const [job, setJob] = useState('');
   const [isError, setIsError] = useState(false);
   const data = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
+    {label: 'Item 1', value: '1'},
+    {label: 'Item 2', value: '2'},
+    {label: 'Item 3', value: '3'},
+    {label: 'Item 4', value: '4'},
+    {label: 'Item 5', value: '5'},
+    {label: 'Item 6', value: '6'},
+    {label: 'Item 7', value: '7'},
+    {label: 'Item 8', value: '8'},
   ];
   const onDone = () => {
+    navigation.navigate('Sale');
     setIsError(true);
     if (
       fName !== '' ||

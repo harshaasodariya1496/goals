@@ -24,38 +24,79 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Highlights = ({navigation}) => {
   const [data, setData] = useState([
-    {rank: '1st', name: 'Shirley Chen', booking: 4800, deal: 22},
     {
-      rank: '2nd',
-      name: 'Henry McCourtney',
-      booking: 3300,
-      deal: 14,
+      name: 'Andrew Riverra was recognized for Going Above and Beyond by Shirley Chen',
+      image: null,
+      description:
+        'I would like to recognize and thank Andrew for her boundless enthusiasm for our company and mission. Building a new market that grow up our company from last year.',
+      time: 'Just now',
+      likeCount: 0,
+      commentCount: 0,
     },
-    {rank: '3rd', name: 'Dianne Russell', booking: 2500, deal: 8},
+    {
+      name: 'Today is Mark Webber Birthday',
+      image: images.banner,
+      description: null,
+      time: '2 minutes ago',
+      likeCount: 1218,
+      commentCount: 228,
+    },
+    {
+      name: 'Laura Wilson was assigned to new task Build Belief in The Program by Mark Webber',
+      image: null,
+      description: null,
+      time: '2 hours ago',
+      likeCount: 401,
+      commentCount: 61,
+    },
+    {
+      name: 'Adam Morgan was recognized for Going Above and Beyond by Shirley Chen',
+      image: null,
+      description: 'I would like to recognize and thank Adam.',
+      time: '2 hours ago',
+      likeCount: 376,
+      commentCount: 95,
+    },
+    {
+      name: 'Today is Shirley Chen Birthday',
+      image: images.banner,
+      description: null,
+      time: '2m',
+      likeCount: 218,
+      commentCount: 28,
+    },
   ]);
   const renderItem = ({item, index}) => (
     <View key={index} style={styles.midContent}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Ionicons name="star" size={24.54} color={Colors.lightBlue4} />
-        <Text style={styles.rankText}>{item.rank} Place</Text>
-      </View>
-      <Image source={images.user} style={styles.cardUserImage} />
-      <Text style={styles.cardUserName}>{item.name}</Text>
-      <View style={styles.bottomContent}>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.bookingText}>
-            ${numberWithCommas(item.booking)}
-          </Text>
-          <Text style={styles.bookingTitle}>Current Bookings</Text>
+      <View style={styles.firstContent}>
+        <Image source={images.user} style={styles.cardUserImage} />
+        <View style={{marginLeft: 16}}>
+          <Text style={styles.cardUserName}>{item.name}</Text>
+          <Text style={styles.timeText}>{item.time}</Text>
         </View>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.bookingText}>{item.deal}</Text>
-          <Text style={styles.bookingTitle}>Closed Deals</Text>
+      </View>
+      {item.image !== null && (
+        <Image source={images.banner} style={styles.highlightImage} />
+      )}
+      {item.description !== null && (
+        <Text style={styles.descriptionText}>{item.description}</Text>
+      )}
+      <View style={styles.likeCommentContent}>
+        <View style={styles.likeContent}>
+          <MaterialCommunityIcons
+            name={item.likeCount > 0 ? 'cards-heart' : 'cards-heart-outline'}
+            size={20}
+            color={item.likeCount > 0 ? Colors.red : Colors.black}
+          />
+          <Text style={styles.likeText}>{item.likeCount} Likes</Text>
+        </View>
+        <View style={styles.commentContent}>
+          <MaterialCommunityIcons
+            name={'message-text-outline'}
+            size={20}
+            color={Colors.black}
+          />
+          <Text style={styles.likeText}>{item.commentCount} comments</Text>
         </View>
       </View>
     </View>
@@ -75,7 +116,7 @@ const Highlights = ({navigation}) => {
                 <Text style={styles.menuTitle}>Highlight</Text>
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('AddContest')}>
+                onPress={() => navigation.navigate('AddHighlight')}>
                 <Ionicons
                   name="add-circle-outline"
                   size={30}
@@ -85,24 +126,6 @@ const Highlights = ({navigation}) => {
             </View>
           </ImageBackground>
           <View style={{top: -268, marginHorizontal: 20}}>
-            <View style={styles.midContent}>
-              <Text style={styles.userTitle}>4th Quarter Sales Contest</Text>
-              <Text style={styles.dateText}>Oct 1 - Dec 31</Text>
-              <View style={styles.firstContent}>
-                <MaterialCommunityIcons
-                  name={'clock-outline'}
-                  size={36}
-                  color={Colors.lightBlue4}
-                />
-                <Text style={styles.timerText}>
-                  23 <Text style={{fontSize: 21}}>Days Remaining</Text>
-                </Text>
-              </View>
-              <Text style={styles.firstDescription}>
-                The sales rep who books the most revenue in Q4 wins a trip for
-                two to the Bahamas!
-              </Text>
-            </View>
             <FlatList data={data} renderItem={renderItem} />
           </View>
         </View>

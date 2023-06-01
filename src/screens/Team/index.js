@@ -8,6 +8,7 @@ import {
   ScrollView,
   ImageBackground,
   TouchableOpacity,
+  processColor,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,10 +18,66 @@ import {Colors} from '../../utils/colors';
 import FlagAmount from '../../component/FlagAmount';
 
 import styles from './style';
+import {chartData} from '../../utils/constant';
+import {BarChart} from 'react-native-charts-wrapper';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Team = ({navigation}) => {
+  const data = {
+    legend: {
+      enabled: false,
+      textSize: 14,
+      form: 'NONE',
+      formSize: 14,
+      xEntrySpace: 10,
+      yEntrySpace: 5,
+      wordWrapEnabled: true,
+    },
+    data: {
+      dataSets: [
+        {
+          values: [5, 8, 4, 4.5, 6, 3, 5, 6, 6.5, 2, 5, 1.5],
+          config: {
+            barWidth: 5,
+            drawValues: false,
+            colors: [processColor(Colors.lightBlue4)],
+            highlightEnabled: false,
+          },
+        },
+      ],
+      config: {
+        barWidth: 0.25,
+      },
+    },
+    xAxis: {
+      drawGridLines: false,
+      valueFormatter: [
+        'J',
+        'F',
+        'M',
+        'A',
+        'M',
+        'J',
+        'J',
+        'A',
+        'S',
+        'O',
+        'N',
+        'D',
+      ],
+      granularityEnabled: true,
+      granularity: 1,
+      axisMaximum: 8,
+      axisMinimum: 0,
+      lineWidth: 15,
+      position: 'BOTTOM',
+      textColor: processColor(Colors.lightBlue3),
+      textSize: 7,
+      labelCount: 18,
+      // centerAxisLabels: true,
+    },
+  };
   const renderItem = ({item, index}) => (
     <Pressable
       onPress={() => {
@@ -54,7 +111,23 @@ const Team = ({navigation}) => {
           <Text style={styles.salesValue}>$3,112,000</Text>
           <FlagAmount amount={'3,500,000'} ViewStyle={styles.flagView} />
         </View>
-        <View style={styles.box}></View>
+        <View style={[styles.box, {marginBottom: 0, height: 110}]}>
+          <BarChart
+            xAxis={data.xAxis}
+            yAxis={{
+              left: {drawGridLines: false, enabled: false},
+              right: {drawGridLines: false, enabled: false},
+            }}
+            pinchZoom={false}
+            doubleTapToZoomEnabled={false}
+            chartDescription={{text: ''}}
+            drawBarShadow={false}
+            data={data.data}
+            highlights={data.highlights}
+            legend={data.legend}
+            style={{height: 89}}
+          />
+        </View>
         <View style={styles.box}>
           <Text style={styles.salesTitle}>Sales This Month</Text>
           <Text style={styles.salesValue}>$565,000</Text>

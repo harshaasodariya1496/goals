@@ -2,38 +2,53 @@ import {StyleSheet} from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SelectDropdown from 'react-native-select-dropdown';
-
+import {Dropdown as ElementDropDown} from 'react-native-element-dropdown';
 import {Colors} from '../utils/colors';
+import {useState} from 'react';
 
 const Dropdown = (
-  {style, data, placeHolder, value, onSelect, buttonTextStyle,dropdownCustomStyle},
+  {
+    style,
+    data,
+    placeHolder,
+    value,
+    onSelect,
+    buttonTextStyle,
+    dropdownCustomStyle,
+  },
   props,
-) => {
+) => { 
+  const [isFocus, setIsFocus] = useState(false);
   return (
-    <SelectDropdown
-      {...props}
-      data={data}
-      onSelect={onSelect}
-      defaultButtonText={placeHolder}
-      defaultValue={value}
-      renderDropdownIcon={() => {
-        return (
-          <Ionicons name="chevron-down-outline" size={20} color={'#2376C4'} />
-        );
-      }}
-      dropdownStyle={{...dropdownCustomStyle,...styles.dropdownStyle}}
-      selectedRowTextStyle={{color: Colors.lightBlue4}}
-      buttonTextStyle={[
+    <ElementDropDown
+      style={[styles.buttonStyle, style]}
+      placeholderStyle={[
         styles.buttonTextStyle,
-        buttonTextStyle,
         {color: value ? Colors.black : Colors.placeHolderColor},
+        buttonTextStyle,
       ]}
-      rowStyle={{}}
-      rowTextStyle={{
-        textAlign: 'left',
-        paddingHorizontal: 15,
+      // itemContainerStyle={styles.dropdownStyle}
+      itemTextStyle={{fontSize: 16, color: Colors.black}}
+      iconStyle={{width: 20, height: 20}}
+      iconColor={Colors.lightBlue4}
+      containerStyle={styles.dropdownCustomStyle}
+      selectedTextStyle={{color: Colors.lightBlue4}}
+      data={data}
+      labelField="label"
+      valueField="value"
+      placeholder={placeHolder}
+      value={value}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
+      onChange={item => {
+        onSelect(item.value);
+        setIsFocus(false);
       }}
-      buttonStyle={[styles.buttonStyle, style]}
+      activeColor={Colors.lightSkyBlue}
+      // render={() => (
+      //   <Ionicons name="chevron-down-outline" size={20} color={'#2376C4'} />
+      // )}
+      {...props}
     />
   );
 };
@@ -45,12 +60,11 @@ const styles = StyleSheet.create({
     height: 46,
     backgroundColor: Colors.white,
     marginBottom: 10,
-
-    justifyContent: 'flex-start',
+    paddingHorizontal: 15, 
+    // justifyContent: 'flex-start',
   },
   dropdownStyle: {
-    borderRadius: 10,
-    height: 150,
+    borderRadius: 10, 
   },
   buttonTextStyle: {
     fontSize: 14,

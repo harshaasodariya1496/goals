@@ -59,11 +59,8 @@ const styles = StyleSheet.create({
   },
 
   graphContent: {
-    height: 130,
-    borderWidth: 0.5,
-    width: '95%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 170,
+    width: '100%',
   },
 });
 

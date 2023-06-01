@@ -55,17 +55,21 @@ const TextInput = props => {
             },
             props.touchStyle,
           ]}>
-          <MaterialCommunityIcons
-            name={'calendar-blank'}
-            size={18}
-            color={
-              props.isError
-                ? Colors.red
-                : props.color
-                ? props.color
-                : Colors.lightBlue4
-            }
-          />
+          {props.renderLeftIcon ? (
+            props.renderLeftIcon
+          ) : (
+            <MaterialCommunityIcons
+              name={'calendar-blank'}
+              size={18}
+              color={
+                props.isError
+                  ? Colors.red
+                  : props.color
+                  ? props.color
+                  : Colors.lightBlue4
+              }
+            />
+          )}
           <Text
             style={[
               styles.dateLabel,
@@ -85,9 +89,9 @@ const TextInput = props => {
           isVisible={isVisible}
           mode={props.mode ? props.mode : 'datetime'}
           onConfirm={date => {
-            setIsVisible(false); 
+            setIsVisible(false);
             props.onChangeText(
-              moment(date).format(props.format ? props.format : 'D/MM/YYYY')
+              moment(date).format(props.format ? props.format : 'D/MM/YYYY'),
             );
           }}
           onCancel={() => {
@@ -95,7 +99,7 @@ const TextInput = props => {
           }}
         />
       </View>
-    ); 
+    );
   return (
     <RNTextInput
       placeholderTextColor={Colors.placeHolderColor}

@@ -44,8 +44,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   graphContent: {
-    height: 130,
-    marginVertical: 10,
+    height: 170, 
   },
   headMain: {
     marginTop: 50,
@@ -73,13 +72,13 @@ const styles = StyleSheet.create({
   cardAmtText: {fontSize: 22, color: Colors.lightBlue3, fontWeight: 300},
   cardText: {fontSize: 14, color: Colors.black, marginTop: 10},
   cardFooterText: {fontSize: 14, color: Colors.black},
-  btnList: {marginStart: 20, marginVertical: 10 },
+  btnList: {marginStart: 20, marginVertical: 10},
   tableContainer: {
     backgroundColor: Colors.white,
     paddingVertical: 28,
     borderRadius: 13,
     paddingHorizontal: 20,
-    marginHorizontal:20
+    marginHorizontal: 20,
   },
   // tableHead: {
   //   backgroundColor: Colors.grey,
@@ -97,13 +96,13 @@ const styles = StyleSheet.create({
     height: 53,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 22, 
+    paddingLeft: 22,
   },
   headFirstCol: {
     fontSize: 14,
     color: Colors.darkGrey3,
     width: 130,
-    marginRight:45
+    marginRight: 45,
   },
   headSecCol: {
     fontSize: 14,
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     height: 21,
     tintColor: Colors.darkGrey3,
   },
-  
+
   bodyMain: {
     height: 53,
     flexDirection: 'row',

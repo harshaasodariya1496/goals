@@ -10,21 +10,22 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 const BgModal = props => {
   return (
     <Modal
-      {...props}
-      style={[
-        {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          justifyContent: 'flex-start',
-          paddingVertical: 100,
+    style={[
+      {
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        justifyContent: 'flex-start',
+        paddingTop: 100,
         },
         props.style,
-      ]}>
-      <View style={styles.modalContainer}>
+      ]}
+      {...props}
+      backdropVisible={false}>
+      <View style={[styles.modalContainer,props.modalContainerStyle]}>
         <View style={styles.modalBg} />
         <View style={{marginHorizontal: 20}}>{props.children}</View>
       </View>
       <TouchableOpacity
-        style={styles.closeBtn}
+        style={[styles.closeBtn, props.closeBtnStyle]}
         onPress={() => props.onClose(false)}>
         <MaterialCommunityIcons size={24} color={Colors.white} name={'close'} />
       </TouchableOpacity>
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: Colors.white,
-    width: screenWidth - 10,
+    width: screenWidth - 30,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',

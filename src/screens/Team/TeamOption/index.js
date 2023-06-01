@@ -52,7 +52,7 @@ const TeamOption = ({navigation}) => {
                 />
               }
               onPress={() =>
-                navigation.navigate(item.name.replaceAll('New ', ''))
+                navigation.navigate('Add'+item.name.replaceAll('New ', ''))
               }
               style={{marginVertical: 10}}
             />

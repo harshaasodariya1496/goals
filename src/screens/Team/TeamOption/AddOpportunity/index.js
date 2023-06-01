@@ -25,6 +25,7 @@ const AddOpportunity = ({navigation}) => {
   const [job, setJob] = useState('');
   const [isError, setIsError] = useState(false);
   const onDone = () => {
+    navigation.navigate("Opportunity")
     setIsError(true);
     if (
       fName !== '' ||

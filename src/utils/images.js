@@ -26,4 +26,5 @@ export const images = {
   bonus: require('../assets/images/bonus.png'),
   contests: require('../assets/images/contests.png'),
   highlight: require('../assets/images/highlight.png'),
+  banner: require('../assets/images/banner.png'),
 };
