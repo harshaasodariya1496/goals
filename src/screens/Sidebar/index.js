@@ -11,6 +11,7 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import {images} from '../../utils/images';
 
 import styles from './style';
+import {Colors} from '../../utils/colors';
 
 const Sidebar = ({navigation}) => {
   const menu = [
@@ -44,7 +45,12 @@ const Sidebar = ({navigation}) => {
             <Image source={images.bell} style={styles.bellIcon} />
             <View style={styles.redOption} />
           </View>
-          <Image source={images.user} style={{width: 51, height: 51}} />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Setting');
+            }}>
+            <Image source={images.user} style={{width: 51, height: 51}} />
+          </TouchableOpacity>
         </View>
         <View style={styles.mainLogo}>
           <Image source={images.goalsLogo} style={styles.logoImage} />
@@ -67,6 +73,14 @@ const Sidebar = ({navigation}) => {
               </TouchableOpacity>
             );
           })}
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Login');
+            }}
+            style={styles.menuView}>
+            <AntDesignIcon name={'logout'} size={30} color={Colors.white} />
+            <Text style={[styles.menuTitle, {marginLeft: 25}]}>Log Out</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
       <TouchableOpacity style={styles.closeBtn} onPress={onClose}>

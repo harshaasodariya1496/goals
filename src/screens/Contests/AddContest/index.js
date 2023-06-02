@@ -141,7 +141,7 @@ const ContestTeam = ({navigation}) => {
             <Text style={styles.headerSubTitle}>Select People</Text>
           </View>
         </ImageBackground>
-        <View style={{paddingHorizontal: 40, paddingTop: 30, marginTop: 40}}>
+        <View style={{paddingHorizontal: 40, paddingTop: 30, }}>
           <CircleCheckBox
             styleLabel={{
               marginLeft: 20,

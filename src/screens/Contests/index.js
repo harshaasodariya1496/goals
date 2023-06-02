@@ -22,7 +22,8 @@ import Button from '../../component/Button';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const Contests = ({navigation}) => {
+const Contests = ({navigation, route}) => {
+  const isList = route.params?.isList;
   const [data, setData] = useState([
     {rank: '1st', name: 'Shirley Chen', booking: 4800, deal: 22},
     {
@@ -62,7 +63,7 @@ const Contests = ({navigation}) => {
   );
   return (
     <ScrollView style={styles.container}>
-      {data?.length > 0 ? (
+      {isList === true ? (
         <View>
           <ImageBackground style={styles.bg} source={images.background}>
             <View style={styles.headerMain}>

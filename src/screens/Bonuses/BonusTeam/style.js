@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    width: screenWidth - 140,
+    width: (screenWidth / 10) * 7,
     justifyContent: 'center',
   },
   headerTitle: {fontSize: 32, color: Colors.white},

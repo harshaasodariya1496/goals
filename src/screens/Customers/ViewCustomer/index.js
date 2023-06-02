@@ -106,7 +106,7 @@ const ViewCustomer = props => {
           firstIcon={() => {
             return (
               <Octicons
-                name="pencil"
+                name="eye"
                 size={21}
                 color={Colors.darkGrey}
                 style={{marginRight: 10}}
@@ -115,6 +115,16 @@ const ViewCustomer = props => {
           }}
           secondIcon={() => {
             return (
+              <Octicons
+                name="pencil"
+                size={21}
+                color={Colors.darkGrey}
+                style={{marginRight: 10}}
+              />
+            );
+          }}
+          thirdIcon={() => {
+            return (
               <Image
                 source={images.trash}
                 style={styles.trashImage}
@@ -122,10 +132,14 @@ const ViewCustomer = props => {
               />
             );
           }}
-          firstTitle={'Edit'}
-          secondTitle={'Delete'}
-          firstOnPress={() => {}}
+          firstTitle={'View'}
+          secondTitle={'Edit'}
+          thirdTitle={'Delete'}
+          firstOnPress={() => {
+            setIsViewDetails(true);
+          }}
           secondOnPress={() => {}}
+          thirdOnPress={() => {}}
         />
       </ImageBackground>
       {isViewDetails ? (

@@ -22,7 +22,8 @@ import Button from '../../component/Button';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const Highlights = ({navigation}) => {
+const Highlights = ({navigation, route}) => {
+  const isList = route.params?.isList;
   const [data, setData] = useState([
     {
       name: 'Andrew Riverra was recognized for Going Above and Beyond by Shirley Chen',
@@ -103,7 +104,7 @@ const Highlights = ({navigation}) => {
   );
   return (
     <ScrollView style={styles.container}>
-      {data?.length < 0 ? (
+      {isList === true ? (
         <View>
           <ImageBackground style={styles.bg} source={images.background}>
             <View style={styles.headerMain}>

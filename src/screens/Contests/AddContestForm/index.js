@@ -49,11 +49,13 @@ const AddContestForm = ({navigation}) => {
           <Text style={styles.menuTitle}>Add New Contest</Text>
         </View>
         <View style={styles.formMain}>
-          <Text style={styles.labelText}>Let’s give this bonus a fun name</Text>
+          <Text style={styles.labelText}>
+            Let’s give this contest a fun name
+          </Text>
           <TextInput
             value={funName}
             onChangeText={setFunName}
-            placeholder={'Example: Annual Quota Buster'}
+            placeholder={'Example: Top Performer Contest'}
             placeholderTextColor={'#222B2E'}
             style={styles.inputStyle}
           />
@@ -69,7 +71,7 @@ const AddContestForm = ({navigation}) => {
             style={[styles.inputStyle, {minHeight: 63}]}
           />
           <Text style={styles.labelText}>
-            When does this bonus period begin?
+            When does this contest period begin?
           </Text>
           <TextInput
             inputType={'datePicker'}
@@ -82,7 +84,9 @@ const AddContestForm = ({navigation}) => {
             touchStyle={styles.dateTouchStyle}
             textStyle={styles.datePickerText}
           />
-          <Text style={styles.labelText}>When does this bonus period end?</Text>
+          <Text style={styles.labelText}>
+            When does this contest period end?
+          </Text>
           <TextInput
             inputType={'datePicker'}
             value={periodEnd}
@@ -94,7 +98,7 @@ const AddContestForm = ({navigation}) => {
             touchStyle={styles.dateTouchStyle}
             textStyle={styles.datePickerText}
           />
-          <Text style={styles.labelText}>
+          {/* <Text style={styles.labelText}>
             What sales goal needs to be met or exceeded in order to award this
             bonus?
           </Text>
@@ -104,7 +108,7 @@ const AddContestForm = ({navigation}) => {
             placeholder={'$1,000,000'}
             placeholderTextColor={'#222B2E'}
             style={styles.inputStyle}
-          />
+          /> */}
           <Text style={styles.labelText}>Award is:</Text>
           <View style={styles.checkBoxContent}>
             <CheckBox
@@ -158,7 +162,7 @@ const AddContestForm = ({navigation}) => {
             textStyle={{fontSize: 14, color: Colors.white}}
             style={styles.newBonusBtn}
             onPress={() => {
-              navigation.navigate('Contests');
+              navigation.navigate('Contests', {isList: true});
             }}
           />
         </View>

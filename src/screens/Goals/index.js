@@ -42,6 +42,8 @@ const Goals = ({navigation}) => {
               right: {drawGridLines: false, enabled: false},
             }}
             pinchZoom={false}
+            animation={{durationY: 1000}}
+
             doubleTapToZoomEnabled={false}
             chartDescription={{text: ''}}
             drawBarShadow={false}

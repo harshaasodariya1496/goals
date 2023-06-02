@@ -22,7 +22,8 @@ import Button from '../../component/Button';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const Bonuses = ({navigation}) => {
+const Bonuses = ({navigation, route}) => {
+  const isList = route.params?.isList;
   const [data, setData] = useState([]);
   const renderItem = ({item, index}) => (
     <View key={index} style={styles.midContent}>
@@ -62,8 +63,8 @@ const Bonuses = ({navigation}) => {
   );
   return (
     <ScrollView style={styles.container}>
-      {data?.length > 0 ? (
-        <View> 
+      {isList == true ? (
+        <View>
           <ImageBackground style={styles.bg} source={images.background}>
             <View
               style={{
@@ -80,8 +81,7 @@ const Bonuses = ({navigation}) => {
                 />
                 <Text style={styles.menuTitle}>Bonuses</Text>
               </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('AddBonus')}>
+              <TouchableOpacity onPress={() => navigation.navigate('AddBonus')}>
                 <Ionicons
                   name="add-circle-outline"
                   size={30}
@@ -123,9 +123,9 @@ const Bonuses = ({navigation}) => {
                 />
               }
               title={'New Bonus'}
-              textStyle={{fontSize: 14,color:Colors.white}}
+              textStyle={{fontSize: 14, color: Colors.white}}
               style={styles.newBonusBtn}
-              onPress={()=>navigation.navigate("AddBonus")}
+              onPress={() => navigation.navigate('AddBonus')}
             />
           </View>
         </ImageBackground>

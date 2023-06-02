@@ -93,9 +93,9 @@ const AddBonus = ({navigation}) => {
             textStyle={{fontSize: 14, color: Colors.white}}
             style={styles.newBonusBtn}
             onPress={()=>{
-              if(isTeam){
+              // if(isTeam){
                 navigation.navigate("BonusTeam")
-              }
+              // }
             }}
           />
         </View>

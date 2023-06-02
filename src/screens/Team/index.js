@@ -27,19 +27,25 @@ const Team = ({navigation}) => {
   const data = {
     legend: {
       enabled: false,
-      textSize: 14,
-      form: 'NONE',
-      formSize: 14,
-      xEntrySpace: 10,
-      yEntrySpace: 5,
-      wordWrapEnabled: true,
     },
     data: {
       dataSets: [
         {
-          values: [5, 8, 4, 4.5, 6, 3, 5, 6, 6.5, 2, 5, 1.5],
+          values: [
+            {y: 100},
+            {y: 105},
+            {y: 102},
+            {y: 110},
+            {y: 114},
+            {y: 109},
+            {y: 105},
+            {y: 99},
+            {y: 95},
+            {y: 110},
+            {y: 114},
+            {y: 109},
+          ],
           config: {
-            barWidth: 5,
             drawValues: false,
             colors: [processColor(Colors.lightBlue4)],
             highlightEnabled: false,
@@ -47,11 +53,11 @@ const Team = ({navigation}) => {
         },
       ],
       config: {
-        barWidth: 0.25,
+        barWidth: 0.5,
       },
     },
+    highlights: [{x: 3}, {x: 6}],
     xAxis: {
-      drawGridLines: false,
       valueFormatter: [
         'J',
         'F',
@@ -68,14 +74,11 @@ const Team = ({navigation}) => {
       ],
       granularityEnabled: true,
       granularity: 1,
-      axisMaximum: 8,
-      axisMinimum: 0,
-      lineWidth: 15,
       position: 'BOTTOM',
+      drawGridLines: false,
       textColor: processColor(Colors.lightBlue3),
       textSize: 7,
-      labelCount: 18,
-      // centerAxisLabels: true,
+      labelCount: 12,
     },
   };
   const renderItem = ({item, index}) => (
@@ -123,6 +126,7 @@ const Team = ({navigation}) => {
             chartDescription={{text: ''}}
             drawBarShadow={false}
             data={data.data}
+            animation={{durationY: 1500}}
             highlights={data.highlights}
             legend={data.legend}
             style={{height: 89}}
@@ -172,3 +176,4 @@ const Team = ({navigation}) => {
 };
 
 export default Team;
+ 

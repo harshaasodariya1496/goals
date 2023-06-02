@@ -121,9 +121,7 @@ const BonusTeam = ({navigation}) => {
       style={styles.container}
       nestedScrollEnabled={true}>
       <View style={styles.container}>
-        <ImageBackground
-          style={styles.bg}
-          source={images.background}>
+        <ImageBackground style={styles.bg} source={images.background}>
           <View style={styles.headerContainer}>
             <TouchableOpacity
               style={styles.backBg}
@@ -141,39 +139,37 @@ const BonusTeam = ({navigation}) => {
           </View>
         </ImageBackground>
         <View style={{paddingHorizontal: 40, paddingTop: 30}}>
-          <View style={{marginTop: 40}}>
-            <CircleCheckBox
-              styleLabel={{ 
-                marginLeft: 20,
-                color: Colors.black,
-                fontSize: 14,
-              }}
-              outerColor={Colors.grey1}
-              innerColor={Colors.lightBlue3}
-              filterColor={Colors.grey}
-              checked={isSelectedAll}
-              onToggle={onSelectAll}
-              label={'Select All'}
-            /> 
-            {renderUserList}
+          <CircleCheckBox
+            styleLabel={{
+              marginLeft: 20,
+              color: Colors.black,
+              fontSize: 14,
+            }}
+            outerColor={Colors.grey1}
+            innerColor={Colors.lightBlue3}
+            filterColor={Colors.grey}
+            checked={isSelectedAll}
+            onToggle={onSelectAll}
+            label={'Select All'}
+          />
+          {renderUserList}
 
-            <View style={{alignItems: 'center', marginTop: 10}}>
-              <Button
-                title={'Next'}
-                style={{
-                  height: 46,
-                  width: screenWidth / 2.8,
-                  paddingHorizontal: 0,
-                }}
-                onPress={()=>navigation.navigate("AddBonusForm")}
-                textStyle={{
-                  fontSize: 14,
-                  color: Colors.white,
-                  marginHorizontal: 0,
-                  letterSpacing: 0.5,
-                }}
-              />
-            </View>
+          <View style={{alignItems: 'center', marginTop: 10}}>
+            <Button
+              title={'Next'}
+              style={{
+                height: 46,
+                width: screenWidth / 2.8,
+                paddingHorizontal: 0,
+              }}
+              onPress={() => navigation.navigate('AddBonusForm')}
+              textStyle={{
+                fontSize: 14,
+                color: Colors.white,
+                marginHorizontal: 0,
+                letterSpacing: 0.5,
+              }}
+            />
           </View>
         </View>
       </View>

@@ -223,7 +223,7 @@ const Chat = ({navigation, route}) => {
         />
       </ImageBackground>
       <KeyboardAvoidingScrollView nestedScrollEnabled={true}>
-        <View style={{height: (screenHeight / 10) * 8.5}}>
+        <View style={{height: (screenHeight / 10) * 8.2}}>
           {isSearch ? (
             <View style={styles.searchContainer}>
               <TouchableOpacity
@@ -241,7 +241,7 @@ const Chat = ({navigation, route}) => {
               </TouchableOpacity>
               <Input
                 placeholder="Search"
-                width={screenWidth - 50} 
+                width={screenWidth - 50}
                 borderWidth={0}
                 style={styles.searchBar}
                 onChangeText={onChangeSearch}

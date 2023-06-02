@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   detailsContent: {
     backgroundColor: '#F5F6FA',
     width: 90,
-    height: 90,
+    // height: 90,
     padding: 5,
     paddingVertical: 16,
     borderRadius: 13,
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#525E6B',
     flexWrap: 'wrap',
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   userSubValue: {
     textAlign: 'center',

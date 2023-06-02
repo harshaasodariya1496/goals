@@ -12,12 +12,12 @@ const Login = ({navigation}) => {
   const [isError, setIsError] = useState(false);
 
   const onLogin = () => {
-    if (email === '' || password === '') {
-      setIsError(true);
-    } else {
-      setIsError(false);
+    // if (email === '' || password === '') {
+    //   setIsError(true);
+    // } else {
+    //   setIsError(false);
       navigation.navigate('Tabs');
-    }
+    // }
   };
   return (
     <ImageBackground
@@ -25,7 +25,7 @@ const Login = ({navigation}) => {
       resizeMode="cover"
       style={styles.bgImage}>
       <ScrollView style={styles.bgImage}>
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <View>
             <Image
               source={require('../../assets/images/bell.png')}
@@ -37,7 +37,7 @@ const Login = ({navigation}) => {
             source={require('../../assets/images/user.png')}
             style={{width: 51, height: 51}}
           />
-        </View>
+        </View> */}
         <View style={styles.mainLogo}>
           <Image
             source={require('../../assets/images/goalsLogo.png')}

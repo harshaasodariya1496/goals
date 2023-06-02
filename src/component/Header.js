@@ -1,6 +1,6 @@
 import {
   View,
-  Text, 
+  Text,
   StyleSheet,
   Pressable,
   TouchableOpacity,
@@ -28,6 +28,9 @@ const Header = ({
   firstOnPress,
   secondOnPress,
   customTitle,
+  thirdTitle,
+  thirdIcon = () => {},
+  thirdOnPress = () => {},
 }) => {
   const [isVisible, setIsVisible] = useState('');
   return (
@@ -86,6 +89,17 @@ const Header = ({
               {secondIcon()}
               <Text style={styles.popOverText}>{secondTitle}</Text>
             </TouchableOpacity>
+            {Boolean(thirdTitle) && (
+              <TouchableOpacity
+                style={styles.touchView}
+                onPress={() => {
+                  thirdOnPress();
+                  setIsVisible(false);
+                }}>
+                {thirdIcon()}
+                <Text style={styles.popOverText}>{thirdTitle}</Text>
+              </TouchableOpacity>
+            )}
           </Popover.Content>
         </Popover>
       )}

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     marginVertical: 10,
     borderRadius: 13,
-    width: screenWidth - 60,
+    width: screenWidth - 40,
     marginRight: 100,
     padding: 32,
     justifyContent: 'center',

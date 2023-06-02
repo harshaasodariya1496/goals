@@ -175,6 +175,7 @@ const TeamDetails = ({navigation}) => {
               right: {drawGridLines: false, enabled: false},
             }}
             pinchZoom={false}
+            animation={{durationY: 1000}}
             doubleTapToZoomEnabled={false}
             chartDescription={{text: ''}}
             drawBarShadow={false}
@@ -189,15 +190,7 @@ const TeamDetails = ({navigation}) => {
         <View style={styles.midContent}>
           <Text style={styles.cardAmtText}>$1,500,000</Text>
           <Text style={styles.cardText}>Monthly Sales Goal</Text>
-          {/* <LineChart
-            style={{height: 150, width: '100%'}}
-            data={lineChartData.data}
-            chartDescription={{text: ''}}
-            xAxis={lineChartData.xAxis}
-            yAxis={lineChartData.yAxis}
-            legend={{enabled: false}}
-            onChange={event => console.log(event.nativeEvent)}
-          /> */}
+         
           <LineChart
             style={{height: 150, width: '100%'}}
             data={lineChartData.data}
@@ -205,6 +198,8 @@ const TeamDetails = ({navigation}) => {
             legend={{
               enabled: false,
             }}
+            animation={{durationX: 1000}}
+
             xAxis={lineChartData.xAxis}
             yAxis={lineChartData.yAxis}
             pinchZoom={false}
@@ -225,6 +220,7 @@ const TeamDetails = ({navigation}) => {
             pinchZoom={false}
             doubleTapToZoomEnabled={false}
             chartDescription={{text: ''}}
+            animation={{durationY: 1000}}
             drawBarShadow={false}
             data={chartData.data}
             highlights={chartData.highlights}

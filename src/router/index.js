@@ -101,8 +101,9 @@ const HomeNavigator = () => {
 
   return (
     <HomeStack.Navigator
-      initialRouteName="Goals"
+      initialRouteName="TeamActions"
       screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name="TeamActions" component={TeamActions} />
       <HomeStack.Screen name="Goals" component={Goals} />
     </HomeStack.Navigator>
   );
@@ -177,7 +178,7 @@ function MyTabs({navigation}) {
   };
   return (
     <Tab.Navigator
-      initialRouteName="Team"
+      initialRouteName="Dashboard"
       height={50}
       type={'DOWN'}
       bgColor={Colors.white}
@@ -213,7 +214,7 @@ function MyTabs({navigation}) {
 function Root() {
   return (
     <Stack.Navigator
-      initialRouteName="Tabs"
+      initialRouteName="Login"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Tabs" component={MyTabs} />
@@ -231,6 +232,7 @@ function Root() {
       <Stack.Screen name="Commissions" component={Commissions} />
       <Stack.Screen name="CommissionDetail" component={CommissionDetail} />
       <Stack.Screen name="CommissionSettings" component={CommissionSettings} />
+      <Stack.Screen name="Setting" component={Setting} />
       <Stack.Screen name="AddCustomers" component={AddCustomers} />
       <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
       <Stack.Screen name="CustomerDetail" component={CustomerDetail} />

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   headText: {
     fontSize: 12,
+    color: Colors.black,
   },
   tableBody: {
     flexDirection: 'row',

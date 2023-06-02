@@ -109,7 +109,7 @@ const AddHighlight = ({navigation}) => {
             title={'Post Highlight'}
             textStyle={{fontSize: 14, color: Colors.white}}
             onPress={() => {
-              navigation.navigate('Contests');
+              navigation.navigate('Highlights', {isList: true});
             }}
           />
         </View>

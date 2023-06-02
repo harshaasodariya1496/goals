@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {fontSize: 14, height: 43, marginBottom: 36},
 
-  formMain: {marginHorizontal: 24, marginTop: 30},
+  formMain: {marginHorizontal: 40, marginTop: 30},
   titleSection: {
     flexDirection: 'row',
     justifyContent: 'center',

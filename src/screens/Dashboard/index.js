@@ -95,6 +95,7 @@ const Dashboard = ({navigation}) => {
                 left: {drawGridLines: false, enabled: false},
                 right: {drawGridLines: false, enabled: false},
               }}
+              visibleRange={{x: {min: 12, max: 12}}}
               pinchZoom={false}
               doubleTapToZoomEnabled={false}
               chartDescription={{text: ''}}
@@ -103,6 +104,14 @@ const Dashboard = ({navigation}) => {
               highlights={chartData.highlights}
               legend={chartData.legend}
               style={{height: 150, marginTop: 15}}
+              drawValueAboveBar={true}
+              drawHighlightArrow={true}
+              marker={{
+                enabled: true,
+                textSize: 15,
+                elevation: 0,
+              }}
+              animation={{durationY: 1000}}
             />
           </View>
         </View>
@@ -149,6 +158,7 @@ const Dashboard = ({navigation}) => {
               highlights={chartData.highlights}
               legend={chartData.legend}
               style={{height: 150, marginTop: 15}}
+              animation={{durationY: 1000}}
             />
           </View>
         </View>

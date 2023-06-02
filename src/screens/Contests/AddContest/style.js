@@ -1,6 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 import {Colors} from '../../../utils/colors';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
     paddingBottom: 70,
     backgroundColor: Colors.white,
   },
-  
+
   bg: {
     height: (screenHeight / 100) * 18,
     justifyContent: 'center',
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    width: screenWidth - 140,
+    width: (screenWidth / 10) * 7,
     justifyContent: 'center',
   },
   headerTitle: {fontSize: 32, color: Colors.white},
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightBlue2,
     borderRadius: 5,
   },
-  mainListView: { 
+  mainListView: {
     flexDirection: 'row',
     marginVertical: 10,
     alignItems: 'center',

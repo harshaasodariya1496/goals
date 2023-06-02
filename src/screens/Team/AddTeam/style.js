@@ -28,7 +28,16 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     marginLeft: 4,
   },
- 
+  checkBoxContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  checkBoxLabelText: {
+    fontSize: 18,
+    color: Colors.white,
+    marginLeft: 5,
+  },
 });
 
 export default styles;
