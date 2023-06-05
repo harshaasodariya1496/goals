@@ -1,5 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
+import { scale } from 'react-native-size-matters';
 import {Colors} from '../../../../utils/colors';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     tintColor: Colors.darkGrey,
   },
-  labelText: {fontSize: 18, color: Colors.black, marginBottom: 5},
+  labelText: {fontSize: scale(14), color: Colors.black, marginBottom: 5},
   valueText: {fontSize: 16, color: Colors.lightBlue},
 });
 

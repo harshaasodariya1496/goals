@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
 
 import Header from '../../../component/Header';
@@ -20,6 +22,8 @@ import {Colors} from '../../../utils/colors';
 
 import styles from './style';
 import CheckBox from '@react-native-community/checkbox';
+import {scale} from 'react-native-size-matters';
+import {numberWithCommas} from '../../../utils/constant';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const AddTeam = ({navigation}) => {
@@ -30,39 +34,47 @@ const AddTeam = ({navigation}) => {
   const [isError, setIsError] = useState(false);
   const [isSelected, setIsSelected] = useState('Add People');
   const [status, setStatus] = useState('checked');
-  const [isPrivate, setIsPrivate] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
   const [userList, setUserList] = useState([
     {
       name: 'Jacob Jones',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Esther Howard',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Albert Flores',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Leslie Alexander',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Jacob Jones',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Esther Howard',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Albert Flores',
       isChecked: false,
+      salary: 10000,
     },
     {
       name: 'Leslie Alexander',
       isChecked: false,
+      salary: 10000,
     },
   ]);
   const onButtonToggle = value => {
@@ -130,6 +142,7 @@ const AddTeam = ({navigation}) => {
     <View style={styles.midContent}>
       <FlatList
         data={userList}
+        showsVerticalScrollIndicator={false}
         style={{height: (screenHeight / 10) * 4}}
         renderItem={({item, index}) => (
           <View
@@ -166,6 +179,90 @@ const AddTeam = ({navigation}) => {
       </View>
     </View>
   );
+  const onChangeSalary = (e, i) => {
+    let arr = userList;
+    arr[i].salary = parseInt(e);
+    setUserList([...arr]);
+  };
+  const Salaries = () => (
+    <View style={styles.midContent}>
+      <FlatList
+        data={userList}
+        showsVerticalScrollIndicator={false}
+        style={{height: (screenHeight / 10) * 4.2, marginTop: 20}}
+        renderItem={({item, index}) => (
+          <View
+            key={index}
+            style={[
+              styles.checkBoxContent,
+              {marginBottom: userList?.length - 1 == index ? 0 : 15},
+            ]}>
+            <Image
+              source={images.user}
+              style={{
+                width: 55,
+                height: 55,
+                resizeMode: 'contain',
+                marginHorizontal: 5,
+              }}
+            />
+            <View style={{width: '68%', marginHorizontal: 10}}>
+              <Text style={[styles.salaryUserName]}>{item.name}</Text>
+              {editIndex === index ? (
+                <View>
+                  <TextInput
+                    value={item.salary.toString()}
+                    onChangeText={e => onChangeSalary(e, index)}
+                    style={{
+                      height: scale(20),
+                      padding: 0,
+                      paddingLeft: 5,
+                      width: '90%',
+                      marginVertical: scale(5),
+                      marginBottom: scale(5),
+                    }}
+                  />
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Ionicons
+                      name="calendar-sharp"
+                      size={15}
+                      color={Colors.white}
+                    />
+                    <Text
+                      style={{
+                        fontSize: scale(14),
+                        color: Colors.white,
+                        marginLeft: 10,
+                      }}>
+                      Date adjusted salary starts
+                    </Text>
+                  </View>
+                </View>
+              ) : (
+                <Text style={{fontSize: scale(14), color: Colors.white}}>
+                  ${numberWithCommas(item.salary)}
+                </Text>
+              )}
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                setEditIndex(editIndex == index ? null : index);
+              }}>
+              <SimpleLineIcons name="pencil" size={30} color={Colors.white} />
+            </TouchableOpacity>
+          </View>
+        )}
+      />
+      <View style={{marginVertical: 40, alignItems: 'center'}}>
+        <Button
+          title={'Confirm'}
+          style={{height: 46}}
+          textStyle={{fontSize: 14}}
+          onPress={onDone}
+        />
+      </View>
+    </View>
+  );
   const renderItem = () => {
     switch (isSelected) {
       case 'Add People':
@@ -173,7 +270,7 @@ const AddTeam = ({navigation}) => {
       case 'Remove People':
         return <RemovePeople />;
       case 'Salaries':
-        return <AddPeople />;
+        return <Salaries />;
     }
   };
   return (

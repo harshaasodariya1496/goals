@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput as RNTextInput,
 } from 'react-native';
+import { scale } from 'react-native-size-matters';
 import moment from 'moment';
 import {useState} from 'react';
 import {Input} from 'native-base';
@@ -103,6 +104,7 @@ const TextInput = props => {
   return (
     <RNTextInput
       placeholderTextColor={Colors.placeHolderColor}
+      
       {...props}
       style={[
         styles.main,
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   main: {
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
-    fontSize: 18,
+    fontSize: scale(14),
     fontFamily: 'Roboto',
     fontWeight: '400',
     height: 56,

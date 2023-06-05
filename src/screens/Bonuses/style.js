@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
+import { scale } from 'react-native-size-matters';
 import {Colors} from '../../utils/colors';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -88,8 +89,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
-  progressType: {fontSize: 18, color: Colors.darkGrey},
-  progressText: {fontSize: 18, color: Colors.green, fontWeight: 300},
+  progressType: {fontSize: scale(14), color: Colors.darkGrey},
+  progressText: {fontSize: scale(14), color: Colors.green, fontWeight: 300},
   slashText: {color: Colors.darkGrey},
   allProgressText: {color: Colors.lightBlue},
   noBonusImage: {

@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
+import { scale } from 'react-native-size-matters';
 import {Colors} from '../../utils/colors';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   bookingText: {fontSize: 35, color: Colors.green},
-  bookingTitle:{fontSize: 18, color: Colors.placeHolderColor}
+  bookingTitle:{fontSize: scale(14), color: Colors.placeHolderColor}
 });
 
 export default styles;

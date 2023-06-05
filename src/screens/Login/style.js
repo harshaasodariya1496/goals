@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'; 
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   bgImage: {
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }, 
   loginText: {
-    fontSize: 18,
+    fontSize: scale(14),
     fontFamily: 'Roboto',
     fontWeight: 400,
     letterSpacing: 2,

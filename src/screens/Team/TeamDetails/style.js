@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 22,
     paddingVertical: 19,
-    width: (screenWidth / 10) * 7.8,
+    // min: (screenWidth / 10) * 7.8,
   },
 });
 

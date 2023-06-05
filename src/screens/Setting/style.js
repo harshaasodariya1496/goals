@@ -1,12 +1,13 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors} from '../../utils/colors';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom:50
+    // marginBottom:50
   },
   bg: {
     height: (screenHeight / 10) * 2.5,
@@ -51,12 +52,124 @@ const styles = StyleSheet.create({
   formContent: {
     backgroundColor: Colors.white,
     borderRadius: 18,
-    padding: 20,
+    padding: 40,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 23,
   },
   saveBtn: {backgroundColor: Colors.green, height: 46, marginTop: 20},
+  textInputMain: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderWidth: 2,
+    borderColor: Colors.lightBlue3,
+    borderRadius: 5,
+    marginBottom: 20,
+    paddingRight: 10,
+  },
+  textInputStyle: {
+    borderWidth: 0,
+    borderColor: Colors.white,
+    width: '90%',
+    marginBottom: 0,
+  },
+  labelText: {color: Colors.black, fontSize: scale(14), marginBottom: 10},
+  leaderboardMain: {
+    borderWidth: 1,
+    width: '100%',
+    padding: 20,
+    borderColor: Colors.darkGrey,
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    marginBottom: 30,
+  },
+  leaderboardText: {
+    color: Colors.black,
+    fontSize: scale(18),
+    fontWeight: '600',
+    marginBottom: 5,
+  },
+  onText: {fontSize: scale(14), color: Colors.black},
+  checkBoxContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 30,
+  },
+  checkBoxLabelText: {
+    fontSize: scale(14),
+    color: Colors.black,
+    marginLeft: 5,
+  },
+  inviteTitle: {fontSize: scale(20), color: Colors.lightBlue4},
+  inviteDesc: {
+    fontSize: scale(14),
+    color: Colors.lightBlue4,
+    marginVertical: 15,
+  },
+  inviteUserImage: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+    marginHorizontal: 20,
+  },
+  headerPart: {
+    flexDirection: 'row',
+    backgroundColor: Colors.grey,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  headerText: {fontSize: scale(12)},
+  bodyMain: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  bodyNameText: {fontSize: scale(12), color: Colors.lightBlue4},
+  rateMain: {
+    width: '30%',
+    paddingLeft: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  optionMain: {
+    alignItems: 'flex-end',
+    paddingRight: 30,
+    marginVertical: 5,
+  },
+  actionContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.grey,
+    height: 50,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+  },
+  trashImage: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+    tintColor: Colors.darkGrey,
+    marginLeft: 20,
+  },
+  addMoreView: {
+    flexDirection: 'row',
+    marginLeft: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop:10
+  },
+  addMoreText: {
+    fontSize: 14,
+    color: Colors.lightBlue4,
+    fontFamily: 'Roboto',
+    fontWeight: 400,
+    marginLeft: 4,
+  },
 });
 
 export default styles;

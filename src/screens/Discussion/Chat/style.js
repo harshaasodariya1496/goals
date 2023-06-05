@@ -2,6 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 import {Colors} from '../../../utils/colors';
 
+import { scale } from 'react-native-size-matters';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   searchBar: {
     backgroundColor: Colors.white,
     height: 50,
-    fontSize: 18,
+    fontSize: scale(14),
     marginVertical: 35,
     paddingHorizontal: 1,
     paddingVertical: 3,

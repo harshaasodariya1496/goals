@@ -18,6 +18,7 @@ import {Colors} from '../../utils/colors';
 import Dropdown from '../../component/DropDown';
 
 import styles from './style';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -142,7 +143,7 @@ const Customers = ({navigation}) => {
               value={selectedValue}
               placeHolder={'All Account'}
               style={{width: screenWidth / 2.8, height: 55, borderRadius: 10}}
-              buttonTextStyle={{fontSize: 18}}
+              buttonTextStyle={{fontSize: scale(14)}}
             />
           </View>
         </ImageBackground>

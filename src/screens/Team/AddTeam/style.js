@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 
+import { scale } from 'react-native-size-matters';
 import {Colors} from '../../../utils/colors';
 
 const styles = StyleSheet.create({
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   midContent: {
-    paddingHorizontal: 15,
+    paddingHorizontal: 25,
   },
   input: {
     fontSize: 14,
@@ -31,12 +32,17 @@ const styles = StyleSheet.create({
   checkBoxContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 10,
+    marginHorizontal: 0, 
   },
   checkBoxLabelText: {
-    fontSize: 18,
+    fontSize: scale(14),
     color: Colors.white,
     marginLeft: 5,
+  },
+  
+  salaryUserName: {
+    fontSize: scale(16),
+    color: Colors.white, 
   },
 });
 

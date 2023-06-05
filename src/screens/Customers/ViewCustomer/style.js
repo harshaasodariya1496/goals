@@ -2,6 +2,7 @@ import {StatusBar, StyleSheet, Dimensions} from 'react-native';
 
 import {Colors} from '../../../utils/colors';
 
+import { scale } from 'react-native-size-matters';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   
-  labelText: {fontSize: 18, color: Colors.black, marginBottom: 5},
+  labelText: {fontSize: scale(14), color: Colors.black, marginBottom: 5},
   valueText: {fontSize: 16, color: Colors.lightBlue},
 });
 

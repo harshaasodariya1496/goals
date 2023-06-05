@@ -2,6 +2,7 @@ import {Button as NativeButton} from 'native-base';
 import {Text, StyleSheet, Pressable} from 'react-native';
 
 import {Colors} from '../utils/colors';
+import { scale } from 'react-native-size-matters';
 
 const Button = (
   {style, title, onPress, leftIcon, textStyle, type, icon},
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightBlue2,
   },
   loginText: {
-    fontSize: 18,
+    fontSize: scale(14),
     fontFamily: 'Roboto',
     fontWeight: 400,
     letterSpacing: 1,

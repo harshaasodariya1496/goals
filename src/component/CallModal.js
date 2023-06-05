@@ -21,6 +21,7 @@ import {minSlot, timeDurationGap, timeGap} from '../utils/constant';
 import {TextArea} from 'native-base';
 import Button from './Button';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical:8
   },
-  buttonTextStyle: {fontSize: 18, margin: 0},
+  buttonTextStyle: {fontSize: scale(14), margin: 0},
   touchStyle: {
     width: 130,
     height: 38,

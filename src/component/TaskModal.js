@@ -18,6 +18,7 @@ import {Colors} from '../utils/colors';
 import moment from 'moment';
 import Dropdown from './DropDown';
 import {minSlot, timeDurationGap, timeGap} from '../utils/constant';
+import { scale } from 'react-native-size-matters';
 import {TextArea} from 'native-base';
 import Button from './Button';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
-  buttonTextStyle: {fontSize: 18, margin: 0},
+  buttonTextStyle: {fontSize: scale(14), margin: 0},
   touchStyle: {
     width: 130,
     height: 38,

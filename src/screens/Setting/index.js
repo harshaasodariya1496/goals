@@ -17,35 +17,41 @@ import Button from '../../component/Button';
 import TextInput from '../../component/TextInput';
 
 import styles from './style';
+import GeneralSetting from './GeneralSetting';
+import SecurityPrivacy from './SecurityPrivacy';
+import EmployeeDashboard from './EmployeeDashboard';
+import ROI from './ROI';
+import InviteTeam from './InviteTeam';
+import ManageRole from './ManageRole';
+import ProduceCommission from './ProduceCommission';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Setting = ({navigation}) => {
   const [isSelected, setIsSelected] = useState('General Settings');
-  const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [workAnniversary, setWorkAnniversary] = useState('Work Anniversary');
-  const [dob, setDob] = useState('Date of Birth');
-  const [teamSize, setTeamSize] = useState('');
-  const [isError, setIsError] = useState(false);
-  const onSave = () => {
-    setIsError(true);
-    if (
-      fName != '' ||
-      lName !== '' ||
-      email !== '' ||
-      phone !== '' ||
-      teamSize !== '' ||
-      workAnniversary !== 'Work Anniversary' ||
-      dob !== 'Date of Birth'
-    ) {
-      setIsError(false);
+
+  const renderTab = () => {
+    switch (isSelected) {
+      case 'General Settings':
+        return <GeneralSetting />;
+      case 'Security & Privacy':
+        return <SecurityPrivacy />;
+      case 'Employee Dashboard':
+        return <EmployeeDashboard />;
+      case 'ROI':
+        return <ROI />;
+      case 'Invite Your Team':
+        return <InviteTeam />;
+      case 'Manage Roles':
+        return <ManageRole />;
+      case 'Products/Commissions':
+        return <ProduceCommission />;
     }
   };
   return (
-    <KeyboardAvoidingScrollView style={styles.container}>
+    <KeyboardAvoidingScrollView
+      nestedScrollEnabled={true}
+      style={styles.container}>
       <ImageBackground
         style={styles.bg}
         source={images.background}></ImageBackground>
@@ -83,7 +89,11 @@ const Setting = ({navigation}) => {
           data={[
             {name: 'General Settings'},
             {name: 'Security & Privacy'},
-            {name: 'Notifcation'},
+            {name: 'Employee Dashboard'},
+            {name: 'ROI'},
+            {name: 'Invite Your Team'},
+            {name: 'Manage Roles'},
+            {name: 'Products/Commissions'},
           ]}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -107,70 +117,7 @@ const Setting = ({navigation}) => {
             );
           }}
         />
-        <View style={styles.formContent}>
-          <TextInput
-            label={'First Name'}
-            value={fName}
-            onChangeText={setFName}
-            isError={isError && fName === ''}
-            inputType={'with-label'}
-          />
-
-          <TextInput
-            label={'Last Name'}
-            value={lName}
-            onChangeText={setLName}
-            isError={isError && lName === ''}
-            inputType={'with-label'}
-          />
-
-          <TextInput
-            label={'Email'}
-            value={email}
-            onChangeText={setEmail}
-            isError={isError && email === ''}
-            inputType={'with-label'}
-          />
-
-          <TextInput
-            label={'Phone'}
-            value={phone}
-            onChangeText={setPhone}
-            isError={isError && phone === ''}
-            inputType={'with-label'}
-          />
-
-          <TextInput
-            inputType={'datePicker'}
-            value={workAnniversary}
-            mode={'date'}
-            onChangeText={setWorkAnniversary}
-            isError={isError && workAnniversary === 'Work Anniversary'}
-          />
-
-          <TextInput
-            inputType={'datePicker'}
-            value={dob}
-            mode={'date'}
-            onChangeText={setDob}
-            isError={isError && dob === 'Date of Birth'}
-          />
-
-          <TextInput
-            placeholder={'Sales Team Size'}
-            inputType={'with-label'}
-            value={teamSize}
-            onChangeText={setTeamSize}
-            isError={isError && teamSize === ''}
-          />
-
-          <Button
-            title={'Save Change'}
-            style={styles.saveBtn}
-            textStyle={{fontSize: 14}}
-            onPress={onSave}
-          />
-        </View>
+        {renderTab()}
       </View>
     </KeyboardAvoidingScrollView>
   );
