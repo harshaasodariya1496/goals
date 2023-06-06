@@ -1,5 +1,6 @@
 export const images = {
   background: require('../assets/images/background.png'),
+  bg: require('../assets/images/bg.png'),
   goals: require('../assets/images/goals.png'),
   team: require('../assets/images/team.png'),
   customers: require('../assets/images/customers.png'),

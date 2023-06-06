@@ -5,10 +5,12 @@ import {
   FlatList,
   ScrollView,
   Dimensions,
+  Pressable,
 } from 'react-native';
 
 import styles from './style';
-import { images } from '../../utils/images';
+import {images} from '../../utils/images';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -44,21 +46,26 @@ const Reports = ({navigation}) => {
             paddingVertical: 20,
           }}
           numColumns={3}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
-              <View style={styles.cardMain}>
+              <Pressable
+                style={styles.cardMain}
+                onPress={() => {
+                  navigation.navigate('ReportDetails', {month: item.name});
+                }}
+                key={index}>
                 <View style={{alignItems: 'center'}}>
                   <Image
                     source={images.file}
                     style={{
-                      width: 67,
-                      height: 60,
+                      width: scale(67),
+                      height: scale(60),
                       opacity: item.isRead ? 0.5 : 1,
                     }}
                   />
                   <Text style={styles.monthText}>{item.name}</Text>
                 </View>
-              </View>
+              </Pressable>
             );
           }}
         />

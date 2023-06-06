@@ -5,8 +5,10 @@ import {
   ScrollView,
   Dimensions,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import {Progress} from 'native-base';
+import Octicons from 'react-native-vector-icons/Octicons';
 import Carousel from 'react-native-snap-carousel';
 import {BarChart} from 'react-native-charts-wrapper';
 
@@ -15,7 +17,8 @@ import {Colors} from '../../utils/colors';
 
 import styles from './style';
 import Charts from '../../component/Charts';
-import { chartData } from '../../utils/constant';
+import {chartData} from '../../utils/constant';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -43,7 +46,6 @@ const Goals = ({navigation}) => {
             }}
             pinchZoom={false}
             animation={{durationY: 1000}}
-
             doubleTapToZoomEnabled={false}
             chartDescription={{text: ''}}
             drawBarShadow={false}
@@ -56,11 +58,18 @@ const Goals = ({navigation}) => {
         <Text style={[styles.userTitle, {fontSize: 14, marginTop: 14}]}>
           Monthly Sales Goals
         </Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('GoalDetails');
+          }}
+          style={{position: 'absolute', top: scale(-10), right: scale(-10)}}>
+          <Octicons name="pencil" size={21} color={Colors.darkGrey3} />
+        </TouchableOpacity>
       </View>
     </View>
   );
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} nestedScrollEnabled={true}>
       <ImageBackground style={styles.bg} source={images.background}>
         <Text style={styles.totalTitle}>Total Sales</Text>
         <Text style={styles.totalAmt}>$ 13,232,000</Text>
@@ -94,6 +103,7 @@ const Goals = ({navigation}) => {
           inactiveSlideOpacity={1}
           activeSlideAlignment={'start'}
           initialNumToRender={0}
+          nested
         />
       </View>
     </ScrollView>

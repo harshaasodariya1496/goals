@@ -16,7 +16,7 @@ const Login = ({navigation}) => {
     //   setIsError(true);
     // } else {
     //   setIsError(false);
-      navigation.navigate('Tabs');
+      navigation.navigate('CustomDrawer');
     // }
   };
   return (

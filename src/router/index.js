@@ -3,7 +3,7 @@ import {scale} from 'react-native-size-matters';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import Team from '../screens/Team';
 import Login from '../screens/Login';
 import Goals from '../screens/Goals';
@@ -36,7 +36,7 @@ import styles from './style';
 import Opportunities from '../screens/Team/TeamOption/Opportunities';
 import TeamActions from '../screens/Team/TeamOption/TeamActions';
 import SalesDetail from '../screens/Team/TeamOption/SalesDetails';
-import {CommonActions} from '@react-navigation/native';
+import {CommonActions, DrawerActions} from '@react-navigation/native';
 import Commissions from '../screens/Commissions';
 import CommissionDetail from '../screens/Commissions/CommissionDetail';
 import CommissionSettings from '../screens/Commissions/CommissionSettings';
@@ -49,6 +49,9 @@ import AddBonusForm from '../screens/Bonuses/AddBonusForm';
 import AddContestForm from '../screens/Contests/AddContestForm';
 import Highlights from '../screens/HighLights';
 import AddHighlight from '../screens/HighLights/AddHighlight';
+import GoalDetails from '../screens/Goals/GoalDetails';
+import ReportDetails from '../screens/Reports/ReportDetails';
+import IndividualPerformance from '../screens/Reports/IndividualPerformance';
 
 const Stack = createNativeStackNavigator();
 
@@ -105,6 +108,7 @@ const HomeNavigator = () => {
       screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="TeamActions" component={TeamActions} />
       <HomeStack.Screen name="Goals" component={Goals} />
+      <HomeStack.Screen name="GoalDetails" component={GoalDetails} />
     </HomeStack.Navigator>
   );
 };
@@ -119,7 +123,7 @@ const DiscussionNavigator = () => {
       />
       <DiscussionStack.Screen name="AddGroup" component={AddGroup} />
       <DiscussionStack.Screen name="Setting" component={Setting} />
-    </DiscussionStack.Navigator>  
+    </DiscussionStack.Navigator>
   );
 };
 const MenuNavigator = () => {
@@ -162,7 +166,9 @@ function MyTabs({navigation}) {
     return (
       <TouchableOpacity
         onPress={() => {
-          if (routeName == 'Menu') navigation.navigate('Sidebar');
+          console.log('call', routeName);
+          if (routeName == 'Menu')
+            navigation.dispatch(DrawerActions.openDrawer());
           else
             navigation.dispatch(
               CommonActions.reset({
@@ -178,7 +184,7 @@ function MyTabs({navigation}) {
   };
   return (
     <Tab.Navigator
-      initialRouteName="Dashboard"
+      initialRouteName="Goals"
       height={50}
       type={'DOWN'}
       bgColor={Colors.white}
@@ -211,22 +217,26 @@ function MyTabs({navigation}) {
     </Tab.Navigator>
   );
 }
-function Root() {
+const CustomDrawer = () => {
+  const Drawer = createDrawerNavigator();
+
   return (
-    <Stack.Navigator
-      initialRouteName="Login"
-      screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Login" component={Login} />
+    <Drawer.Navigator
+      initialRouteName="Tabs"
+      drawerContent={props => <Sidebar {...props} />}
+      screenOptions={{
+        headerShown: false,
+        // drawerPosition: 'right',
+      }}>
       <Stack.Screen name="Tabs" component={MyTabs} />
-      <Stack.Screen name="Sidebar" component={Sidebar} />
       <Stack.Screen name="Bonuses" component={Bonuses} />
       <Stack.Screen name="AddBonus" component={AddBonus} />
       <Stack.Screen name="AddBonusForm" component={AddBonusForm} />
       <Stack.Screen name="BonusTeam" component={BonusTeam} />
       <Stack.Screen name="Contests" component={Contests} />
-      <Stack.Screen name="AddContest" component={AddContest} /> 
+      <Stack.Screen name="AddContest" component={AddContest} />
       <Stack.Screen name="Highlights" component={Highlights} />
-      <Stack.Screen name="AddHighlight" component={AddHighlight} /> 
+      <Stack.Screen name="AddHighlight" component={AddHighlight} />
       <Stack.Screen name="AddContestForm" component={AddContestForm} />
       <Stack.Screen name="Customers" component={Customers} />
       <Stack.Screen name="Commissions" component={Commissions} />
@@ -237,6 +247,38 @@ function Root() {
       <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
       <Stack.Screen name="CustomerDetail" component={CustomerDetail} />
       <Stack.Screen name="Chat" component={Chat} />
+    </Drawer.Navigator>
+  );
+};
+function Root() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="CustomDrawer" component={Sidebar} />
+      <Stack.Screen name="Tabs" component={MyTabs} />
+      <Stack.Screen name="Bonuses" component={Bonuses} />
+      <Stack.Screen name="AddBonus" component={AddBonus} />
+      <Stack.Screen name="AddBonusForm" component={AddBonusForm} />
+      <Stack.Screen name="BonusTeam" component={BonusTeam} />
+      <Stack.Screen name="Contests" component={Contests} />
+      <Stack.Screen name="AddContest" component={AddContest} />
+      <Stack.Screen name="Highlights" component={Highlights} />
+      <Stack.Screen name="AddHighlight" component={AddHighlight} />
+      <Stack.Screen name="AddContestForm" component={AddContestForm} />
+      <Stack.Screen name="Customers" component={Customers} />
+      <Stack.Screen name="Commissions" component={Commissions} />
+      <Stack.Screen name="CommissionDetail" component={CommissionDetail} />
+      <Stack.Screen name="CommissionSettings" component={CommissionSettings} />
+      <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="AddCustomers" component={AddCustomers} />
+      <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
+      <Stack.Screen name="CustomerDetail" component={CustomerDetail} />
+      <Stack.Screen name="ReportDetails" component={ReportDetails} />
+      <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="Reports" component={Reports} />
+      <Stack.Screen name="IndividualPerformance" component={IndividualPerformance} />
     </Stack.Navigator>
   );
 }
