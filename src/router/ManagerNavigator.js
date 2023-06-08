@@ -82,7 +82,7 @@ const DashboardNavigator = () => {
     <DashboardStack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="Dashboard">
-      <DashboardStack.Screen name="MainDashboard" component={Dashboard} />
+      <DashboardStack.Screen name="Dashboard" component={Dashboard} />
       <DashboardStack.Screen name="Reports" component={Reports} />
       <DashboardStack.Screen name="Commissions" component={Commissions} />
     </DashboardStack.Navigator>

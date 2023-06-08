@@ -114,13 +114,9 @@ const Customers = ({navigation}) => {
               placeholder="Search"
               width={screenWidth / 2.1}
               borderRadius="11"
+              backgroundColor={Colors.white}
               py="3"
-              px="1"
-              mr={'5'}
               fontSize="18"
-              style={{
-                backgroundColor: Colors.white,
-              }}
               onChangeText={onChangeSearch}
               value={searchQuery}
               InputLeftElement={

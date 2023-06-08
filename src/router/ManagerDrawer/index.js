@@ -18,11 +18,11 @@ import { useDispatch } from 'react-redux';
 const ManagerDrawer = ({navigation}) => {
   const dispatch = useDispatch();
   const menu = [
-    {title: 'Dashboard', image: images.dashboard},
-    {title: 'Goals', image: images.goals},
-    {title: 'Team', image: images.team},
+    {title: 'DashboardTab', image: images.dashboard},
+    {title: 'GoalsTab', image: images.goals},
+    {title: 'TeamTab', image: images.team},
     {title: 'Customers', image: images.customers},
-    {title: 'Discussion', image: images.discussion},
+    {title: 'DiscussionTab', image: images.discussion},
     {
       title: 'Commissions',
       image: images.commissions,
@@ -74,7 +74,7 @@ const ManagerDrawer = ({navigation}) => {
                   style={styles.menuImage}
                   resizeMode="contain"
                 />
-                <Text style={styles.menuTitle}>{item.title}</Text>
+                <Text style={styles.menuTitle}>{item.title.replace("Tab","")}</Text>
               </TouchableOpacity>
             );
           })}
