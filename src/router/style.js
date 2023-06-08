@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native';
+import {scale} from 'react-native-size-matters';
+import {Colors} from '../utils/colors';
 
 const styles = StyleSheet.create({
   tabIcon: {
-    width: 31.67,
-    height: 31.67,
+    width: scale(24),
+    height: scale(24),
     resizeMode: 'contain',
     tintColor: '#27A8F0',
   },
@@ -12,6 +14,14 @@ const styles = StyleSheet.create({
     height: 68,
     resizeMode: 'contain',
     // top:(-25)
+  },
+  tabbarItem: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabText: {
+    fontSize: scale(11),
+    color: Colors.lightBlue3,
   },
 });
 

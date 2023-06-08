@@ -11,7 +11,7 @@ const reduxConfig = {
   combineReducers: persistCombineReducers.bind(null, {
     key: `@Goals:redux`,
     storage: AsyncStorage,
-    whitelist: ['session'],
+    whitelist: ['user'],
     version: 1,
     throttle: 2000,
   }),

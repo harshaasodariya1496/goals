@@ -1,13 +1,15 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
-import {Colors} from '../../utils/colors';
+import {Colors} from '../../../utils/colors';
+import {scale} from 'react-native-size-matters';
+const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   bg: {
-    height: 564,
+    height: scale(screenHeight / 2),
     paddingHorizontal: 20,
     alignItems: 'center',
     paddingTop: 70,
@@ -40,27 +42,23 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 13,
   },
-
-  userImage: {
-    width: 81,
-    height: 85,
-    borderRadius: 65,
-  },
-  userTitle: {
-    fontSize: 20,
+  tableAmt: {
+    width: scale(60),
+    fontSize: scale(12),
     color: Colors.black,
-    marginVertical: 10,
+    textAlign: 'center',
   },
-  amt: {
-    fontSize: 22,
-    color: Colors.lightBlue3,
-    fontWeight: 300,
-    marginTop: 30,
+  monthText: {
+    width: scale(60),
+    fontSize: scale(12),
+    color: Colors.lightBlue4,
   },
-
-  graphContent: {
-    height: 170,
-    width: '100%',
+  listContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItem: 'center',
+    marginVertical: scale(10),
+    marginHorizontal: scale(15),
   },
 });
 

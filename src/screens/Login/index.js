@@ -5,18 +5,20 @@ import Button from '../../component/Button';
 import TextInput from '../../component/TextInput';
 
 import styles from './style';
+import {useDispatch} from 'react-redux';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isError, setIsError] = useState(false);
-
+  const dispatch = useDispatch();
   const onLogin = () => {
     // if (email === '' || password === '') {
     //   setIsError(true);
     // } else {
     //   setIsError(false);
-      navigation.navigate('CustomDrawer');
+    dispatch.user.setUserDetail({userType: email});
+    navigation.navigate('ManagerDrawer');
     // }
   };
   return (

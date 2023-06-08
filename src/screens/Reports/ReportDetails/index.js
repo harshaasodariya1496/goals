@@ -35,7 +35,7 @@ const pieChartData = {
     textSize: scale(12),
     form: 'CIRCLE',
     formSize: scale(15),
-    wordWrapEnabled: true, 
+    wordWrapEnabled: true,
   },
   data: {
     dataSets: [
@@ -60,19 +60,66 @@ const pieChartData = {
             processColor('#0CC7BC'),
           ],
 
-          valueTextSize: 18,
+          valueTextSize: scale(10),
           valueTextColor: processColor('black'),
-          // xValuePosition: "OUTSIDE_SLICE",
+          yValuePosition: 'INSIDE_SLICE',
           valueFormatter: '##',
           valueLineColor: processColor('green'),
           valueLinePart1Length: 0.5,
-          axisDependency: ['LEFT'],
+          // selectionShift:scale(50)
         },
       },
     ],
   },
   description: {
     text: '',
+  },
+};
+const data = {
+  legend: {
+    enabled: false,
+  },
+  data: {
+    dataSets: [
+      {
+        values: [
+          {y: 500000},
+          {y: 400000},
+          {y: 318000},
+          {y: 200000},
+          {y: 150000},
+          {y: 70000},
+        ],
+        config: {
+          colors: [processColor(Colors.green)],
+          highlightEnabled: false,
+          // valueFormatter: '$##',
+          valueTextColor: processColor(Colors.green),
+          valueTextSize: scale(12),
+        },
+      },
+    ],
+    config: {
+      barWidth: 0.4,
+    },
+  },
+  highlights: [{x: 3}, {x: 6}],
+  xAxis: {
+    valueFormatter: [
+      'cust 5',
+      'cust 6',
+      'cust 7',
+      'cust 4',
+      'cust 8',
+      'cust 3',
+    ],
+    granularityEnabled: true,
+    granularity: 1,
+    position: 'BOTTOM',
+    drawGridLines: false,
+    textColor: processColor(Colors.black),
+    textSize: scale(10),
+    labelCount: 6,
   },
 };
 const ReportDetails = ({navigation, route}) => {
@@ -97,6 +144,23 @@ const ReportDetails = ({navigation, route}) => {
                 }}>
                 Top Customers
               </Text>
+              <BarChart
+                xAxis={data.xAxis}
+                yAxis={{
+                  left: {drawGridLines: false, enabled: false},
+                  right: {drawGridLines: false, enabled: false},
+                }}
+                pinchZoom={false}
+                doubleTapToZoomEnabled={false}
+                chartDescription={{text: ''}}
+                drawBarShadow={true}
+                drawValueAboveBar={true}
+                data={data.data}
+                animation={{durationY: 1500}}
+                highlights={data.highlights}
+                legend={data.legend}
+                style={{height: 200, width: '100%', marginTop: 10}}
+              />
             </View>
           </View>
           <View style={styles.bgContent}>
@@ -109,7 +173,7 @@ const ReportDetails = ({navigation, route}) => {
                 Top Performing Productss
               </Text>
               <PieChart
-                style={{height: scale(300), width: '100%', borderWidth: 1}}
+                style={{height: scale(300), width: '100%'}}
                 logEnabled={true}
                 chartBackgroundColor={processColor('white')}
                 data={pieChartData.data}
@@ -122,9 +186,9 @@ const ReportDetails = ({navigation, route}) => {
                 usePercentValues={false}
                 centerTextRadiusPercent={0}
                 holeRadius={85}
+                labelRotationAngle={45}
                 drawEntryLabels={false}
-                holeColor={processColor('rgba(0,0,0,0)')}
-                transparentCircleRadius={0}
+                holeColor={processColor('rgba(0,0,0,0)')} 
                 maxAngle={360}
                 onChange={event => console.log(event.nativeEvent)}
               />
@@ -132,7 +196,7 @@ const ReportDetails = ({navigation, route}) => {
           </View>
           <View style={styles.bgContent}>
             <Pressable
-              style={{alignItems: 'center'}}
+              style={{flexDirection: 'row', justifyContent: 'center',alignItems: 'center',}}
               onPress={() => {
                 navigation.navigate('IndividualPerformance');
               }}>
@@ -140,9 +204,16 @@ const ReportDetails = ({navigation, route}) => {
                 style={{
                   fontSize: scale(16),
                   color: Colors.lightBlue,
+                  marginRight:10,
+                  bottom:scale(2)
                 }}>
                 Individual Preformance
               </Text>
+              <Octicons
+                name={'chevron-right'}
+                size={scale(16)}
+                color={Colors.lightBlue}
+              />
             </Pressable>
           </View>
         </ScrollView>

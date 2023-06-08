@@ -4,19 +4,35 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {Colors} from '../utils/colors';
 
-const Table = ({style, data, tableBody, tableHead, tableStyle}, props) => {
+const Table = (
+  {
+    style,
+    data,
+    tableBody,
+    tableHead,
+    tableStyle,
+    listContainerStyle,
+    tableFooter,
+  },
+  props,
+) => {
   return (
     <View style={[tableStyle ? tableStyle : styles.tableContainer]}>
-       
-        <ScrollView
-          horizontal
-          nestedScrollEnabled
-          showsHorizontalScrollIndicator={false}>
-          <View>
-            {tableHead}
-            <FlatList data={data} renderItem={tableBody} />
-          </View>
-        </ScrollView> 
+      <ScrollView
+        horizontal
+        nestedScrollEnabled
+        showsHorizontalScrollIndicator={false}>
+        <View>
+          {tableHead}
+          <FlatList
+            nestedScrollEnabled={true}
+            data={data}
+            renderItem={tableBody}
+            style={listContainerStyle}
+          />
+          {tableFooter ? tableFooter : null}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -30,7 +46,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
-    paddingHorizontal:20
+    paddingHorizontal: 20,
   },
   tableHead: {
     backgroundColor: Colors.grey,

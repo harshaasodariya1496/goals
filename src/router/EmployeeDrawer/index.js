@@ -8,30 +8,32 @@ import {
 } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
-import {images} from '../../utils/images';
-
 import styles from './style';
 import {Colors} from '../../utils/colors';
+import {DrawerActions} from '@react-navigation/native';
+import {images} from '../../utils/images';
+import {useDispatch} from 'react-redux';
 
-const Sidebar = ({navigation}) => {
+const EmployeeDrawer = ({navigation},props) => {
+  const dispatch = useDispatch();
   const menu = [
     {title: 'Dashboard', image: images.dashboard},
     {title: 'Goals', image: images.goals},
-    {title: 'Team', image: images.team},
     {title: 'Customers', image: images.customers},
     {title: 'Discussion', image: images.discussion},
     {
       title: 'Commissions',
       image: images.commissions,
     },
-    {title: 'Bonuses', image: images.bonuses},
-    {title: 'Contests', image: images.contest},
     {title: 'Highlights', image: images.highlights},
-    {title: 'Reports', image: images.reports},
   ];
 
   const onClose = () => {
-    navigation.goBack();
+    console.log('====================================');
+    console.log(props);
+    console.log('====================================');
+    // navigation.dispatch(DrawerActions.closeDrawer());
+    navigation.navigate('EmpTab');
   };
 
   return (
@@ -61,6 +63,7 @@ const Sidebar = ({navigation}) => {
               <TouchableOpacity
                 key={index}
                 onPress={() => {
+                  navigation.closeDrawer();
                   navigation.navigate(item.title);
                 }}
                 style={styles.menuView}>
@@ -76,6 +79,7 @@ const Sidebar = ({navigation}) => {
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Login');
+              dispatch.user.setUserDetail(null);
             }}
             style={styles.menuView}>
             <AntDesignIcon name={'logout'} size={30} color={Colors.white} />
@@ -90,4 +94,4 @@ const Sidebar = ({navigation}) => {
   );
 };
 
-export default Sidebar;
+export default EmployeeDrawer;

@@ -110,7 +110,7 @@ const Highlights = ({navigation, route}) => {
             <View style={styles.headerMain}>
               <View style={styles.headerImageContent}>
                 <Image
-                  source={images.bonuses}
+                  source={images.highlights}
                   style={styles.menuImage}
                   resizeMode="contain"
                 />

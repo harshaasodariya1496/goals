@@ -18,6 +18,7 @@ import {Colors} from '../../utils/colors';
 import Button from '../../component/Button';
 
 import styles from './style';
+import { useDrawerStatus } from '@react-navigation/drawer';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -63,7 +64,8 @@ const Discussion = ({navigation}) => {
       count: 0,
     },
   ];
-
+  const isDrawerOpen = useDrawerStatus() === 'open';
+  console.log("isDrawerOpen",isDrawerOpen);
   return (
     <KeyboardAvoidingScrollView
       style={styles.container}
