@@ -34,7 +34,7 @@ const AddBonusForm = ({navigation}) => {
   const [isMonetary, setIsMonetary] = useState(false);
   const [isExperience, setIsExperience] = useState(false);
   return (
-    <KeyboardAvoidingScrollView style={styles.container}>
+    <KeyboardAvoidingScrollView>
       <ImageBackground source={images.background}>
         <Header onBackPress={() => navigation.goBack()} />
         <View style={styles.titleSection}>

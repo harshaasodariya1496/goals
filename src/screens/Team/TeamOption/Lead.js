@@ -10,7 +10,7 @@ import {
   Pressable,
 } from 'react-native';
 import {useState} from 'react';
-import { scale } from 'react-native-size-matters';
+import {scale} from 'react-native-size-matters';
 import {Icon, Input} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -121,9 +121,8 @@ const Lead = ({navigation}) => {
               px="1"
               mr={'5'}
               fontSize="18"
-              style={{
-                backgroundColor: Colors.white,
-              }}
+              backgroundColor={Colors.white}
+              
               onChangeText={onChangeSearch}
               value={searchQuery}
               InputLeftElement={
@@ -156,15 +155,37 @@ const Lead = ({navigation}) => {
           data={tableData}
           tableHead={
             <View style={styles.tableHead}>
-              <Text style={[styles.headFirstCol,{fontWeight: 600}]}>Company</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 50}]}>Actions</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 99}]}>Name</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 103}]}>Role</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 194}]}>Email</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 103}]}>Phone</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 77}]}>Source</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 86}]}>Date</Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600,width: 90}]}>LeadOwner</Text>
+              <Text style={[styles.headFirstCol, {fontWeight: 600}]}>
+                Company
+              </Text>
+              <Text
+                style={[
+                  styles.headSecCol,
+                  {fontWeight: 600, width: 55, marginLeft: 10},
+                ]}>
+                Actions
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 99}]}>
+                Name
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 103}]}>
+                Role
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 194}]}>
+                Email
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 103}]}>
+                Phone
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 77}]}>
+                Source
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 86}]}>
+                Date
+              </Text>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 90}]}>
+                LeadOwner
+              </Text>
             </View>
           }
           tableBody={({item, index}) => (
@@ -189,8 +210,9 @@ const Lead = ({navigation}) => {
                   flexDirection: 'row',
                   alignItems: 'center',
                   marginLeft: 10,
-                  width: 50,
+                  width: 55,
                   marginRight: 45,
+                  justifyContent: 'center', 
                 }}>
                 <Text
                   style={[
@@ -208,6 +230,7 @@ const Lead = ({navigation}) => {
                     name="chevron-down-outline"
                     size={20}
                     color={Colors.lightBlue4}
+                    style={{position: 'absolute',right:0}}
                   />
                 )}
               </View>

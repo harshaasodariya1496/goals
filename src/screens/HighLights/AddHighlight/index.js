@@ -58,7 +58,7 @@ const AddHighlight = ({navigation}) => {
             placeHolder={'Select Team Member'}
             value={selectMember}
             buttonTextStyle={{
-              color: selectMember ? Colors.black : Colors.lightBlue4,
+              color: Colors.lightBlue4,
             }}
           />
           <Dropdown
@@ -68,7 +68,7 @@ const AddHighlight = ({navigation}) => {
             }}
             placeHolder={'Is being recognized for...'}
             buttonTextStyle={{
-              color: selectAnother ? Colors.black : Colors.lightBlue4,
+              color: Colors.lightBlue4,
             }}
             value={selectAnother}
           />

@@ -142,8 +142,8 @@ const AddTeam = ({navigation}) => {
     <View style={styles.midContent}>
       <FlatList
         data={userList}
+        style={{marginTop: 20}}
         showsVerticalScrollIndicator={false}
-        style={{height: (screenHeight / 10) * 4}}
         renderItem={({item, index}) => (
           <View
             key={index}
@@ -189,7 +189,7 @@ const AddTeam = ({navigation}) => {
       <FlatList
         data={userList}
         showsVerticalScrollIndicator={false}
-        style={{height: (screenHeight / 10) * 4.2, marginTop: 20}}
+        style={{marginTop: 20}}
         renderItem={({item, index}) => (
           <View
             key={index}
@@ -206,7 +206,7 @@ const AddTeam = ({navigation}) => {
                 marginHorizontal: 5,
               }}
             />
-            <View style={{width: '68%', marginHorizontal: 10}}>
+            <View style={{width: '60%', marginHorizontal: 10}}>
               <Text style={[styles.salaryUserName]}>{item.name}</Text>
               {editIndex === index ? (
                 <View>

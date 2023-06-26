@@ -23,6 +23,7 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 const AddDeal = ({navigation}) => {
   const [customer, setCustomer] = useState('');
   const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedSalesAssociate, setSelectedSalesAssociate] = useState('');
   const [fName, setFName] = useState('');
   const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
@@ -72,7 +73,14 @@ const AddDeal = ({navigation}) => {
           <Text style={{fontSize: 32, marginVertical: 40, color: Colors.white}}>
             Add New Deal
           </Text>
-
+          <Dropdown
+            data={data}
+            onSelect={(selectedItem, index) => {
+              setSelectedSalesAssociate(selectedItem);
+            }}
+            placeHolder={'Sales Associate'}
+            value={selectedSalesAssociate}
+          />
           <TextInput
             placeholder="Customer"
             value={customer}

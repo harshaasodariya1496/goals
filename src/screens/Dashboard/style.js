@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../utils/colors';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   container: {
@@ -88,14 +89,14 @@ const styles = StyleSheet.create({
   },
   detailsContent: {
     backgroundColor: '#F5F6FA',
-    width: 90,
+    width: scale(75),
     // height: 90,
     padding: 5,
     paddingVertical: 16,
     borderRadius: 13,
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 18,
+    marginBottom: 18, 
   },
   userSubTitle: {
     textAlign: 'center',

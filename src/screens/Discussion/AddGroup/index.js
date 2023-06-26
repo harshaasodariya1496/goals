@@ -18,6 +18,7 @@ import {Colors} from '../../../utils/colors';
 
 import styles from './style';
 import Button from '../../../component/Button';
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -54,7 +55,7 @@ const AddGroup = ({navigation}) => {
     let arr = userList;
     arr[index].isChecked = !arr[index].isChecked;
 
-    let isSelect = arr.every(e => e.isChecked); 
+    let isSelect = arr.every(e => e.isChecked);
     if (isSelect) {
       setIsSelectedAll(true);
     } else {
@@ -68,7 +69,7 @@ const AddGroup = ({navigation}) => {
         data={userList}
         style={{
           paddingTop: 15,
-          height: (screenHeight / 100) * 40,
+          // height: (screenHeight / 100) * 40,
         }}
         renderItem={({item, index}) => (
           <View
@@ -143,8 +144,8 @@ const AddGroup = ({navigation}) => {
       <View style={styles.container}>
         <ImageBackground
           style={{
-            height: (screenHeight / 100) * 24,
-            paddingTop: 40,
+            height: (screenHeight / 10) * 2.6,
+            paddingTop: scale(25),
             paddingHorizontal: 20,
           }}
           source={images.background}>
@@ -219,7 +220,7 @@ const AddGroup = ({navigation}) => {
             {/* </CircleCheckBox> */}
             {renderUserList}
 
-            <View style={{alignItems: 'center', marginTop: 10}}>
+            <View style={{alignItems: 'center', marginTop: 10,marginBottom:scale(30)}}>
               <Button
                 title={'Start The Chat'}
                 style={{

@@ -28,7 +28,7 @@ const Goals = ({navigation}) => {
       key={index}
       style={[
         styles.midContent,
-        {width: screenWidth - 100, height: 480, padding: 32},
+        {width: scale(screenWidth - 160), height: 480, padding: 32},
       ]}>
       <View style={{alignItems: 'center'}}>
         <Image source={images.user} style={styles.userImage} />
@@ -98,7 +98,7 @@ const Goals = ({navigation}) => {
           renderItem={renderItem}
           hasParallaxImages
           removeClippedSubviews={false}
-          itemWidth={screenWidth - 80}
+          itemWidth={scale(screenWidth - 140)}
           inactiveSlideScale={1}
           inactiveSlideOpacity={1}
           activeSlideAlignment={'start'}

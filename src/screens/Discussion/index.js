@@ -17,8 +17,8 @@ import {images} from '../../utils/images';
 import {Colors} from '../../utils/colors';
 import Button from '../../component/Button';
 
-import styles from './style';
-import { useDrawerStatus } from '@react-navigation/drawer';
+import styles from './style'; 
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -63,9 +63,7 @@ const Discussion = ({navigation}) => {
       date: 'Oct 12',
       count: 0,
     },
-  ];
-  const isDrawerOpen = useDrawerStatus() === 'open';
-  console.log("isDrawerOpen",isDrawerOpen);
+  ]; 
   return (
     <KeyboardAvoidingScrollView
       style={styles.container}
@@ -73,8 +71,8 @@ const Discussion = ({navigation}) => {
       <View style={styles.container}>
         <ImageBackground
           style={{
-            height: (screenHeight / 100) * 23,
-            paddingTop: 40,
+            height: (screenHeight / 10) * 2.5,
+            paddingTop: scale(25),
             paddingHorizontal: 16,
           }}
           source={images.background}>
@@ -103,8 +101,8 @@ const Discussion = ({navigation}) => {
               py="3"
               px="1"
               fontSize="18"
+              backgroundColor={Colors.white}
               style={{
-                backgroundColor: Colors.white,
                 height: 50,
               }}
               onChangeText={onChangeSearch}
@@ -138,7 +136,8 @@ const Discussion = ({navigation}) => {
           data={userMsgList}
           style={{
             paddingTop: 15,
-            height: (screenHeight / 100) * 66,
+            marginBottom:scale(30)
+            // height: (screenHeight / 100) * 66,
           }}
           renderItem={({item, index}) => (
             <TouchableOpacity

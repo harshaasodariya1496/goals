@@ -1,13 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {scale} from 'react-native-size-matters';
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import {View, Image, TouchableOpacity, Text, Dimensions} from 'react-native';
 import {CommonActions, DrawerActions} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator, useDrawerStatus} from '@react-navigation/drawer';
-import Login from '../screens/Login';
-import Sidebar from './EmployeeDrawer';
-
+import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import Team from '../screens/Team';
 import AddTeam from '../screens/Team/AddTeam';
 import Lead from '../screens/Team/TeamOption/Lead';
@@ -22,7 +19,6 @@ import TeamActions from '../screens/Team/TeamOption/TeamActions';
 import SalesDetail from '../screens/Team/TeamOption/SalesDetails';
 import Opportunities from '../screens/Team/TeamOption/Opportunities';
 import AddOpportunity from '../screens/Team/TeamOption/AddOpportunity';
- 
 
 import Setting from '../screens/Setting';
 
@@ -30,12 +26,10 @@ import Customers from '../screens/Customers';
 import AddCustomers from '../screens/Customers/AddCustomer';
 import ViewCustomer from '../screens/Customers/ViewCustomer';
 import CustomerDetail from '../screens/Customers/ViewCustomer/CustomerDetail';
- 
 
 import Chat from '../screens/Discussion/Chat';
 import Discussion from '../screens/Discussion';
 import AddGroup from '../screens/Discussion/AddGroup';
- 
 
 import Highlights from '../screens/HighLights';
 import AddHighlight from '../screens/HighLights/AddHighlight';
@@ -49,9 +43,10 @@ import AddDeal from '../screens/AddDeal';
 import Dashboard from '../screens/Employee/Dashboard';
 import Goals from '../screens/Employee/Goals';
 import Commissions from '../screens/Employee/Commissions';
+import SplashScreen from 'react-native-splash-screen';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const Tab = CurvedBottomBar;
@@ -61,31 +56,26 @@ const Menu = ({navigation}) => {
 };
 
 const DashboardNavigator = () => {
-  const DashboardStack = createNativeStackNavigator();
+  const DashboardStack = createStackNavigator();
 
   return (
-    <DashboardStack.Navigator
-      screenOptions={{headerShown: false}}
-      initialRouteName="Dashboard">
-      <DashboardStack.Screen name="Dashboard" component={Dashboard} />
-      <DashboardStack.Screen name="Commissions" component={Commissions} />
+    <DashboardStack.Navigator screenOptions={{headerShown: false}}>
+      <DashboardStack.Screen name="DashboardMain" component={Dashboard} />
     </DashboardStack.Navigator>
   );
 };
 
 const GoalNavigator = () => {
-  const GoalStack = createNativeStackNavigator();
+  const GoalStack = createStackNavigator();
 
   return (
-    <GoalStack.Navigator
-      screenOptions={{headerShown: false}}
-      initialRouteName="Goals">
-      <GoalStack.Screen name="Goals" component={Goals} /> 
+    <GoalStack.Navigator screenOptions={{headerShown: false}}>
+      <GoalStack.Screen name="GoalMain" component={Goals} />
     </GoalStack.Navigator>
   );
 };
 const HomeNavigator = () => {
-  const HomeStack = createNativeStackNavigator();
+  const HomeStack = createStackNavigator();
 
   return (
     <HomeStack.Navigator
@@ -97,27 +87,22 @@ const HomeNavigator = () => {
   );
 };
 const DiscussionNavigator = () => {
-  const DiscussionStack = createNativeStackNavigator();
+  const DiscussionStack = createStackNavigator();
 
   return (
     <DiscussionStack.Navigator screenOptions={{headerShown: false}}>
-      <DiscussionStack.Screen
-        name="DiscussionContainer"
-        component={Discussion}
-      />
+      <DiscussionStack.Screen name="DiscussionMain" component={Discussion} />
       <DiscussionStack.Screen name="AddGroup" component={AddGroup} />
       <DiscussionStack.Screen name="Setting" component={Setting} />
     </DiscussionStack.Navigator>
   );
 };
 const MenuNavigator = () => {
-  const MenuStack = createNativeStackNavigator();
+  const MenuStack = createStackNavigator();
 
   return (
     <MenuStack.Navigator screenOptions={{headerShown: false}}>
       <MenuStack.Screen name="Menu" component={Menu} />
-      <MenuStack.Screen name="Customers" component={Customers} />
-      <MenuStack.Screen name="Commissions" component={Commissions} />
     </MenuStack.Navigator>
   );
 };
@@ -126,23 +111,41 @@ function EmpTab({navigation}) {
   const _renderIcon = (routeName, selectedTab) => {
     let image = '';
     switch (routeName) {
-      case 'HomeTab':
+      case 'Home':
         image = images.dashboard;
         break;
-      case 'GoalTab':
+      case 'Goals':
         image = images.goals;
         break;
-      case 'DiscussionTab':
+      case 'Discussion':
         image = images.discussion;
         break;
-      case 'MenuTab':
+      case 'Menu':
         image = images.menu;
         break;
     }
 
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Image source={image} style={styles.tabIcon} />
+        <Image
+          source={image}
+          style={[
+            styles.tabIcon,
+            {
+              tintColor:
+                routeName == selectedTab ? Colors.lightBlue : Colors.grey2,
+            },
+          ]}
+        />
+        <Text
+          style={[
+            styles.tabText,
+            {
+              color: routeName == selectedTab ? Colors.lightBlue : Colors.grey2,
+            },
+          ]}>
+          {routeName.replace('Tab', '')}
+        </Text>
       </View>
     );
   };
@@ -154,8 +157,9 @@ function EmpTab({navigation}) {
       <TouchableOpacity
         onPress={() => {
           console.log('call', routeName);
-          if (routeName == 'MenuTab') navigation.navigate('EmployeeDrawer');
-          // navigation.toggleDrawer();
+          if (routeName == 'Menu')
+            navigation.dispatch(DrawerActions.toggleDrawer());
+          // navigation.navigate('Sidebar');
           else
             navigation.dispatch(
               CommonActions.reset({
@@ -166,43 +170,37 @@ function EmpTab({navigation}) {
         }}
         style={styles.tabbarItem}>
         {_renderIcon(routeName, selectedTab)}
-        <Text style={styles.tabText}>{routeName.replace('Tab', '')}</Text>
       </TouchableOpacity>
     );
   };
   return (
     <Tab.Navigator
-      initialRouteName="DashboardTab"
-      height={scale(50)}
-      type={'DOWN'}
+      initialRouteName="Home"
+      height={scale(55)} 
       bgColor={Colors.white}
       circlePosition={'CENTER'}
-      circleWidth={50}
+      circleWidth={scale(40)}
       tabBar={renderTabBar}
       renderCircle={({selectedTab, navigate}) => (
         <TouchableOpacity
-          style={{top: scale(-20)}}
+          style={{top: scale(-23), alignItems: 'center'}}
           onPress={() => {
-            navigate('Goals');
+            navigate('Dashboard');
           }}>
           <Image source={images.tabLogo} style={[styles.tabHomeIcon]} />
         </TouchableOpacity>
       )}
       screenOptions={{headerShown: false}}>
+      <Tab.Screen name="Home" component={DashboardNavigator} position="LEFT" />
+      <Tab.Screen name="Goals" component={GoalNavigator} position="LEFT" />
+      <Tab.Screen name="Dashboard" component={HomeNavigator} />
       <Tab.Screen
-        name="HomeTab"
-        component={DashboardNavigator}
-        position="LEFT"
-      />
-      <Tab.Screen name="GoalTab" component={GoalNavigator} position="LEFT" />
-      <Tab.Screen name="DashboardTab" component={HomeNavigator} />
-      <Tab.Screen
-        name="DiscussionTab"
+        name="Discussion"
         component={DiscussionNavigator}
         position="RIGHT"
       />
       <Tab.Screen
-        name="MenuTab"
+        name="Menu"
         component={MenuNavigator}
         position="RIGHT"
         listeners={({navigation}) => ({
@@ -216,9 +214,12 @@ function EmpTab({navigation}) {
   );
 }
 const EmployeeDrawerNavigator = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Drawer.Navigator
-      initialRouteName="EmpTab"
+      initialRouteName="Emp"
       drawerContent={props => <EmployeeDrawer {...props} />}
       screenOptions={{
         headerShown: false,
@@ -226,27 +227,24 @@ const EmployeeDrawerNavigator = () => {
           width: screenWidth,
         },
       }}>
-      <Drawer.Screen name="EmployeeDrawer" component={EmployeeDrawer} />
-      <Drawer.Screen name="EmpTab" component={EmpTab} />
+      <Drawer.Screen name="Emp" component={EmpTab} />
+      <Drawer.Screen name="Commissions" component={Commissions} />
       <Drawer.Screen name="Highlights" component={Highlights} />
       <Drawer.Screen name="AddHighlight" component={AddHighlight} />
       <Drawer.Screen name="Customers" component={Customers} />
-      <Drawer.Screen name="Commissions" component={Commissions} /> 
+      <Drawer.Screen name="AddGroup" component={AddGroup} />
       <Drawer.Screen name="Setting" component={Setting} />
       <Drawer.Screen name="AddCustomers" component={AddCustomers} />
       <Drawer.Screen name="ViewCustomers" component={ViewCustomer} />
       <Drawer.Screen name="CustomerDetail" component={CustomerDetail} />
       <Drawer.Screen name="Chat" component={Chat} />
-      <Drawer.Screen name="Dashboard" component={Dashboard} />
     </Drawer.Navigator>
   );
 };
 
 function EmployeeNavigator() {
   return (
-    <Stack.Navigator
-      initialRouteName="EmployeeDrawerNavigator"
-      screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
         name="EmployeeDrawerNavigator"
         component={EmployeeDrawerNavigator}

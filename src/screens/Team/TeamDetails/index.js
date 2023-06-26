@@ -21,6 +21,7 @@ import Button from '../../../component/Button';
 import styles from './style';
 import Table from '../../../component/Table';
 import {chartData, numberWithCommas} from '../../../utils/constant';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -163,7 +164,7 @@ const TeamDetails = ({navigation}) => {
           </View>
         </View>
       </ImageBackground>
-      <View style={{top: -90}}>
+      <View style={{top: scale(-100)}}>
         <View style={styles.midContent}>
           <Text style={styles.cardAmtText}>$1,500,000</Text>
           <Text style={styles.cardText}>Annual Sales Goal</Text>
@@ -190,7 +191,7 @@ const TeamDetails = ({navigation}) => {
         <View style={styles.midContent}>
           <Text style={styles.cardAmtText}>$1,500,000</Text>
           <Text style={styles.cardText}>Monthly Sales Goal</Text>
-         
+
           <LineChart
             style={{height: 150, width: '100%'}}
             data={lineChartData.data}
@@ -199,7 +200,6 @@ const TeamDetails = ({navigation}) => {
               enabled: false,
             }}
             animation={{durationX: 1000}}
-
             xAxis={lineChartData.xAxis}
             yAxis={lineChartData.yAxis}
             pinchZoom={false}
@@ -253,7 +253,7 @@ const TeamDetails = ({navigation}) => {
                       color: Colors.white,
                     }}
                     onPress={() => {
-                      navigation.navigate('TeamOption');
+                      navigation.navigate('AddDeal');
                     }}
                   />
                 );
@@ -335,18 +335,25 @@ const TeamDetails = ({navigation}) => {
                     style={{
                       backgroundColor: Colors.green,
                       height: 46,
-                      marginRight: 15,
+                      // marginRight: 15,
                     }}
-                    textStyle={{fontSize: 14}}
+                    textStyle={{
+                      fontSize: scale(14),
+                      marginHorizontal: scale(10),
+                    }}
                   />
                   <Button
                     title={'Lost'}
                     style={{
                       backgroundColor: '#E2E9EF',
                       height: 46,
-                      marginRight: 15,
+                      // marginRight: 15,
                     }}
-                    textStyle={{fontSize: 14, color: Colors.darkGrey2}}
+                    textStyle={{
+                      fontSize: scale(14),
+                      color: Colors.darkGrey2,
+                      marginHorizontal: scale(10),
+                    }}
                   />
                   <Button
                     type={'icon'}
@@ -354,10 +361,10 @@ const TeamDetails = ({navigation}) => {
                       <Octicons
                         name="pencil"
                         size={21}
-                        color={Colors.darkGrey3}
-                        style={{marginRight: 15}}
+                        color={Colors.darkGrey2}
                       />
                     }
+                    // style={{marginRight: 15}}
                   />
                   <Button
                     type={'icon'}

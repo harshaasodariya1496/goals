@@ -25,46 +25,33 @@ import {scale} from 'react-native-size-matters';
 import Actions from './Actions';
 import TransactionHistory from './TransactionHistory';
 import Contact from './Contact';
+import Notes from './Notes';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const TabSection = ({onAddPress}) => {
   const [selectedTab, setSelectedTab] = useState('Actions');
-   
+
   const renderTable = () => {
     switch (selectedTab) {
       case 'Actions':
-        return <Actions />;
+        return <Actions onAddPress={onAddPress} />;
       case 'Transactions History':
         return <TransactionHistory />;
+      case 'Notes':
+        return <Notes />;
       case 'Contact':
         return <Contact />;
     }
   };
   return (
-    <View >
-      <View style={{marginTop: 45, marginBottom: 25, marginLeft: 20}}>
+    <View>
+      <View style={{marginTop: 20, marginBottom: 25, marginLeft: 20}}>
         <FlatList
-          data={['Actions', 'Transactions History', 'Notes', 'Contact', 'Add']}
+          data={['Actions', 'Transactions History', 'Notes', 'Contact']}
           showsHorizontalScrollIndicator={false}
           horizontal
           renderItem={({item, index}) => {
-            if (item === 'Add') {
-              return (
-                <Button
-                  type={'small'}
-                  title={`+ ${item}`}
-                  style={{
-                    backgroundColor: Colors.lightBlue4,
-                  }}
-                  textStyle={{
-                    color: Colors.white,
-                    fontSize: 13,
-                  }}
-                  onPress={onAddPress}
-                />
-              );
-            }
             return (
               <Pressable
                 onPress={() => {

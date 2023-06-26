@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   listHead: {
     fontSize: scale(14),
-    color: Colors.darkGrey1,
+    color: Colors.darkGrey2,
     marginBottom: scale(8),
   },
   listValue: {fontSize: scale(14), color: Colors.black},

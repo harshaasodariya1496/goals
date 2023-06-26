@@ -17,6 +17,7 @@ import FlagAmount from '../../component/FlagAmount';
 import styles from './style';
 import {BarChart} from 'react-native-charts-wrapper';
 import {chartData} from '../../utils/constant';
+import {scale} from 'react-native-size-matters';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Dashboard = ({navigation}) => {
@@ -25,7 +26,7 @@ const Dashboard = ({navigation}) => {
       key={index}
       style={[
         styles.midContent,
-        {width: screenWidth - 80, height: 430, marginRight: 100},
+        {width: screenWidth - 80, marginRight: 100, paddingBottom: scale(24)},
       ]}>
       <View style={{alignItems: 'center'}}>
         <Image source={images.user} style={styles.userImage} />

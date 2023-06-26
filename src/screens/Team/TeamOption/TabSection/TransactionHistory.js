@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Pressable,
   Image,
+  FlatList,
 } from 'react-native';
 import {Colors} from '../../../../utils/colors';
 import Table from '../../../../component/Table';
@@ -16,6 +17,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useState} from 'react';
 import {images} from '../../../../utils/images';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -78,43 +80,18 @@ const TransactionHistory = ({navigation, route}) => {
   ];
   return (
     <View style={{marginHorizontal: 20}}>
-      <Table
+      <FlatList
         data={tableData}
-        tableStyle={styles.tableContainer}
-        tableHead={
-          <View style={styles.tableHead}>
-            <Text style={[styles.headFirstCol, {fontWeight: 600,width:100}]}>
-              Sale Date
-            </Text>
-            <Text style={[styles.headSecCol, {width: 150, fontWeight: 600}]}>
-              Product/Service
-            </Text>
-            <Text style={[styles.headSecCol, {width: 60, fontWeight: 600}]}>
-              Amount
-            </Text>
-          </View>
-        }
-        tableBody={({item, index}) => (
-          <View
-            style={[
-              styles.bodyMain,
-              {
-                borderBottomWidth: index == tableData.length - 1 ? 0 : 2,
-              },
-            ]}
-            key={index}>
-            <Text style={[styles.headFirstCol,{width:100}]}>{item.date}</Text>
+        renderItem={({item, index}) => (
+          <View style={[styles.bodyMain]} key={index}>
             <View
-              style={{
-                width: 150,
-                marginRight:45
-              }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View
                 style={{
-                  flexDirection: 'row', 
+                  flexDirection: 'row',
                   alignItems: 'center',
                 }}>
-                <Text style={{color: Colors.black, fontSize: 14}}>
+                <Text style={{color: Colors.black, fontSize: scale(12)}}>
                   {item.product}
                 </Text>
                 {Boolean(item.productsList.length) && (
@@ -132,7 +109,7 @@ const TransactionHistory = ({navigation, route}) => {
                     <Text
                       style={{
                         color: Colors.lightBlue4,
-                        fontSize: 14,
+                        fontSize: scale(12),
                         marginRight: 5,
                       }}>
                       3
@@ -145,40 +122,35 @@ const TransactionHistory = ({navigation, route}) => {
                   </Pressable>
                 )}
               </View>
-              {selectedItem == index ? (
-                <View style={{paddingVertical: 10}}>
-                  {item.productsList.map((item, index) => {
-                    return (
-                      <Text
-                        style={{
-                          color: Colors.black,
-                          fontSize: 14,
-                          paddingVertical: 5,
-                        }}
-                        key={index}>
-                        {item}
-                      </Text>
-                    );
-                  })}
-                </View>
-              ) : null}
+              <Text style={styles.headSecCol}>
+                ${numberWithCommas(item.amount)}
+              </Text>
             </View>
-            <Text
-              style={[
-                styles.headSecCol,
-                {
-                  width: 60,
-                  marginRight: index == tableData.length - 1 ? 0 : 45,
-                  color: Colors.green,
-                },
-              ]}>
-              ${numberWithCommas(item.amount)}
+            <Text style={{fontSize: scale(12), color: Colors.darkGrey}}>
+              {item.date}
             </Text>
+            {selectedItem == index ? (
+              <View style={{paddingVertical: scale(10)}}>
+                {item.productsList.map((item, index) => {
+                  return (
+                    <Text
+                      style={{
+                        color: Colors.black,
+                        fontSize: scale(12),
+                        paddingVertical: 5,
+                      }}
+                      key={index}>
+                      {item}
+                    </Text>
+                  );
+                })}
+              </View>
+            ) : null}
           </View>
         )}
       />
 
-      <Table
+      {/* <Table
         data={tableData1}
         tableStyle={[styles.tableContainer, {marginVertical: 50}]}
         tableHead={
@@ -241,7 +213,7 @@ const TransactionHistory = ({navigation, route}) => {
             </Text>
           </View>
         )}
-      />
+      /> */}
     </View>
   );
 };
@@ -249,39 +221,20 @@ const TransactionHistory = ({navigation, route}) => {
 export default TransactionHistory;
 
 const styles = StyleSheet.create({
-  tableContainer: {
-    backgroundColor: Colors.white,
-    paddingVertical: 28,
-    borderRadius: 13,
-    paddingHorizontal: 20,
-  },
-  tableHead: {
-    backgroundColor: Colors.grey,
-    borderRadius: 5,
-    height: 53,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 22,
-  },
   headFirstCol: {
-    width: 200,
-    marginRight: 37,
-    fontSize: 14,
+    fontSize: scale(12),
     color: Colors.darkGrey3,
   },
   headSecCol: {
-    fontSize: 14,
-    color: Colors.darkGrey3,
-    marginRight: 45,
-    width: 60,
+    fontSize: scale(12),
+    color: Colors.green,
   },
 
   bodyMain: {
-    // height: 53,
-    paddingVertical: 15,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    paddingLeft: 22,
-    borderBottomColor: Colors.grey,
+    backgroundColor: Colors.white,
+    borderRadius: scale(10),
+    padding: scale(15),
+    marginBottom: scale(17),
+    paddingHorizontal: scale(25),
   },
 });

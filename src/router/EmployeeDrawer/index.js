@@ -32,8 +32,8 @@ const EmployeeDrawer = ({navigation},props) => {
     console.log('====================================');
     console.log(props);
     console.log('====================================');
-    // navigation.dispatch(DrawerActions.closeDrawer());
-    navigation.navigate('EmpTab');
+    navigation.dispatch(DrawerActions.closeDrawer());
+    // navigation.navigate('EmpTab');
   };
 
   return (
@@ -62,8 +62,7 @@ const EmployeeDrawer = ({navigation},props) => {
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => {
-                  navigation.closeDrawer();
+                onPress={() => { 
                   navigation.navigate(item.title);
                 }}
                 style={styles.menuView}>
@@ -78,7 +77,7 @@ const EmployeeDrawer = ({navigation},props) => {
           })}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Login');
+              // navigation.navigate('Login');
               dispatch.user.setUserDetail(null);
             }}
             style={styles.menuView}>

@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors} from '../../../../utils/colors';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -53,17 +54,32 @@ const styles = StyleSheet.create({
   addView: {width: '15%', alignItems: 'flex-end'},
   subContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingHorizontal: 37,
-    marginVertical: 16,
+    paddingHorizontal: scale(25),
+    marginTop: 16,
   },
-  emailContent: {flexDirection: 'row', width: '50%'},
+  emailContent: {flexDirection: 'row', width: '55%', alignItems: 'center'},
   emailText: {fontSize: 12, color: Colors.black, marginLeft: 12},
   phoneContent: {
     flexDirection: 'row',
-    paddingLeft: 12,
-    width: '50%',
+    marginLeft: scale(12),
+    alignItems: 'center',
+  },
+  processSubContent: {
+    padding: scale(5),
+    backgroundColor: Colors.white,
+    borderRadius: scale(3),
+    justifyContent: 'center',
+    alignItems: 'center',
+    minWidth: scale(65),
+  },
+  processText: {fontSize: scale(10), color: Colors.black},
+  processMain: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   divider: {borderBottomWidth: 2, borderBottomColor: Colors.grey1},
   btnContent: {
@@ -73,26 +89,30 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   mtoBtn: {
-    backgroundColor: Colors.green,
-    width: '50%',
+    backgroundColor: Colors.lightBlue,
+    width: '60%',
     paddingHorizontal: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: scale(10),
+    borderRadius: scale(10),
   },
   mtoText: {
-    fontSize: 14,
-    marginHorizontal: 0,
-    letterSpacing: 0,
+    fontSize: scale(12),
     textAlign: 'center',
   },
   niBtn: {
-    backgroundColor: '#E2E9EF',
-    width: '45%',
+    backgroundColor: Colors.orange,
+    width: '60%',
     paddingHorizontal: 0,
+    marginBottom: scale(20),
+    borderRadius: scale(10),
   },
   niText: {
     fontSize: 14,
     marginHorizontal: 0,
     letterSpacing: 0,
-    color: Colors.black,
+    color: Colors.white,
     textAlign: 'center',
   },
   modalBg: {
@@ -112,10 +132,11 @@ const styles = StyleSheet.create({
   },
   warningImage: {width: 124, height: 124, resizeMode: 'contain'},
   modalText: {
-    fontSize: 14,
+    fontSize: scale(12),
     color: Colors.black,
     textAlign: 'center',
     marginVertical: 30,
+    width:'70%'
   },
   modalBtnContainer: {
     flexDirection: 'row',
@@ -124,10 +145,10 @@ const styles = StyleSheet.create({
   },
   okBtn: {
     backgroundColor: Colors.green,
-    height: 48, 
+    height: 48,
     borderRadius: 10,
-    marginBottom:50
-  },  
+    marginBottom: 50,
+  },
 });
 
 export default styles;

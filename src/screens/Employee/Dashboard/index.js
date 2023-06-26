@@ -33,7 +33,7 @@ const Dashboard = ({navigation}) => {
       key={index}
       style={[
         styles.midContent,
-        {width: screenWidth - 80, minHeight: 430, marginRight: 100},
+        {width: screenWidth - 80, marginRight: 100, paddingBottom: scale(24)},
       ]}>
       <View style={{alignItems: 'center'}}>
         <Image source={images.user} style={styles.userImage} />
@@ -254,7 +254,7 @@ const Dashboard = ({navigation}) => {
                 <Text
                   style={[
                     styles.headSecCol,
-                    {color: Colors.darkGrey3, fontWeight: 200},
+                    {color: Colors.darkGrey3, fontWeight: '200'},
                   ]}>
                   ${numberWithCommas(item.dealSize)}
                 </Text>

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {scale} from 'react-native-size-matters';
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import {View, Image, TouchableOpacity, Text, Dimensions} from 'react-native';
-import {CommonActions, DrawerActions} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator, useDrawerStatus} from '@react-navigation/drawer';
-import Login from '../screens/Login';
-import Sidebar from './EmployeeDrawer';
+import {
+  CommonActions,
+  DrawerActions,
+  useNavigation,
+} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createDrawerNavigator,
+  useDrawerProgress,
+  useDrawerStatus,
+} from '@react-navigation/drawer';
 
 import Team from '../screens/Team';
 import AddTeam from '../screens/Team/AddTeam';
@@ -64,9 +70,11 @@ import {images} from '../utils/images';
 import {Colors} from '../utils/colors';
 
 import styles from './style';
+import SplashScreen from 'react-native-splash-screen';
+import AddDeal from '../screens/AddDeal';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const Tab = CurvedBottomBar;
@@ -76,21 +84,49 @@ const Menu = ({navigation}) => {
 };
 
 const DashboardNavigator = () => {
-  const DashboardStack = createNativeStackNavigator();
+  const DashboardStack = createStackNavigator();
 
   return (
     <DashboardStack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="Dashboard">
       <DashboardStack.Screen name="Dashboard" component={Dashboard} />
-      <DashboardStack.Screen name="Reports" component={Reports} />
+      <DashboardStack.Screen name="Bonuses" component={Bonuses} />
+      <DashboardStack.Screen name="Contests" component={Contests} />
+      <DashboardStack.Screen name="Highlights" component={Highlights} />
+      <DashboardStack.Screen name="AddBonus" component={AddBonus} />
+      <DashboardStack.Screen name="AddBonusForm" component={AddBonusForm} />
+      <DashboardStack.Screen name="BonusTeam" component={BonusTeam} />
+      <DashboardStack.Screen name="AddContest" component={AddContest} />
+      <DashboardStack.Screen name="AddHighlight" component={AddHighlight} />
+      <DashboardStack.Screen name="AddContestForm" component={AddContestForm} />
+      <DashboardStack.Screen name="Customers" component={Customers} />
       <DashboardStack.Screen name="Commissions" component={Commissions} />
+      <DashboardStack.Screen
+        name="CommissionDetail"
+        component={CommissionDetail}
+      />
+      <DashboardStack.Screen
+        name="CommissionSettings"
+        component={CommissionSettings}
+      />
+      <DashboardStack.Screen name="Setting" component={Setting} />
+      <DashboardStack.Screen name="AddCustomers" component={AddCustomers} />
+      <DashboardStack.Screen name="ViewCustomers" component={ViewCustomer} />
+      <DashboardStack.Screen name="CustomerDetail" component={CustomerDetail} />
+      <DashboardStack.Screen name="Chat" component={Chat} />
+      <DashboardStack.Screen name="Reports" component={Reports} />
+      <DashboardStack.Screen name="ReportDetails" component={ReportDetails} />
+      <DashboardStack.Screen
+        name="IndividualPerformance"
+        component={IndividualPerformance}
+      />
     </DashboardStack.Navigator>
   );
 };
 
 const TeamNavigator = () => {
-  const TeamStack = createNativeStackNavigator();
+  const TeamStack = createStackNavigator();
 
   return (
     <TeamStack.Navigator
@@ -98,36 +134,34 @@ const TeamNavigator = () => {
       initialRouteName="Team">
       <TeamStack.Screen name="Team" component={Team} />
       <TeamStack.Screen name="AddTeam" component={AddTeam} />
+      <TeamStack.Screen name="AddDeal" component={AddDeal} />
       <TeamStack.Screen name="TeamDetails" component={TeamDetails} />
-      <TeamStack.Screen name="TeamOption" component={TeamOption} />
-      <TeamStack.Screen name="TeamActions" component={TeamActions} />
-      <TeamStack.Screen name="Lead" component={Lead} />
-      <TeamStack.Screen name="LeadDetail" component={LeadDetail} />
-      <TeamStack.Screen name="SalesDetail" component={SalesDetail} />
-      <TeamStack.Screen name="Opportunities" component={Opportunities} />
-      <TeamStack.Screen name="AddLead" component={AddLead} />
-      <TeamStack.Screen name="Opportunity" component={Opportunity} />
-      <TeamStack.Screen name="AddOpportunity" component={AddOpportunity} />
-      <TeamStack.Screen name="Sale" component={Sale} />
-      <TeamStack.Screen name="AddSale" component={AddSale} />
     </TeamStack.Navigator>
   );
 };
 const HomeNavigator = () => {
-  const HomeStack = createNativeStackNavigator();
+  const HomeStack = createStackNavigator();
 
   return (
     <HomeStack.Navigator
-      initialRouteName="TeamActions"
+      // initialRouteName='Lead'
       screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name="TeamOption" component={TeamOption} />
       <HomeStack.Screen name="TeamActions" component={TeamActions} />
-      <HomeStack.Screen name="Goals" component={Goals} />
-      <HomeStack.Screen name="GoalDetails" component={GoalDetails} />
+      <HomeStack.Screen name="Lead" component={Lead} />
+      <HomeStack.Screen name="LeadDetail" component={LeadDetail} />
+      <HomeStack.Screen name="SalesDetail" component={SalesDetail} />
+      <HomeStack.Screen name="Opportunities" component={Opportunities} />
+      <HomeStack.Screen name="AddLead" component={AddLead} />
+      <HomeStack.Screen name="Opportunity" component={Opportunity} />
+      <HomeStack.Screen name="AddOpportunity" component={AddOpportunity} />
+      <HomeStack.Screen name="Sale" component={Sale} />
+      <HomeStack.Screen name="AddSale" component={AddSale} />
     </HomeStack.Navigator>
   );
 };
 const DiscussionNavigator = () => {
-  const DiscussionStack = createNativeStackNavigator();
+  const DiscussionStack = createStackNavigator();
 
   return (
     <DiscussionStack.Navigator screenOptions={{headerShown: false}}>
@@ -141,19 +175,18 @@ const DiscussionNavigator = () => {
   );
 };
 const MenuNavigator = () => {
-  const MenuStack = createNativeStackNavigator();
+  const MenuStack = createStackNavigator();
 
   return (
-    <MenuStack.Navigator screenOptions={{headerShown: false}}>
-      <MenuStack.Screen name="Menu" component={Menu} />
-      <MenuStack.Screen name="Customers" component={Customers} />
-      <MenuStack.Screen name="Commissions" component={Commissions} />
-    </MenuStack.Navigator>
+    <MenuStack.Navigator
+      screenOptions={{headerShown: false}}></MenuStack.Navigator>
   );
 };
 
-function ManagerTab({navigation}) {
-  const _renderIcon = (routeName, selectedTab) => {
+function ManagerTab() {
+  const navigation = useNavigation();
+
+  const _renderIcon = (routeName, selectedTab) => { 
     let image = '';
     switch (routeName) {
       case 'DashboardTab':
@@ -172,20 +205,36 @@ function ManagerTab({navigation}) {
 
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Image source={image} style={styles.tabIcon} />
+        <Image
+          source={image}
+          style={[
+            styles.tabIcon,
+            {
+              tintColor:
+                routeName == selectedTab ? Colors.lightBlue3 : Colors.grey2,
+            },
+          ]}
+        />
+        <Text
+          style={[
+            styles.tabText,
+            {
+              color:
+                routeName == selectedTab ? Colors.lightBlue3 :Colors.grey2,
+            },
+          ]}>
+          {routeName.replace('Tab', '')}
+        </Text>
       </View>
     );
   };
-  // const isDrawerOpen = useDrawerStatus();
-  // console.log('isDrawerOpen----', isDrawerOpen);
 
   const renderTabBar = ({routeName, selectedTab, navigate}) => {
     return (
       <TouchableOpacity
         onPress={() => {
-          console.log('call', routeName);
-          if (routeName == 'MenuTab') navigation.navigate('ManagerDrawer');
-          // navigation.toggleDrawer();
+          if (routeName == 'MenuTab') navigation.toggleDrawer();
+          //  navigation.navigate('Sidebar');
           else
             navigation.dispatch(
               CommonActions.reset({
@@ -201,22 +250,24 @@ function ManagerTab({navigation}) {
   };
   return (
     <Tab.Navigator
-      initialRouteName="GoalsTab"
-      height={scale(45)}
-      type={'DOWN'}
+      initialRouteName="DashboardTab"
+      height={scale(55)}
+      // type={'DOWN'}
       bgColor={Colors.white}
       circlePosition={'CENTER'}
-      circleWidth={50}
+      circleWidth={scale(40)}
       tabBar={renderTabBar}
-      renderCircle={({selectedTab, navigate}) => (
-        <TouchableOpacity
-          style={{top: scale(-20)}}
-          onPress={() => {
-            navigate('Goals');
-          }}>
-          <Image source={images.tabLogo} style={[styles.tabHomeIcon]} />
-        </TouchableOpacity>
-      )}
+      renderCircle={({selectedTab, navigate}) => {
+        return (
+          <TouchableOpacity
+            style={{top: scale(-23), alignItems: 'center'}}
+            onPress={() => {
+              navigate('GoalsTab');
+            }}>
+            <Image source={images.tabLogo} style={[styles.tabHomeIcon]} />
+          </TouchableOpacity>
+        );
+      }}
       screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="DashboardTab"
@@ -230,21 +281,14 @@ function ManagerTab({navigation}) {
         component={DiscussionNavigator}
         position="RIGHT"
       />
-      <Tab.Screen
-        name="MenuTab"
-        component={MenuNavigator}
-        position="RIGHT"
-        listeners={({navigation}) => ({
-          tabPress: e => {
-            e.preventDefault();
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          },
-        })}
-      />
+      <Tab.Screen name="MenuTab" component={MenuNavigator} position="RIGHT" />
     </Tab.Navigator>
   );
 }
 const ManagerDrawerNavigator = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Drawer.Navigator
       initialRouteName="ManagerTab"
@@ -256,15 +300,16 @@ const ManagerDrawerNavigator = () => {
         },
       }}>
       <Drawer.Screen name="ManagerTab" component={ManagerTab} />
-      <Drawer.Screen name="ManagerDrawer" component={ManagerDrawer} />
 
+      <Drawer.Screen name="Goals" component={Goals} />
+      <Drawer.Screen name="GoalDetails" component={GoalDetails} />
       <Drawer.Screen name="Bonuses" component={Bonuses} />
+      <Drawer.Screen name="Contests" component={Contests} />
+      <Drawer.Screen name="Highlights" component={Highlights} />
       <Drawer.Screen name="AddBonus" component={AddBonus} />
       <Drawer.Screen name="AddBonusForm" component={AddBonusForm} />
       <Drawer.Screen name="BonusTeam" component={BonusTeam} />
-      <Drawer.Screen name="Contests" component={Contests} />
       <Drawer.Screen name="AddContest" component={AddContest} />
-      <Drawer.Screen name="Highlights" component={Highlights} />
       <Drawer.Screen name="AddHighlight" component={AddHighlight} />
       <Drawer.Screen name="AddContestForm" component={AddContestForm} />
       <Drawer.Screen name="Customers" component={Customers} />
@@ -282,43 +327,14 @@ const ManagerDrawerNavigator = () => {
         name="IndividualPerformance"
         component={IndividualPerformance}
       />
-      <Drawer.Screen name="MainDashboard" component={Dashboard} />
     </Drawer.Navigator>
   );
 };
 
 function ManagerNavigator() {
   return (
-    <Stack.Navigator
-      initialRouteName="ManagerDrawerNavigator"
-      screenOptions={{headerShown: false}}>
-      <Stack.Screen name="ManagerDrawerNavigator" component={ManagerDrawerNavigator} />
-      {/* <Stack.Screen name="Tabs" component={MyTabs} />
-      <Stack.Screen name="Sidebar" component={Sidebar} />
-      <Stack.Screen name="Bonuses" component={Bonuses} />
-      <Stack.Screen name="AddBonus" component={AddBonus} />
-      <Stack.Screen name="AddBonusForm" component={AddBonusForm} />
-      <Stack.Screen name="BonusTeam" component={BonusTeam} />
-      <Stack.Screen name="Contests" component={Contests} />
-      <Stack.Screen name="AddContest" component={AddContest} />
-      <Stack.Screen name="Highlights" component={Highlights} />
-      <Stack.Screen name="AddHighlight" component={AddHighlight} />
-      <Stack.Screen name="AddContestForm" component={AddContestForm} />
-      <Stack.Screen name="Customers" component={Customers} />
-      <Stack.Screen name="Commissions" component={Commissions} />
-      <Stack.Screen name="CommissionDetail" component={CommissionDetail} />
-      <Stack.Screen name="CommissionSettings" component={CommissionSettings} />
-      <Stack.Screen name="Setting" component={Setting} />
-      <Stack.Screen name="AddCustomers" component={AddCustomers} />
-      <Stack.Screen name="ViewCustomers" component={ViewCustomer} />
-      <Stack.Screen name="CustomerDetail" component={CustomerDetail} />
-      <Stack.Screen name="Chat" component={Chat} />
-      <Stack.Screen name="Reports" component={Reports} />
-      <Stack.Screen name="ReportDetails" component={ReportDetails} />
-      <Stack.Screen
-        name="IndividualPerformance"
-        component={IndividualPerformance}
-      /> */}
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Sidebar" component={ManagerDrawerNavigator} />
     </Stack.Navigator>
   );
 }

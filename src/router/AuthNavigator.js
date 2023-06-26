@@ -1,9 +1,10 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../screens/Login';
-const Stack = createNativeStackNavigator();
+import SplashScreen from 'react-native-splash-screen';
+const Stack = createStackNavigator();
 
-function AuthNavigator() {
+function AuthNavigator() { 
   return (
     <Stack.Navigator
       initialRouteName="ManagerDrawer"

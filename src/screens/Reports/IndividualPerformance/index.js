@@ -54,25 +54,25 @@ const IndividualPerformance = ({navigation, route}) => {
                     </Text>
                     <View
                       style={styles.listContent}>
-                      <View style={{width: '50%', marginBottom: 10}}>
+                      <View style={{width: '45%', marginBottom: 10}}>
                         <Text style={styles.listHead}>Monthly Sales</Text>
                         <Text style={styles.listValue}>
                           ${numberWithCommas(466000)}
                         </Text>
                       </View>
-                      <View style={{width: '50%', marginBottom: 10}}>
+                      <View style={{width: '45%', marginBottom: 10}}>
                         <Text style={styles.listHead}>Monthly Goals</Text>
                         <Text style={styles.listValue}>
                           ${numberWithCommas(466000)}
                         </Text>
                       </View>
-                      <View style={{width: '50%'}}>
+                      <View style={{width: '45%'}}>
                         <Text style={styles.listHead}>Sales Year-To-Date</Text>
                         <Text style={styles.listValue}>
                           ${numberWithCommas(466000)}
                         </Text>
                       </View>
-                      <View style={{width: '50%'}}>
+                      <View style={{width: '45%'}}>
                         <Text style={styles.listHead}>ROI Year-To-Date</Text>
                         <Text style={styles.listValue}>1253.64%</Text>
                       </View>

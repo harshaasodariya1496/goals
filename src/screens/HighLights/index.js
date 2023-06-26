@@ -19,6 +19,7 @@ import styles from './style';
 import {numberWithCommas} from '../../utils/constant';
 import {useState} from 'react';
 import Button from '../../component/Button';
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -126,7 +127,7 @@ const Highlights = ({navigation, route}) => {
               </TouchableOpacity>
             </View>
           </ImageBackground>
-          <View style={{top: -268, marginHorizontal: 20}}>
+          <View style={{top: scale(-250), marginHorizontal: 20}}>
             <FlatList data={data} renderItem={renderItem} />
           </View>
         </View>

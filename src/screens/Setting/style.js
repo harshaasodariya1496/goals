@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
   },
-  headerText: {fontSize: scale(12)},
+  headerText: {fontSize: scale(12), color: Colors.darkGrey2},
   bodyMain: {
     flexDirection: 'row',
     paddingHorizontal: 20,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop:10
+    marginTop: 10,
   },
   addMoreText: {
     fontSize: 14,
@@ -169,6 +169,54 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     fontWeight: 400,
     marginLeft: 4,
+  },
+  listContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 30,
+    backgroundColor: Colors.grey1,
+    borderRadius: 10,
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+
+  //notification
+
+  cardMain: {
+    backgroundColor: Colors.white,
+    marginVertical: scale(10),
+    padding: scale(14),
+    borderRadius: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 2.54,
+    elevation: 2.5,
+  },
+  cardPress: {flexDirection: 'row', justifyContent: 'space-between'},
+  cardTitle: {
+    fontSize: scale(14),
+    width: '70%',
+    color: Colors.black,
+  },
+  innerView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingLeft: scale(15),
+    marginVertical: scale(10),
+  },
+  innerText: {
+    fontSize: scale(14),
+    width: '60%',
+    color: Colors.black,
+  },
+  switchStyle: {
+    width: '25%',
+    alignItems: 'center',
   },
 });
 

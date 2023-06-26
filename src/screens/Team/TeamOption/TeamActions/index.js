@@ -6,8 +6,9 @@ import {
   Dimensions,
   Text,
 } from 'react-native';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Feather from 'react-native-vector-icons/Feather';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {images} from '../../../../utils/images';
 import {Colors} from '../../../../utils/colors';
 import Button from '../../../../component/Button';
@@ -19,6 +20,7 @@ import TextInput from '../../../../component/TextInput';
 import MeetingModal from '../../../../component/MeetingModal';
 import CallModal from '../../../../component/CallModal';
 import TaskModal from '../../../../component/TaskModal';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -53,8 +55,8 @@ const TeamActions = ({navigation}) => {
                 source={images.userMeet}
                 style={{
                   tintColor: Colors.black,
-                  width: 30,
-                  height: 30,
+                  width: scale(28),
+                  height: scale(28),
                   resizeMode: 'contain',
                 }}
               />
@@ -65,7 +67,13 @@ const TeamActions = ({navigation}) => {
           },
           {
             name: 'Schedule Call',
-            icon: <Feather size={30} color={Colors.black} name={'phone'} />,
+            icon: (
+              <SimpleLineIcons
+                size={scale(25)}
+                color={Colors.black}
+                name={'phone'}
+              />
+            ),
 
             onPress: () => {
               setIsCallModal(true);
@@ -74,11 +82,15 @@ const TeamActions = ({navigation}) => {
           {
             name: 'Schedule Task',
             icon: (
-              <MaterialCommunityIcons
-                size={30}
-                color={Colors.black}
-                name={'checkbox-marked-outline'}
-              />
+              <Image
+              source={images.checkboxActive}
+              style={{
+                tintColor: Colors.black,
+                width: scale(26),
+                height: scale(26),
+                resizeMode: 'contain',
+              }}
+            />
             ),
             onPress: () => {
               setIsTaskModal(true);
@@ -94,8 +106,13 @@ const TeamActions = ({navigation}) => {
             icon={item.icon}
             onPress={item.onPress}
             textStyle={{marginLeft: 15}}
-            style={{marginVertical: 10, paddingHorizontal: 20}}
-          /> 
+            style={{
+              marginVertical: 10,
+              paddingHorizontal: 20,
+              height: scale(50),
+              alignItems: 'center',
+            }}
+          />
         )}
       />
       <MeetingModal isOpen={isMeetingModal} onClose={setIsMeetingModal} />

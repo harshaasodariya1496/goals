@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Icon, Input} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -26,6 +26,7 @@ import BgModal from '../../../../component/BgModal';
 import Dropdown from '../../../../component/DropDown';
 import TextInput from '../../../../component/TextInput';
 import SelectDropdown from 'react-native-select-dropdown';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -36,6 +37,11 @@ const Opportunities = ({navigation, route}) => {
   const [isProposalTask, setIsProposalTask] = useState(false);
   const [detailsArr, setDetailsArr] = useState([{product: '', amt: ''}]);
   const [selectedValue, setSelectedValue] = useState('');
+  const [isConnectedModal, setIsConnetedModal] = useState(false);
+  const [isConnected, setIsConneted] = useState(true);
+  const [isOpportunity, setIsOpportunity] = useState(true);
+  const [isProposal, setIsProposal] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
   const data = [
     {label: 'Item 1', value: '1'},
     {label: 'Item 2', value: '2'},
@@ -57,6 +63,12 @@ const Opportunities = ({navigation, route}) => {
     arr[index][field] = value;
     setDetailsArr([...arr]);
   };
+  useEffect(() => {
+    setIsProposalTask(false);
+  }, []);
+  console.log('====================================');
+  console.log(isProposalTask);
+  console.log('====================================');
   return (
     <KeyboardAvoidingScrollView
       style={styles.container}
@@ -111,9 +123,8 @@ const Opportunities = ({navigation, route}) => {
               <Text style={styles.emailText}>{details.phone}</Text>
             </View>
           </View>
-          <View style={styles.divider} />
 
-          <View style={styles.btnContent}>
+          {/* <View style={styles.btnContent}>
             <Button
               title={
                 isProposalTask ? 'Close the Sale' : 'Input Proposal Details'
@@ -132,7 +143,94 @@ const Opportunities = ({navigation, route}) => {
                 setIsModalVisible(true);
               }}
             />
-          </View>
+          </View> */}
+        </View>
+        <View style={styles.processMain}>
+          <Pressable
+            onPress={() => {
+              setIsConnetedModal(true);
+            }}
+            style={[
+              styles.processSubContent,
+              {backgroundColor: isConnected ? Colors.green : Colors.white},
+            ]}>
+            <MaterialCommunityIcons
+              name={'check'}
+              color={isConnected ? Colors.white : Colors.grey1}
+              size={scale(22)}
+            />
+            <Text
+              style={[
+                styles.processText,
+                {color: isConnected ? Colors.white : Colors.black},
+              ]}>
+              Connected
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[
+              styles.processSubContent,
+              {backgroundColor: isOpportunity ? Colors.green : Colors.white},
+            ]}>
+            <MaterialCommunityIcons
+              name={'check'}
+              color={isOpportunity ? Colors.white : Colors.grey1}
+              size={scale(22)}
+            />
+            <Text
+              style={[
+                styles.processText,
+                {color: isOpportunity ? Colors.white : Colors.black},
+              ]}>
+              Opportunity
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setIsProposalModal(true);
+            }}
+            style={[
+              styles.processSubContent,
+              {
+                backgroundColor: isProposalTask
+                  ? Colors.green
+                  : Colors.white,
+              },
+            ]}>
+            <MaterialCommunityIcons
+              name={'check'}
+              color={isProposalTask ? Colors.white : Colors.grey1}
+              size={scale(22)}
+            />
+            <Text
+              style={[
+                styles.processText,
+                {color: isProposalTask ? Colors.white : Colors.black},
+              ]}>
+              Proposal 
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setIsProposalModal(true);
+            }}
+            style={[
+              styles.processSubContent,
+              {backgroundColor: isClosed ? Colors.green : Colors.white},
+            ]}>
+            <MaterialCommunityIcons
+              name={'check'}
+              color={isClosed ? Colors.white : Colors.grey1}
+              size={scale(22)}
+            />
+            <Text
+              style={[
+                styles.processText,
+                {color: isClosed ? Colors.white : Colors.black},
+              ]}>
+              Closed
+            </Text>
+          </Pressable>
         </View>
         <TabSection
           onAddPress={() => {

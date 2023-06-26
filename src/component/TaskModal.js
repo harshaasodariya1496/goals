@@ -18,7 +18,7 @@ import {Colors} from '../utils/colors';
 import moment from 'moment';
 import Dropdown from './DropDown';
 import {minSlot, timeDurationGap, timeGap} from '../utils/constant';
-import { scale } from 'react-native-size-matters';
+import {scale} from 'react-native-size-matters';
 import {TextArea} from 'native-base';
 import Button from './Button';
 import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
@@ -62,17 +62,17 @@ const TaskModal = ({navigation, isOpen, onClose}) => {
           <View
             style={{
               flexDirection: 'row',
-              width: 270,
+              width: '73%',
               flexWrap: 'wrap',
             }}>
-            <TextInput
+         <TextInput
               inputType={'datePicker'}
               value={startDate}
               mode={'date'}
               onChangeText={setStartDate}
               placeholderTextColor={Colors.lightBlue4}
-              style={[styles.inputStyle]}
-              touchStyle={[styles.touchStyle, {marginBottom: 17}]}
+              touchStyle={styles.touchStyle}
+              textStyle={{fontSize: scale(13)}}
               renderLeftIcon={
                 <MaterialCommunityIcons
                   name="calendar-month-outline"
@@ -87,10 +87,12 @@ const TaskModal = ({navigation, isOpen, onClose}) => {
                 setStartTime(selectedItem);
               }}
               value={startTime}
-              style={[
-                styles.inputStyle,
-                {width: 112, marginLeft: 11, fontSize: 14},
-              ]}
+              style={{
+                ...styles.inputStyle,
+                width: scale(90),
+                paddingHorizontal: 0,
+                paddingLeft:5
+              }}
               buttonTextStyle={styles.buttonTextStyle}
             />
             <Dropdown
@@ -99,7 +101,12 @@ const TaskModal = ({navigation, isOpen, onClose}) => {
                 setGap(selectedItem);
               }}
               value={gap}
-              style={[styles.inputStyle, {width: 70, fontSize: 14}]}
+              style={{
+                ...styles.inputStyle,
+                width: scale(70),
+                paddingHorizontal: 0,
+                paddingLeft:5
+              }}
               buttonTextStyle={styles.buttonTextStyle}
             />
             <Dropdown
@@ -108,10 +115,13 @@ const TaskModal = ({navigation, isOpen, onClose}) => {
                 setType(selectedItem);
               }}
               value={type}
-              style={[
-                styles.inputStyle,
-                {width: 112, marginLeft: 11, fontSize: 14},
-              ]}
+              style={{
+                ...styles.inputStyle,
+                width: scale(100),
+                paddingHorizontal: 2,
+                marginRight: scale(5),
+                paddingLeft:5
+              }}
               buttonTextStyle={styles.buttonTextStyle}
             />
           </View>
@@ -170,7 +180,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 38,
     alignItems: 'center',
-    fontSize: 14,
+    fontSize: scale(12),
     marginBottom: 5,
     paddingLeft: 13,
   },
@@ -182,15 +192,23 @@ const styles = StyleSheet.create({
   fieldContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+
     marginBottom: 16,
   },
-  buttonTextStyle: {fontSize: scale(14), margin: 0},
+  buttonTextStyle: {
+    fontSize: scale(13),
+    color: Colors.lightBlue4,
+    textAlign: 'left',
+    marginHorizontal: scale(4),
+    marginRight: scale(8),
+  },
   touchStyle: {
-    width: 130,
     height: 38,
-    paddingLeft: 13,
     marginVertical: 0,
-    marginBottom: 10,
+    marginBottom: scale(15),
+    width: scale(110),
+    paddingHorizontal: scale(5),
+    marginRight: scale(5),
   },
   okBtn: {
     backgroundColor: Colors.green,

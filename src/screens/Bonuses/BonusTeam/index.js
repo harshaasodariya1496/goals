@@ -69,7 +69,7 @@ const BonusTeam = ({navigation}) => {
         data={userList}
         style={{
           paddingTop: 15,
-          height: (screenHeight / 100) * 40,
+          // height: (screenHeight / 100) * 40,
         }}
         renderItem={({item, index}) => (
           <View style={styles.mainListView} key={index}>

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {View, Image, ImageBackground, ScrollView} from 'react-native';
 
 import Button from '../../component/Button';
@@ -6,19 +6,25 @@ import TextInput from '../../component/TextInput';
 
 import styles from './style';
 import {useDispatch} from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
+import {scale} from 'react-native-size-matters';
+import {Colors} from '../../utils/colors';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   const onLogin = () => {
     // if (email === '' || password === '') {
     //   setIsError(true);
     // } else {
     //   setIsError(false);
-    dispatch.user.setUserDetail({userType: email});
-    navigation.navigate('ManagerDrawer');
+    dispatch.user.setUserDetail({userType: email.replace(' ', '')});
+
     // }
   };
   return (
@@ -55,6 +61,9 @@ const Login = ({navigation}) => {
             }}
             placeholder={'Email'}
             isError={isError && email === ''}
+            style={{
+              color: Colors.black,
+            }}
           />
           <TextInput
             value={password}
@@ -64,6 +73,9 @@ const Login = ({navigation}) => {
             secureTextEntry
             isError={isError && password === ''}
             placeholder={'Password'}
+            style={{
+              color: Colors.black,
+            }}
           />
         </View>
         <View style={styles.buttonView}>

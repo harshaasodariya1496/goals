@@ -106,9 +106,7 @@ const Sale = ({navigation}) => {
               px="1"
               mr={'5'}
               fontSize="18"
-              style={{
-                backgroundColor: Colors.white,
-              }}
+              backgroundColor={Colors.white}
               onChangeText={onChangeSearch}
               value={searchQuery}
               InputLeftElement={
@@ -144,7 +142,7 @@ const Sale = ({navigation}) => {
               <Text style={[styles.headFirstCol, {fontWeight: 600}]}>
                 Company
               </Text>
-              <Text style={[styles.headSecCol, {fontWeight: 600, width: 50}]}>
+              <Text style={[styles.headSecCol, {fontWeight: 600, width: 55,  }]}>
                 Actions
               </Text>
               <Text style={[styles.headSecCol, {fontWeight: 600, width: 131}]}>
@@ -178,10 +176,10 @@ const Sale = ({navigation}) => {
               <View
                 style={{
                   flexDirection: 'row',
-                  alignItems: 'center',
-                  marginLeft: 10,
-                  width: 50,
+                  alignItems: 'center', 
+                  width: 55,
                   marginRight: 45,
+                  justifyContent: 'center',
                 }}>
                 <Text
                   style={[
@@ -199,6 +197,7 @@ const Sale = ({navigation}) => {
                     name="chevron-down-outline"
                     size={20}
                     color={Colors.lightBlue4}
+                    style={{position: 'absolute', right: 0}}
                   />
                 )}
               </View>

@@ -17,6 +17,7 @@ import Button from '../../component/Button';
 import TextInput from '../../component/TextInput';
 
 import styles from './style';
+import {useSelector} from 'react-redux';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -29,6 +30,8 @@ const GeneralSetting = ({navigation}) => {
   const [dob, setDob] = useState('Date of Birth');
   const [teamSize, setTeamSize] = useState('');
   const [isError, setIsError] = useState(false);
+  const user = useSelector(state => state.user.userDetails);
+
   const onSave = () => {
     setIsError(true);
     if (
@@ -36,7 +39,7 @@ const GeneralSetting = ({navigation}) => {
       lName !== '' ||
       email !== '' ||
       phone !== '' ||
-      teamSize !== '' ||
+      (user?.userType.toLowerCase() == 'manager' && teamSize !== '') ||
       workAnniversary !== 'Work Anniversary' ||
       dob !== 'Date of Birth'
     ) {
@@ -92,14 +95,15 @@ const GeneralSetting = ({navigation}) => {
         onChangeText={setDob}
         isError={isError && dob === 'Date of Birth'}
       />
-
-      <TextInput
-        placeholder={'Sales Team Size'}
-        inputType={'with-label'}
-        value={teamSize}
-        onChangeText={setTeamSize}
-        isError={isError && teamSize === ''}
-      />
+      {user?.userType.toLowerCase() == 'manager' && (
+        <TextInput
+          placeholder={'Sales Team Size'}
+          inputType={'with-label'}
+          value={teamSize}
+          onChangeText={setTeamSize}
+          isError={isError && teamSize === ''}
+        />
+      )}
 
       <Button
         title={'Save Change'}

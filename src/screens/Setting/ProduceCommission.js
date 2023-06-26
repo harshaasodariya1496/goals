@@ -79,8 +79,7 @@ const ProduceCommission = ({navigation}) => {
         </View>
         <FlatList
           data={userList}
-          nestedScrollEnabled={true}
-          style={{height: (screenHeight / 10) * 4}}
+          nestedScrollEnabled={true} 
           renderItem={({item, index}) => {
             return (
               <View>

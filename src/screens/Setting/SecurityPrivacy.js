@@ -79,18 +79,28 @@ const SecurityPrivacy = ({navigation}) => {
           console.log(nextValue);
           setValue(nextValue);
         }}>
-        <Radio value="one" size={4}>
-          <Text style={{fontSize: scale(16), width: '80%'}}>
-            At lease 8 characters long
-          </Text>
+        <Radio
+          value="one"
+          size={4}
+          _text={{fontSize: scale(16), color: Colors.darkGrey2}}>
+          At lease 8 characters long
         </Radio>
-        <Radio value="two" size={4} my={5}>
-          <Text style={{fontSize: scale(16)}}>
-            Contain 1 Number & 1 Uppercase
-          </Text>
+        <Radio
+          value="two"
+          size={4}
+          my={5}
+          _text={{
+            fontSize: scale(16),
+            color: Colors.darkGrey2,
+            lineHeight: scale(18),
+          }}>
+          Contain 1 Number & 1 Uppercase
         </Radio>
-        <Radio value="three" size={4}>
-          <Text style={{fontSize: scale(16)}}>Don't use old password</Text>
+        <Radio
+          value="three"
+          size={4}
+          _text={{fontSize: scale(16), color: Colors.darkGrey2}}>
+          Don't use old password
         </Radio>
       </Radio.Group>
       <Text style={[styles.labelText, {marginTop: 20}]}>

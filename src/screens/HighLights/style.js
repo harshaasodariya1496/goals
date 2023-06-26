@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors} from '../../utils/colors';
+import { scale } from 'react-native-size-matters';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -38,9 +39,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 13,
     width: '100%',
-    marginRight: 100,
+    // marginRight: 100,
     paddingVertical: 22,
-    paddingHorizontal: 36,
+    paddingHorizontal: scale(25),
     justifyContent: 'center',
   },
   noBonusImage: {
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   },
   firstContent: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   likeCommentContent: {

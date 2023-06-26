@@ -18,6 +18,7 @@ import {Colors} from '../../utils/colors';
 import {BarChart} from 'react-native-charts-wrapper';
 
 import styles from './style';
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -77,7 +78,6 @@ const Commissions = ({navigation}) => {
       textColor: processColor(Colors.lightBlue3),
       textSize: 7,
       labelCount: 12,
-      
     },
   };
   const renderItem = ({item, index}) => (
@@ -85,7 +85,12 @@ const Commissions = ({navigation}) => {
       key={index}
       style={[
         styles.midContent,
-        {width: screenWidth - 60, height: 460, marginRight: 100, padding: 32},
+        {
+          width: '100%',
+          height: 460,
+          marginRight: 100,
+          padding: 32, 
+        },
       ]}>
       <View style={{alignItems: 'center'}}>
         <Image source={images.user} style={styles.userImage} />

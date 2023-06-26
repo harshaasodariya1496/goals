@@ -1,11 +1,13 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors} from '../../../utils/colors';
+import {scale} from 'react-native-size-matters';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'red',
   },
   bg: {
     height: screenHeight,

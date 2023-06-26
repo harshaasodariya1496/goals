@@ -113,7 +113,7 @@ const Commissions = ({navigation}) => {
                   <Text style={styles.headSecCol}>Date</Text>
                 </View>
               }
-              listContainerStyle={{height: scale(180)}}
+              // listContainerStyle={{height: scale(180)}}
               tableBody={({item, index}) => (
                 <View
                   style={[

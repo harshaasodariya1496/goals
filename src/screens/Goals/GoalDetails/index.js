@@ -64,29 +64,23 @@ const GoalDetails = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.inputSection}>
-          <View style={{width: '50%'}}>
+          <View style={{width: '48%'}}>
             <Text style={styles.textInputLabel}>Goals</Text>
-            {selectedIndex === index ? (
-              <TextInput
-                placeholder={'50000'}
-                value={JSON.stringify(item.goal)}
-                style={styles.textInputStyle}
-              />
-            ) : (
-              <Text style={styles.actualAmtText}>{item.goal}</Text>
-            )}
+            <TextInput
+              placeholder={'50000'}
+              editable={Boolean(selectedIndex === index)}
+              value={JSON.stringify(item.goal)}
+              style={styles.textInputStyle}
+            />
           </View>
-          <View style={{width: '50%'}}>
+          <View style={{width: '48%'}}>
             <Text style={styles.textInputLabel}>Actual</Text>
-            {selectedIndex == index ? (
-              <TextInput
-                placeholder={'50000'}
-                value={JSON.stringify(item.actual)}
-                style={styles.textInputStyle}
-              />
-            ) : (
-              <Text style={styles.actualAmtText}>{item.actual}</Text>
-            )}
+            <TextInput
+              placeholder={'50000'}
+              editable={Boolean(selectedIndex === index)}
+              value={JSON.stringify(item.actual)}
+              style={styles.textInputStyle}
+            />
           </View>
         </View>
         <View style={{flexDirection: 'row'}}>
@@ -116,23 +110,22 @@ const GoalDetails = ({navigation}) => {
           }
         />
         <ScrollView style={styles.scrollStyle} nestedScrollEnabled={true}>
-          <View style={styles.bgContent}>
-            <View
-              style={{
+          <View
+            style={[
+              styles.bgContent,
+              {
                 flexDirection: 'row',
-                alignItems: 'center',
                 justifyContent: 'space-between',
-              }}>
-              <Text style={styles.salesText}>2023 Sales Goals</Text>
-              <View>
-                <Text style={styles.annualSalesText}>Annual Sales Goals</Text>
-                <View style={styles.subSalesContent}>
-                  <Text style={styles.amtText}>
-                    ${numberWithCommas(935000)}
-                  </Text>
-                  <View style={styles.percentageContent}>
-                    <Text style={styles.percentageText}>-41.18%</Text>
-                  </View>
+                alignItems: 'center',
+              },
+            ]}>
+            <Text style={styles.salesText}>2023 Sales Goals</Text>
+            <View>
+              <Text style={styles.annualSalesText}>Annual Sales Goals</Text>
+              <View style={styles.subSalesContent}>
+                <Text style={styles.amtText}>${numberWithCommas(935000)}</Text>
+                <View style={styles.percentageContent}>
+                  <Text style={styles.percentageText}>-41.18%</Text>
                 </View>
               </View>
             </View>

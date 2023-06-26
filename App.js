@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {LogBox} from 'react-native';
 import {persistStore} from 'redux-persist';
 import {NativeBaseProvider} from 'native-base';
@@ -10,12 +10,14 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
  
 import {store} from './src/store';
 import NavigatorSwitch from './src/router/NavigatorSwitch';
+import SplashScreen from 'react-native-splash-screen';
 
 LogBox.ignoreAllLogs();
 LogBox.ignoreLogs(['Warning: ...']);
 
 const persistor = persistStore(store);
 function App() {
+ 
   return (
     <SafeAreaProvider>
       <NavigationContainer>

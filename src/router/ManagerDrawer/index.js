@@ -12,14 +12,15 @@ import {images} from '../../utils/images';
 
 import styles from './style';
 import {Colors} from '../../utils/colors';
-import {DrawerActions} from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
-const ManagerDrawer = ({navigation}) => {
+const ManagerDrawer = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const menu = [
     {title: 'DashboardTab', image: images.dashboard},
-    {title: 'GoalsTab', image: images.goals},
+    {title: 'Goals', image: images.goals},
     {title: 'TeamTab', image: images.team},
     {title: 'Customers', image: images.customers},
     {title: 'DiscussionTab', image: images.discussion},
@@ -34,8 +35,8 @@ const ManagerDrawer = ({navigation}) => {
   ];
 
   const onClose = () => {
-    // navigation.dispatch(DrawerActions.closeDrawer());
-    navigation.goBack();
+    navigation.dispatch(DrawerActions.closeDrawer());
+    // navigation.goBack();
   };
 
   return (
@@ -64,8 +65,8 @@ const ManagerDrawer = ({navigation}) => {
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => { 
-                  navigation.closeDrawer();
+                onPress={() => {
+                  // navigation.closeDrawer();
                   navigation.navigate(item.title);
                 }}
                 style={styles.menuView}>
@@ -74,15 +75,16 @@ const ManagerDrawer = ({navigation}) => {
                   style={styles.menuImage}
                   resizeMode="contain"
                 />
-                <Text style={styles.menuTitle}>{item.title.replace("Tab","")}</Text>
+                <Text style={styles.menuTitle}>
+                  {item.title.replace('Tab', '')}
+                </Text>
               </TouchableOpacity>
             );
           })}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Login');
+              // navigation.navigate('Login');
               dispatch.user.setUserDetail(null);
-
             }}
             style={styles.menuView}>
             <AntDesignIcon name={'logout'} size={30} color={Colors.white} />

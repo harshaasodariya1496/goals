@@ -30,13 +30,12 @@ const styles = StyleSheet.create({
   bgContent: {
     backgroundColor: Colors.white,
     borderRadius: 20,
-    padding: scale(22),
-
+    padding: scale(20),
     marginBottom: 25,
   },
-  salesText: {fontSize: scale(16), color: Colors.darkGrey2},
+  salesText: {fontSize: scale(16), color: Colors.darkGrey2, width: '45%'},
   annualSalesText: {
-    fontSize: scale(18),
+    fontSize: scale(16),
     color: Colors.black,
     marginBottom: 5,
   },
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
   },
   amtText: {
     fontSize: scale(18),
-    color: Colors.black,
+    color: Colors.lightBlue,
   },
   percentageContent: {
     backgroundColor: 'rgba(255,0,0,0.1)',
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   textInputStyle: {
-    borderColor: Colors.darkGrey,
+    borderColor: Colors.grey1,
     borderWidth: 1,
     padding: 5,
     height: scale(30),
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
   inputSection: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 15,
+    marginVertical: scale(5),
   },
   actualAmtText: {
     color: Colors.black,

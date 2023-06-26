@@ -171,6 +171,7 @@ export const chartData = {
           colors: [processColor(Colors.lightBlue4)],
           // highlightEnabled: false,
         },
+        label: '',
       },
       {
         values: [
@@ -193,6 +194,7 @@ export const chartData = {
           colors: [processColor(Colors.lightBlue2)],
           // highlightEnabled: false,
         },
+        label: '',
       },
     ],
     config: {
@@ -230,6 +232,5 @@ export const chartData = {
     axisMinimum: 0,
     labelCount: 12,
     centerAxisLabels: true,
-    
   },
 };

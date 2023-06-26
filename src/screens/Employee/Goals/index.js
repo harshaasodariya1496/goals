@@ -64,7 +64,7 @@ const Goals = ({navigation}) => {
       <View style={{top: scale(-175), marginHorizontal: 20}}>
         <View style={styles.midContent}>
           <View style={styles.listContainer}>
-            <View style={{width: scale(60)}} />
+            <View style={{width: scale(70)}} />
             <Text style={styles.tableAmt}>Goal</Text>
             <Text style={styles.tableAmt}>Sales</Text>
             <View style={{width: scale(60)}} />

@@ -83,18 +83,19 @@ const SalesDetail = ({navigation, route}) => {
               />
               <Text style={styles.emailText}>{details.phone}</Text>
             </View>
-          </View>
-          <View style={styles.divider} />
+          </View> 
+        </View>
 
-          <View style={styles.btnContent}>
-            <Button
-              title="New Opportunity"
-              style={styles.mtoBtn}
-              textStyle={styles.mtoText}
-              onPress={()=>{setModalVisible(true)}}
-            /> 
-          </View>
-        </View> 
+        <View style={styles.btnContent}>
+          <Button
+            title="New Opportunity"
+            style={styles.mtoBtn}
+            textStyle={styles.mtoText}
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
+        </View>
         <TabSection
           onAddPress={() => {
             navigation.navigate('TeamActions');
@@ -104,8 +105,7 @@ const SalesDetail = ({navigation, route}) => {
       <BgModal isOpen={modalVisible} onClose={setModalVisible}>
         <View>
           <Text style={styles.modalText}>
-          Please confirm a new opportunity has surfaced 
-with American Express.
+            Please confirm a new opportunity has surfaced with American Express.
           </Text>
           <View style={styles.modalBtnContainer}>
             <Button
@@ -114,7 +114,7 @@ with American Express.
               textStyle={{fontSize: 14, letterSpacing: 0}}
               onPress={() => {
                 setModalVisible(false);
-                navigation.navigate('LeadDetail',{details:details});
+                navigation.navigate('LeadDetail', {details: details});
               }}
             />
           </View>

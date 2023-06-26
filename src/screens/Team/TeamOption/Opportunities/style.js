@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors} from '../../../../utils/colors';
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -53,17 +54,38 @@ const styles = StyleSheet.create({
   addView: {width: '15%', alignItems: 'flex-end'},
   subContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingHorizontal: 37,
-    marginVertical: 16,
+    paddingHorizontal: scale(25),
+    marginTop: 16,
   },
-  emailContent: {flexDirection: 'row', width: '50%'},
+  emailContent: {flexDirection: 'row', width: '55%', alignItems: 'center'},
   emailText: {fontSize: 12, color: Colors.black, marginLeft: 12},
   phoneContent: {
     flexDirection: 'row',
-    paddingLeft: 12,
-    width: '50%',
+    marginLeft: scale(12),
+    alignItems: 'center',
+  },
+  phoneContent: {
+    flexDirection: 'row',
+    marginLeft: scale(12),
+    alignItems: 'center',
+  },
+  processSubContent: {
+    padding: scale(5),
+    backgroundColor: Colors.white,
+    borderRadius: scale(3),
+    justifyContent: 'center',
+    alignItems: 'center',
+    minWidth: scale(65),
+
+  },
+  processText: {fontSize: scale(10), color: Colors.black},
+  processMain: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   divider: {borderBottomWidth: 2, borderBottomColor: Colors.grey1},
   btnContent: {

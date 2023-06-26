@@ -10,7 +10,7 @@ import {
   Pressable,
 } from 'react-native';
 import {useState} from 'react';
-import { scale } from 'react-native-size-matters';
+import {scale} from 'react-native-size-matters';
 import {Icon, Input} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -121,10 +121,8 @@ const Opportunity = ({navigation}) => {
               py="3"
               px="1"
               mr={'5'}
+              backgroundColor={Colors.white}
               fontSize="18"
-              style={{
-                backgroundColor: Colors.white,
-              }}
               onChangeText={onChangeSearch}
               value={searchQuery}
               InputLeftElement={
@@ -158,7 +156,9 @@ const Opportunity = ({navigation}) => {
           tableHead={
             <View style={styles.tableHead}>
               <Text style={styles.headFirstCol}>Company</Text>
-              <Text style={[styles.headSecCol, {width: 50}]}>Actions</Text>
+              <Text style={[styles.headSecCol, {width: 55 }]}>
+                Actions
+              </Text>
               <Text style={[styles.headSecCol, {width: 99}]}>Name</Text>
               <Text style={[styles.headSecCol, {width: 103}]}>Role</Text>
               <Text style={[styles.headSecCol, {width: 194}]}>Email</Text>
@@ -188,10 +188,10 @@ const Opportunity = ({navigation}) => {
               <View
                 style={{
                   flexDirection: 'row',
-                  alignItems: 'center',
-                  marginLeft: 10,
-                  width: 50,
+                  alignItems: 'center', 
+                  width: 55,
                   marginRight: 45,
+                  justifyContent: 'center',
                 }}>
                 <Text
                   style={[
@@ -209,6 +209,7 @@ const Opportunity = ({navigation}) => {
                     name="chevron-down-outline"
                     size={20}
                     color={Colors.lightBlue4}
+                    style={{position: 'absolute', right: 0}}
                   />
                 )}
               </View>

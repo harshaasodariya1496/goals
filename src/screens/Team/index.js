@@ -20,6 +20,7 @@ import FlagAmount from '../../component/FlagAmount';
 import styles from './style';
 import {chartData} from '../../utils/constant';
 import {BarChart} from 'react-native-charts-wrapper';
+import { scale } from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -145,7 +146,7 @@ const Team = ({navigation}) => {
       <ImageBackground
         style={{
           height: 305,
-          paddingTop: 40,
+          paddingTop: scale(25),
           paddingHorizontal: 16,
         }}
         source={images.background}>
@@ -168,7 +169,7 @@ const Team = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-      <View style={{top: -200, marginHorizontal: 20}}>
+      <View style={{top:scale(-170), marginHorizontal: 20}}>
         <FlatList data={[0, 1, 2]} renderItem={renderItem} />
       </View>
     </ScrollView>

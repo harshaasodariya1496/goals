@@ -80,18 +80,15 @@ const InviteTeam = ({navigation}) => {
   return (
     <View style={[styles.formContent]}>
       <View style={{width: '100%'}}>
-        <Text style={styles.inviteTitle}>
-          Invite Your Users
-        </Text>
-        <Text
-          style={styles.inviteDesc}>
+        <Text style={styles.inviteTitle}>Invite Your Users</Text>
+        <Text style={styles.inviteDesc}>
           You've added users to your account. Now let them know about it
         </Text>
         <FlatList
           data={userList}
-          style={{height: (screenHeight / 10) * 4, marginVertical: 20}}
+          style={{marginVertical: 20}}
           nestedScrollEnabled={true}
-          showsVerticalScrollIndicator={false}
+          // showsVerticalScrollIndicator={false}
           renderItem={({item, index}) => (
             <View
               key={index}
@@ -104,10 +101,7 @@ const InviteTeam = ({navigation}) => {
                 value={item.isChecked}
                 onValueChange={() => onSelectUser(index)}
               />
-              <Image
-                source={images.user}
-                style={styles.inviteUserImage}
-              />
+              <Image source={images.user} style={styles.inviteUserImage} />
               <Text style={styles.checkBoxLabelText}>{item.name}</Text>
             </View>
           )}

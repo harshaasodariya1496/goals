@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {Colors} from '../../../utils/colors';
+import { scale } from 'react-native-size-matters';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -44,10 +45,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   graphContent: {
-    height: 170, 
+    height: 170,
   },
   headMain: {
-    marginTop: 50,
+    marginTop: scale(30),
     marginHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
   trashImage: {
     width: 21,
     height: 21,
-    tintColor: Colors.darkGrey3,
+    tintColor: Colors.darkGrey2,
   },
 
   bodyMain: {
@@ -131,9 +132,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 22,
-    paddingVertical: 19,
-    // min: (screenWidth / 10) * 7.8,
+    paddingHorizontal: scale(20),
+    paddingVertical:scale(17),
+    justifyContent: 'space-between', 
   },
 });
 

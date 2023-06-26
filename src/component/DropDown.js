@@ -81,6 +81,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import SelectDropdown from 'react-native-select-dropdown';
 
 import {Colors} from '../utils/colors';
+import {scale} from 'react-native-size-matters';
 
 const Dropdown = (
   {
@@ -104,15 +105,19 @@ const Dropdown = (
       defaultValue={value}
       renderDropdownIcon={() => {
         return (
-          <Ionicons name="chevron-down-outline" size={20} color={'#2376C4'} />
+          <Ionicons
+            name="chevron-down-outline"
+            size={scale(14)}
+            color={'#2376C4'} 
+          />
         );
       }}
       dropdownStyle={{...dropdownCustomStyle, ...styles.dropdownStyle}}
       selectedRowTextStyle={{color: Colors.lightBlue4}}
       buttonTextStyle={[
         styles.buttonTextStyle,
-        buttonTextStyle,
         {color: value ? Colors.black : Colors.placeHolderColor},
+        buttonTextStyle,
       ]}
       rowStyle={{}}
       rowTextStyle={{
@@ -131,7 +136,6 @@ const styles = StyleSheet.create({
     height: 46,
     backgroundColor: Colors.white,
     marginBottom: 10,
-
     justifyContent: 'flex-start',
   },
   dropdownStyle: {
@@ -139,9 +143,9 @@ const styles = StyleSheet.create({
     height: 150,
   },
   buttonTextStyle: {
-    fontSize: 14,
-    textAlign: 'left',
+    fontSize: 14, 
     color: Colors.placeHolderColor,
+    textAlign:"left"
   },
 });
 

@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
     tintColor: '#27A8F0',
   },
   tabHomeIcon: {
-    width: 68,
-    height: 68,
+    width: scale(55),
+    height: scale(55),
     resizeMode: 'contain',
     // top:(-25)
   },

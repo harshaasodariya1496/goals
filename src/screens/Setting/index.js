@@ -24,11 +24,30 @@ import ROI from './ROI';
 import InviteTeam from './InviteTeam';
 import ManageRole from './ManageRole';
 import ProduceCommission from './ProduceCommission';
+import {useSelector} from 'react-redux';
+import Notification from './Notification';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Setting = ({navigation}) => {
   const [isSelected, setIsSelected] = useState('General Settings');
+  const user = useSelector(state => state.user.userDetails);
+  const data =
+    user?.userType.toLowerCase() == 'manager'
+      ? [
+          {name: 'General Settings'},
+          {name: 'Security & Privacy'},
+          {name: 'Employee Dashboard'},
+          {name: 'ROI'},
+          {name: 'Invite Your Team'},
+          {name: 'Manage Roles'},
+          {name: 'Products/Commissions'},
+        ]
+      : [
+          {name: 'General Settings'},
+          {name: 'Security & Privacy'},
+          {name: 'Notification'},
+        ];
 
   const renderTab = () => {
     switch (isSelected) {
@@ -40,6 +59,8 @@ const Setting = ({navigation}) => {
         return <EmployeeDashboard />;
       case 'ROI':
         return <ROI />;
+      case 'Notification':
+        return <Notification />;
       case 'Invite Your Team':
         return <InviteTeam />;
       case 'Manage Roles':
@@ -86,15 +107,7 @@ const Setting = ({navigation}) => {
         </View>
 
         <FlatList
-          data={[
-            {name: 'General Settings'},
-            {name: 'Security & Privacy'},
-            {name: 'Employee Dashboard'},
-            {name: 'ROI'},
-            {name: 'Invite Your Team'},
-            {name: 'Manage Roles'},
-            {name: 'Products/Commissions'},
-          ]}
+          data={data}
           horizontal
           showsHorizontalScrollIndicator={false}
           style={styles.btnList}

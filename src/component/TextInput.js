@@ -106,6 +106,7 @@ const TextInput = props => {
       placeholderTextColor={Colors.placeHolderColor}
       
       {...props}
+      
       style={[
         styles.main,
         props.style,

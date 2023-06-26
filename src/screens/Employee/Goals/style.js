@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   monthText: {
-    width: scale(60),
+    width: scale(70),
     fontSize: scale(12),
     color: Colors.lightBlue4,
   },

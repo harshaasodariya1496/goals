@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../utils/colors';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   container: {
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   },
   cardMain: {
     marginBottom: 40,
-    marginRight: 41,
+    marginRight: scale(30),
   },
   mainView: {
     backgroundColor: Colors.white,

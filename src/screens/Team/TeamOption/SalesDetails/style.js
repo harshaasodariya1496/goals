@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {Colors} from '../../../../utils/colors';
+import {scale} from 'react-native-size-matters';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -53,49 +54,52 @@ const styles = StyleSheet.create({
   addView: {width: '15%', alignItems: 'flex-end'},
   subContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingHorizontal: 37,
-    marginVertical: 16,
+    paddingHorizontal: scale(25),
+    marginTop: 16,
   },
-  emailContent: {flexDirection: 'row', width: '50%'},
+  emailContent: {flexDirection: 'row', width: '55%', alignItems: 'center'},
   emailText: {fontSize: 12, color: Colors.black, marginLeft: 12},
   phoneContent: {
     flexDirection: 'row',
-    paddingLeft: 12,
-    width: '50%',
+    marginLeft: scale(12),
+    alignItems: 'center',
   },
-  divider:{borderBottomWidth: 2, borderBottomColor: Colors.grey1},
-  btnContent:{
+  
+  divider: {borderBottomWidth: 2, borderBottomColor: Colors.grey1},
+  btnContent: {
     flexDirection: 'row',
     padding: 22,
     paddingBottom: 0,
     justifyContent: 'center',
   },
-  mtoBtn:{
-    backgroundColor: Colors.green,
-    width: '50%',
+  mtoBtn: {
+    backgroundColor: Colors.white,   
     paddingHorizontal: 0,
+    height: scale(40),
+    marginBottom: scale(10),
   },
-  mtoText:{
-    fontSize: 14,
+  mtoText: {
+    fontSize: scale(8),
     marginHorizontal: 0,
     letterSpacing: 0,
     textAlign: 'center',
+    color: Colors.black,
   },
-  niBtn:{
+  niBtn: {
     backgroundColor: '#E2E9EF',
     width: '45%',
     paddingHorizontal: 0,
   },
-  niText:{
+  niText: {
     fontSize: 14,
     marginHorizontal: 0,
     letterSpacing: 0,
     color: Colors.black,
     textAlign: 'center',
   },
-  
+
   modalText: {
     fontSize: 14,
     color: Colors.black,
@@ -109,10 +113,10 @@ const styles = StyleSheet.create({
   },
   okBtn: {
     backgroundColor: Colors.green,
-    height: 48, 
+    height: 48,
     borderRadius: 10,
-    marginBottom:50
-  },  
+    marginBottom: 50,
+  },
 });
 
 export default styles;

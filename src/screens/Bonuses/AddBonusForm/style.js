@@ -4,9 +4,7 @@ import {Colors} from '../../../utils/colors';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 0.5, 
-  }, 
+ 
   menuImage: {width: 37, height: 37, marginRight: 20},
   menuTitle: {
     fontFamily: 'Roboto',

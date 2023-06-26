@@ -88,23 +88,32 @@ const ManageRole = ({navigation}) => {
             justifyContent: 'space-between',
             marginHorizontal: 30,
           }}>
-          <View style={{width: '50%'}} />
-          <View style={{width: '25%'}}>
+          <View style={{width: '45%'}} />
+          <View
+            style={{
+              width: '27.5%',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             <Text
               style={{
-                marginRight: 10,
-                fontSize: scale(16),
+                fontSize: scale(14),
                 color: Colors.black,
               }}>
               Manager
             </Text>
           </View>
-          <View style={{width: '25%'}}>
+          <View
+            style={{
+              width: '27.5%',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             <Text
               style={{
                 textAlign: 'center',
                 color: Colors.black,
-                fontSize: scale(15),
+                fontSize: scale(14),
               }}>
               Sales Associate
             </Text>
@@ -112,27 +121,21 @@ const ManageRole = ({navigation}) => {
         </View>
         <FlatList
           data={userList}
-          style={{height: (screenHeight / 10) * 4, marginVertical: 20}}
+          style={{marginVertical: 20}}
           nestedScrollEnabled={true}
           showsVerticalScrollIndicator={false}
           renderItem={({item, index}) => (
             <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginHorizontal: 30,
-                marginBottom: userList?.length - 1 == index ? 0 : 20,
-                backgroundColor: Colors.grey1,
-                borderRadius: 10,
-                alignItems: 'center',
-                paddingVertical: 20,
-              }}>
-              <View style={{width: '50%', paddingLeft: 15}}>
+              style={[
+                styles.listContainer,
+                {marginBottom: userList?.length - 1 == index ? 0 : 20},
+              ]}>
+              <View style={{width: '45%', paddingLeft: 15}}>
                 <Text style={[styles.checkBoxLabelText]}>{item.name}</Text>
               </View>
               <View
                 style={{
-                  width: '25%',
+                  width: '27.5%',
                   alignItems: 'center',
                 }}>
                 <View
@@ -153,7 +156,7 @@ const ManageRole = ({navigation}) => {
               </View>
               <View
                 style={{
-                  width: '25%',
+                  width: '27.5%',
                   alignItems: 'center',
                 }}>
                 <View

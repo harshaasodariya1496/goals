@@ -10,6 +10,7 @@ import {Popover} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {Colors} from '../utils/colors';
+import { scale } from 'react-native-size-matters';
 
 const Header = ({
   navigation,
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
   },
   popOverText: {fontSize: 14, color: Colors.black},
   headerText: {
-    fontSize: 28,
+    fontSize: scale(24),
     color: Colors.white,
     fontStyle: 'normal',
     fontFamily: 'Roboto',
