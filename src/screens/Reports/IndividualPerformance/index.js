@@ -36,6 +36,7 @@ const IndividualPerformance = ({navigation, route}) => {
             navigation.goBack();
           }}
           title={'Individual Performance'}
+          textStyle={{fontSize:scale(21)}}
         />
         <ScrollView style={styles.scrollStyle} nestedScrollEnabled={true}>
           <FlatList

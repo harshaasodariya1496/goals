@@ -169,7 +169,7 @@ const Team = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-      <View style={{top:scale(-170), marginHorizontal: 20}}>
+      <View style={{top:scale(-180), marginHorizontal: 20}}>
         <FlatList data={[0, 1, 2]} renderItem={renderItem} />
       </View>
     </ScrollView>

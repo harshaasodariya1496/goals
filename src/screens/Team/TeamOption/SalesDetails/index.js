@@ -73,7 +73,7 @@ const SalesDetail = ({navigation, route}) => {
                 color={Colors.lightBlue4}
                 size={20}
               />
-              <Text style={styles.emailText}>{details.email}</Text>
+              <Text style={styles.emailText}>jim@boeing.com</Text>
             </View>
             <View style={styles.phoneContent}>
               <MaterialCommunityIcons
@@ -81,7 +81,7 @@ const SalesDetail = ({navigation, route}) => {
                 color={Colors.lightBlue4}
                 size={20}
               />
-              <Text style={styles.emailText}>{details.phone}</Text>
+              <Text style={styles.emailText}>505-123-6554</Text>
             </View>
           </View> 
         </View>

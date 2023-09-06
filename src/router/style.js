@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     height: scale(24),
     resizeMode: 'contain',
     tintColor: '#27A8F0',
+    marginBottom:scale(5)
   },
   tabHomeIcon: {
     width: scale(55),
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
   tabText: {
     fontSize: scale(11),
     color: Colors.lightBlue3,
+    fontWeight:'800'
   },
 });
 

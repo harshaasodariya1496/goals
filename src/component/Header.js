@@ -32,6 +32,7 @@ const Header = ({
   thirdTitle,
   thirdIcon = () => {},
   thirdOnPress = () => {},
+  mainStyle
 }) => {
   const [isVisible, setIsVisible] = useState('');
   return (
@@ -42,7 +43,7 @@ const Header = ({
         alignItems: 'center',
         paddingHorizontal: 15,
       }}>
-      <View style={[styles.header]}>
+      <View style={[styles.header,mainStyle]}>
         <TouchableOpacity style={styles.backBg} onPress={onBackPress}>
           <AntDesign name="left" size={20} color={Colors.white} />
         </TouchableOpacity>

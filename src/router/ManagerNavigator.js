@@ -134,6 +134,7 @@ const TeamNavigator = () => {
       initialRouteName="Team">
       <TeamStack.Screen name="Team" component={Team} />
       <TeamStack.Screen name="AddTeam" component={AddTeam} />
+      <TeamStack.Screen name="TeamOption" component={TeamOption} />
       <TeamStack.Screen name="AddDeal" component={AddDeal} />
       <TeamStack.Screen name="TeamDetails" component={TeamDetails} />
     </TeamStack.Navigator>
@@ -255,12 +256,12 @@ function ManagerTab() {
       // type={'DOWN'}
       bgColor={Colors.white}
       circlePosition={'CENTER'}
-      circleWidth={scale(40)}
+      circleWidth={scale(25)}      
       tabBar={renderTabBar}
       renderCircle={({selectedTab, navigate}) => {
         return (
           <TouchableOpacity
-            style={{top: scale(-23), alignItems: 'center'}}
+            style={{top: scale(-20), alignItems: 'center'}}
             onPress={() => {
               navigate('GoalsTab');
             }}>

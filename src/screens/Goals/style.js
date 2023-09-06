@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {Colors} from '../../utils/colors';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,8 +60,8 @@ const styles = StyleSheet.create({
   },
 
   graphContent: {
-    height: 170,
-    width: '100%',
+    height: scale(150),
+    width: '100%', 
   },
 });
 

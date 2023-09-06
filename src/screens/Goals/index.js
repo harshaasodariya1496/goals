@@ -28,7 +28,7 @@ const Goals = ({navigation}) => {
       key={index}
       style={[
         styles.midContent,
-        {width: scale(screenWidth - 160), height: 480, padding: 32},
+        {width: scale(screenWidth - 160), padding: scale(20)},
       ]}>
       <View style={{alignItems: 'center'}}>
         <Image source={images.user} style={styles.userImage} />
@@ -52,17 +52,17 @@ const Goals = ({navigation}) => {
             data={chartData.data}
             highlights={chartData.highlights}
             legend={chartData.legend}
-            style={{height: 150, marginTop: 15}}
+            style={{height: '100%', marginTop: 15}}
           />
         </View>
-        <Text style={[styles.userTitle, {fontSize: 14, marginTop: 14}]}>
+        <Text style={[styles.userTitle, {fontSize: 14, marginTop: 15}]}>
           Monthly Sales Goals
         </Text>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('GoalDetails');
           }}
-          style={{position: 'absolute', top: scale(-10), right: scale(-10)}}>
+          style={{position: 'absolute', top: scale(-5), right: scale(-5)}}>
           <Octicons name="pencil" size={21} color={Colors.darkGrey3} />
         </TouchableOpacity>
       </View>

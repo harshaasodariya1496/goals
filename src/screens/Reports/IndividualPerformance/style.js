@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   listHead: {
-    fontSize: scale(14),
+    fontSize: scale(12),
     color: Colors.darkGrey2,
     marginBottom: scale(8),
   },
-  listValue: {fontSize: scale(14), color: Colors.black},
+  listValue: {fontSize: scale(12), color: Colors.black},
   listContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',

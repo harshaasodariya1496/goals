@@ -184,6 +184,7 @@ const AddTeam = ({navigation}) => {
     arr[i].salary = parseInt(e);
     setUserList([...arr]);
   };
+
   const Salaries = () => (
     <View style={styles.midContent}>
       <FlatList
@@ -276,7 +277,11 @@ const AddTeam = ({navigation}) => {
   return (
     <ImageBackground style={styles.container} source={images.background}>
       <KeyboardAvoidingScrollView nestedScrollEnabled>
-        <Header title={''} onBackPress={() => navigation.goBack()} />
+        <Header
+          title={''}
+          onBackPress={() => navigation.goBack()}
+          mainStyle={{paddingBottom: 0}}
+        />
 
         <View
           style={{
@@ -298,6 +303,7 @@ const AddTeam = ({navigation}) => {
             padding: 15,
             alignItems: 'center',
             paddingTop: 0,
+            paddingHorizontal:25
           }}>
           <Button
             type={'small'}

@@ -154,42 +154,47 @@ function EmpTab({navigation}) {
 
   const renderTabBar = ({routeName, selectedTab, navigate}) => {
     return (
-      <TouchableOpacity
-        onPress={() => {
-          console.log('call', routeName);
-          if (routeName == 'Menu')
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          // navigation.navigate('Sidebar');
-          else
-            navigation.dispatch(
-              CommonActions.reset({
-                index: 0,
-                routes: [{name: routeName}],
-              }),
-            );
-        }}
-        style={styles.tabbarItem}>
-        {_renderIcon(routeName, selectedTab)}
-      </TouchableOpacity>
+      // <TouchableOpacity
+      //   onPress={() => {
+      //     console.log('call', routeName);
+      //     if (routeName == 'Menu')
+      //       navigation.dispatch(DrawerActions.toggleDrawer());
+      //     // navigation.navigate('Sidebar');
+      //     else
+      //       navigation.dispatch(
+      //         CommonActions.reset({
+      //           index: 0,
+      //           routes: [{name: routeName}],
+      //         }),
+      //       );
+      //   }}
+      //   style={styles.tabbarItem}>
+      //   {_renderIcon(routeName, selectedTab)}
+      // </TouchableOpacity>
+      <View>
+        <Image source={images.tabBar} style={{width:"100%"}}/>
+      </View>
     );
   };
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      height={scale(55)} 
+      height={scale(55)}
       bgColor={Colors.white}
       circlePosition={'CENTER'}
-      circleWidth={scale(40)}
+      circleWidth={scale(25)}
       tabBar={renderTabBar}
-      renderCircle={({selectedTab, navigate}) => (
-        <TouchableOpacity
-          style={{top: scale(-23), alignItems: 'center'}}
-          onPress={() => {
-            navigate('Dashboard');
-          }}>
-          <Image source={images.tabLogo} style={[styles.tabHomeIcon]} />
-        </TouchableOpacity>
-      )}
+      renderCircle={({selectedTab, navigate}) => {
+        return (
+          <TouchableOpacity
+            style={{top: scale(-20), alignItems: 'center'}}
+            onPress={() => {
+              navigate('Dashboard');
+            }}>
+            <Image source={images.tabLogo} style={[styles.tabHomeIcon]} />
+          </TouchableOpacity>
+        );
+      }}
       screenOptions={{headerShown: false}}>
       <Tab.Screen name="Home" component={DashboardNavigator} position="LEFT" />
       <Tab.Screen name="Goals" component={GoalNavigator} position="LEFT" />

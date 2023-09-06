@@ -127,7 +127,7 @@ const Highlights = ({navigation, route}) => {
               </TouchableOpacity>
             </View>
           </ImageBackground>
-          <View style={{top: scale(-250), marginHorizontal: 20}}>
+          <View style={{top: scale(-200), marginHorizontal: 20}}>
             <FlatList data={data} renderItem={renderItem} />
           </View>
         </View>

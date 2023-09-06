@@ -71,7 +71,7 @@ const Discussion = ({navigation}) => {
       <View style={styles.container}>
         <ImageBackground
           style={{
-            height: (screenHeight / 10) * 2.5,
+            height: (screenHeight / 10) * 2.2,
             paddingTop: scale(25),
             paddingHorizontal: 16,
           }}
